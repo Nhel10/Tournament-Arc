@@ -1,0 +1,85 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateTournamentEvent {
+  onCreateTournamentEvent {
+    id
+    eventName
+    description
+    organizingBody
+    location
+    startDate
+    endDate
+    totalPrizeMoney
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTournamentEvent {
+  onUpdateTournamentEvent {
+    id
+    eventName
+    description
+    organizingBody
+    location
+    startDate
+    endDate
+    totalPrizeMoney
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTournamentEvent {
+  onDeleteTournamentEvent {
+    id
+    eventName
+    description
+    organizingBody
+    location
+    startDate
+    endDate
+    totalPrizeMoney
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateLogin {
+  onCreateLogin {
+    id
+    passwor
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateLogin {
+  onUpdateLogin {
+    id
+    passwor
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteLogin {
+  onDeleteLogin {
+    id
+    passwor
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

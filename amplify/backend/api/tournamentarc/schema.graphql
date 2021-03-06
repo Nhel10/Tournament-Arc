@@ -1,5 +1,19 @@
 type Login @model @auth(rules: [{allow: public}]) {
   id: ID!
-  passwor: String
+  password: String
 }
  
+"""Tournament Event Table model object, represents a Tournament Event
+includes below attributes
+##Relationships to be added later
+"""
+type TournamentEvent @model {
+  id: ID!
+  eventName: String
+  description: String
+  organizingBody: String
+  location: String
+  startDate: AWSDate
+  endDate: AWSDate
+  totalPrizeMoney: Float
+}

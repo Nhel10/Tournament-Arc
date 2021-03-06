@@ -1,0 +1,103 @@
+# this is an auto generated file. This will be overwritten
+mutation CreateTournamentEvent(
+  $input: CreateTournamentEventInput!
+  $condition: ModelTournamentEventConditionInput
+) {
+  createTournamentEvent(input: $input, condition: $condition) {
+    id
+    eventName
+    description
+    organizingBody
+    location
+    startDate
+    endDate
+    totalPrizeMoney
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateTournamentEvent(
+  $input: UpdateTournamentEventInput!
+  $condition: ModelTournamentEventConditionInput
+) {
+  updateTournamentEvent(input: $input, condition: $condition) {
+    id
+    eventName
+    description
+    organizingBody
+    location
+    startDate
+    endDate
+    totalPrizeMoney
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteTournamentEvent(
+  $input: DeleteTournamentEventInput!
+  $condition: ModelTournamentEventConditionInput
+) {
+  deleteTournamentEvent(input: $input, condition: $condition) {
+    id
+    eventName
+    description
+    organizingBody
+    location
+    startDate
+    endDate
+    totalPrizeMoney
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateLogin(
+  $input: CreateLoginInput!
+  $condition: ModelLoginConditionInput
+) {
+  createLogin(input: $input, condition: $condition) {
+    id
+    passwor
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateLogin(
+  $input: UpdateLoginInput!
+  $condition: ModelLoginConditionInput
+) {
+  updateLogin(input: $input, condition: $condition) {
+    id
+    passwor
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteLogin(
+  $input: DeleteLoginInput!
+  $condition: ModelLoginConditionInput
+) {
+  deleteLogin(input: $input, condition: $condition) {
+    id
+    passwor
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
