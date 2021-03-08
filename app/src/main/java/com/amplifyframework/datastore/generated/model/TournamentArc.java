@@ -9,7 +9,10 @@ import java.util.Objects;
 
 import androidx.core.util.ObjectsCompat;
 
+import com.amplifyframework.core.model.AuthStrategy;
 import com.amplifyframework.core.model.Model;
+import com.amplifyframework.core.model.ModelOperation;
+import com.amplifyframework.core.model.annotations.AuthRule;
 import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
@@ -17,33 +20,40 @@ import com.amplifyframework.core.model.query.predicate.QueryField;
 
 import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
-/** This is an auto generated class representing the TournamentEvent type in your schema. */
+/** This is an auto generated class representing the TournamentArc type in your schema. */
 @SuppressWarnings("all")
-@ModelConfig(pluralName = "TournamentEvents")
-public final class TournamentEvent implements Model {
-  public static final QueryField ID = field("TournamentEvent", "id");
-  public static final QueryField EVENT_NAME = field("TournamentEvent", "eventName");
-  public static final QueryField DESCRIPTION = field("TournamentEvent", "description");
-  public static final QueryField ORGANIZING_BODY = field("TournamentEvent", "organizingBody");
-  public static final QueryField LOCATION = field("TournamentEvent", "location");
-  public static final QueryField START_DATE = field("TournamentEvent", "startDate");
-  public static final QueryField END_DATE = field("TournamentEvent", "endDate");
-  public static final QueryField TOTAL_PRIZE_MONEY = field("TournamentEvent", "totalPrizeMoney");
+@ModelConfig(pluralName = "TournamentArcs", authRules = {
+  @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
+})
+@Index(name = "byTournamentEvent", fields = {"tournamenteventID"})
+public final class TournamentArc implements Model {
+  public static final QueryField ID = field("TournamentArc", "id");
+  public static final QueryField TOURNAMENTEVENT_ID = field("TournamentArc", "tournamenteventID");
+  public static final QueryField ARC_NAME = field("TournamentArc", "arcName");
+  public static final QueryField DESCRIPTION = field("TournamentArc", "description");
+  public static final QueryField ORGANIZING_BODY = field("TournamentArc", "organizingBody");
+  public static final QueryField START_DATE = field("TournamentArc", "startDate");
+  public static final QueryField END_DATE = field("TournamentArc", "endDate");
+  public static final QueryField TOTAL_PRIZE_MONEY = field("TournamentArc", "totalPrizeMoney");
   private final @ModelField(targetType="ID", isRequired = true) String id;
-  private final @ModelField(targetType="String") String eventName;
+  private final @ModelField(targetType="ID") String tournamenteventID;
+  private final @ModelField(targetType="String") String arcName;
   private final @ModelField(targetType="String") String description;
   private final @ModelField(targetType="String") String organizingBody;
-  private final @ModelField(targetType="String") String location;
-  private final @ModelField(targetType="AWSDate") Temporal.Date startDate;
-  private final @ModelField(targetType="AWSDate") Temporal.Date endDate;
+  private final @ModelField(targetType="AWSDateTime") Temporal.DateTime startDate;
+  private final @ModelField(targetType="AWSDateTime") Temporal.DateTime endDate;
   private final @ModelField(targetType="Float") Double totalPrizeMoney;
-  private final @ModelField(targetType="TournamentArc") @HasMany(associatedWith = "tournamenteventID", type = TournamentArc.class) List<TournamentArc> EventToArcs = null;
+  private final @ModelField(targetType="TournamentBracket") @HasMany(associatedWith = "tournamentarcID", type = TournamentBracket.class) List<TournamentBracket> ArcToBrackets = null;
   public String getId() {
       return id;
   }
   
-  public String getEventName() {
-      return eventName;
+  public String getTournamenteventId() {
+      return tournamenteventID;
+  }
+  
+  public String getArcName() {
+      return arcName;
   }
   
   public String getDescription() {
@@ -54,15 +64,11 @@ public final class TournamentEvent implements Model {
       return organizingBody;
   }
   
-  public String getLocation() {
-      return location;
-  }
-  
-  public Temporal.Date getStartDate() {
+  public Temporal.DateTime getStartDate() {
       return startDate;
   }
   
-  public Temporal.Date getEndDate() {
+  public Temporal.DateTime getEndDate() {
       return endDate;
   }
   
@@ -70,16 +76,16 @@ public final class TournamentEvent implements Model {
       return totalPrizeMoney;
   }
   
-  public List<TournamentArc> getEventToArcs() {
-      return EventToArcs;
+  public List<TournamentBracket> getArcToBrackets() {
+      return ArcToBrackets;
   }
   
-  private TournamentEvent(String id, String eventName, String description, String organizingBody, String location, Temporal.Date startDate, Temporal.Date endDate, Double totalPrizeMoney) {
+  private TournamentArc(String id, String tournamenteventID, String arcName, String description, String organizingBody, Temporal.DateTime startDate, Temporal.DateTime endDate, Double totalPrizeMoney) {
     this.id = id;
-    this.eventName = eventName;
+    this.tournamenteventID = tournamenteventID;
+    this.arcName = arcName;
     this.description = description;
     this.organizingBody = organizingBody;
-    this.location = location;
     this.startDate = startDate;
     this.endDate = endDate;
     this.totalPrizeMoney = totalPrizeMoney;
@@ -92,15 +98,15 @@ public final class TournamentEvent implements Model {
       } else if(obj == null || getClass() != obj.getClass()) {
         return false;
       } else {
-      TournamentEvent tournamentEvent = (TournamentEvent) obj;
-      return ObjectsCompat.equals(getId(), tournamentEvent.getId()) &&
-              ObjectsCompat.equals(getEventName(), tournamentEvent.getEventName()) &&
-              ObjectsCompat.equals(getDescription(), tournamentEvent.getDescription()) &&
-              ObjectsCompat.equals(getOrganizingBody(), tournamentEvent.getOrganizingBody()) &&
-              ObjectsCompat.equals(getLocation(), tournamentEvent.getLocation()) &&
-              ObjectsCompat.equals(getStartDate(), tournamentEvent.getStartDate()) &&
-              ObjectsCompat.equals(getEndDate(), tournamentEvent.getEndDate()) &&
-              ObjectsCompat.equals(getTotalPrizeMoney(), tournamentEvent.getTotalPrizeMoney());
+      TournamentArc tournamentArc = (TournamentArc) obj;
+      return ObjectsCompat.equals(getId(), tournamentArc.getId()) &&
+              ObjectsCompat.equals(getTournamenteventId(), tournamentArc.getTournamenteventId()) &&
+              ObjectsCompat.equals(getArcName(), tournamentArc.getArcName()) &&
+              ObjectsCompat.equals(getDescription(), tournamentArc.getDescription()) &&
+              ObjectsCompat.equals(getOrganizingBody(), tournamentArc.getOrganizingBody()) &&
+              ObjectsCompat.equals(getStartDate(), tournamentArc.getStartDate()) &&
+              ObjectsCompat.equals(getEndDate(), tournamentArc.getEndDate()) &&
+              ObjectsCompat.equals(getTotalPrizeMoney(), tournamentArc.getTotalPrizeMoney());
       }
   }
   
@@ -108,10 +114,10 @@ public final class TournamentEvent implements Model {
    public int hashCode() {
     return new StringBuilder()
       .append(getId())
-      .append(getEventName())
+      .append(getTournamenteventId())
+      .append(getArcName())
       .append(getDescription())
       .append(getOrganizingBody())
-      .append(getLocation())
       .append(getStartDate())
       .append(getEndDate())
       .append(getTotalPrizeMoney())
@@ -122,12 +128,12 @@ public final class TournamentEvent implements Model {
   @Override
    public String toString() {
     return new StringBuilder()
-      .append("TournamentEvent {")
+      .append("TournamentArc {")
       .append("id=" + String.valueOf(getId()) + ", ")
-      .append("eventName=" + String.valueOf(getEventName()) + ", ")
+      .append("tournamenteventID=" + String.valueOf(getTournamenteventId()) + ", ")
+      .append("arcName=" + String.valueOf(getArcName()) + ", ")
       .append("description=" + String.valueOf(getDescription()) + ", ")
       .append("organizingBody=" + String.valueOf(getOrganizingBody()) + ", ")
-      .append("location=" + String.valueOf(getLocation()) + ", ")
       .append("startDate=" + String.valueOf(getStartDate()) + ", ")
       .append("endDate=" + String.valueOf(getEndDate()) + ", ")
       .append("totalPrizeMoney=" + String.valueOf(getTotalPrizeMoney()))
@@ -148,7 +154,7 @@ public final class TournamentEvent implements Model {
    * @return an instance of this model with only ID populated
    * @throws IllegalArgumentException Checks that ID is in the proper format
    */
-  public static TournamentEvent justId(String id) {
+  public static TournamentArc justId(String id) {
     try {
       UUID.fromString(id); // Check that ID is in the UUID format - if not an exception is thrown
     } catch (Exception exception) {
@@ -158,7 +164,7 @@ public final class TournamentEvent implements Model {
               "creating a new object, use the standard builder method and leave the ID field blank."
       );
     }
-    return new TournamentEvent(
+    return new TournamentArc(
       id,
       null,
       null,
@@ -172,54 +178,60 @@ public final class TournamentEvent implements Model {
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      eventName,
+      tournamenteventID,
+      arcName,
       description,
       organizingBody,
-      location,
       startDate,
       endDate,
       totalPrizeMoney);
   }
   public interface BuildStep {
-    TournamentEvent build();
+    TournamentArc build();
     BuildStep id(String id) throws IllegalArgumentException;
-    BuildStep eventName(String eventName);
+    BuildStep tournamenteventId(String tournamenteventId);
+    BuildStep arcName(String arcName);
     BuildStep description(String description);
     BuildStep organizingBody(String organizingBody);
-    BuildStep location(String location);
-    BuildStep startDate(Temporal.Date startDate);
-    BuildStep endDate(Temporal.Date endDate);
+    BuildStep startDate(Temporal.DateTime startDate);
+    BuildStep endDate(Temporal.DateTime endDate);
     BuildStep totalPrizeMoney(Double totalPrizeMoney);
   }
   
 
   public static class Builder implements BuildStep {
     private String id;
-    private String eventName;
+    private String tournamenteventID;
+    private String arcName;
     private String description;
     private String organizingBody;
-    private String location;
-    private Temporal.Date startDate;
-    private Temporal.Date endDate;
+    private Temporal.DateTime startDate;
+    private Temporal.DateTime endDate;
     private Double totalPrizeMoney;
     @Override
-     public TournamentEvent build() {
+     public TournamentArc build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
-        return new TournamentEvent(
+        return new TournamentArc(
           id,
-          eventName,
+          tournamenteventID,
+          arcName,
           description,
           organizingBody,
-          location,
           startDate,
           endDate,
           totalPrizeMoney);
     }
     
     @Override
-     public BuildStep eventName(String eventName) {
-        this.eventName = eventName;
+     public BuildStep tournamenteventId(String tournamenteventId) {
+        this.tournamenteventID = tournamenteventId;
+        return this;
+    }
+    
+    @Override
+     public BuildStep arcName(String arcName) {
+        this.arcName = arcName;
         return this;
     }
     
@@ -236,19 +248,13 @@ public final class TournamentEvent implements Model {
     }
     
     @Override
-     public BuildStep location(String location) {
-        this.location = location;
-        return this;
-    }
-    
-    @Override
-     public BuildStep startDate(Temporal.Date startDate) {
+     public BuildStep startDate(Temporal.DateTime startDate) {
         this.startDate = startDate;
         return this;
     }
     
     @Override
-     public BuildStep endDate(Temporal.Date endDate) {
+     public BuildStep endDate(Temporal.DateTime endDate) {
         this.endDate = endDate;
         return this;
     }
@@ -282,20 +288,25 @@ public final class TournamentEvent implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String eventName, String description, String organizingBody, String location, Temporal.Date startDate, Temporal.Date endDate, Double totalPrizeMoney) {
+    private CopyOfBuilder(String id, String tournamenteventId, String arcName, String description, String organizingBody, Temporal.DateTime startDate, Temporal.DateTime endDate, Double totalPrizeMoney) {
       super.id(id);
-      super.eventName(eventName)
+      super.tournamenteventId(tournamenteventId)
+        .arcName(arcName)
         .description(description)
         .organizingBody(organizingBody)
-        .location(location)
         .startDate(startDate)
         .endDate(endDate)
         .totalPrizeMoney(totalPrizeMoney);
     }
     
     @Override
-     public CopyOfBuilder eventName(String eventName) {
-      return (CopyOfBuilder) super.eventName(eventName);
+     public CopyOfBuilder tournamenteventId(String tournamenteventId) {
+      return (CopyOfBuilder) super.tournamenteventId(tournamenteventId);
+    }
+    
+    @Override
+     public CopyOfBuilder arcName(String arcName) {
+      return (CopyOfBuilder) super.arcName(arcName);
     }
     
     @Override
@@ -309,17 +320,12 @@ public final class TournamentEvent implements Model {
     }
     
     @Override
-     public CopyOfBuilder location(String location) {
-      return (CopyOfBuilder) super.location(location);
-    }
-    
-    @Override
-     public CopyOfBuilder startDate(Temporal.Date startDate) {
+     public CopyOfBuilder startDate(Temporal.DateTime startDate) {
       return (CopyOfBuilder) super.startDate(startDate);
     }
     
     @Override
-     public CopyOfBuilder endDate(Temporal.Date endDate) {
+     public CopyOfBuilder endDate(Temporal.DateTime endDate) {
       return (CopyOfBuilder) super.endDate(endDate);
     }
     
