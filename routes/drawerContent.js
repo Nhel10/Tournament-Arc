@@ -1,3 +1,6 @@
+/* The purpose of this code is to display the drawer navigation and connect the buttons to the 
+    appropriate screens */
+
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import {
@@ -31,8 +34,8 @@ export function DrawerContent(props) {
                                 marginLeft: 15,
                                 flexDirection: 'column'
                             }}>
-                                <Title style={styles.title}>Guest User</Title>
-                                <Caption style={styles.caption}>@GuestUser</Caption>
+                                <Title style={styles.title}>Louie</Title>
+                                <Caption style={styles.caption}>@KirbyKiller</Caption>
                             </View>
                         </View>
                     </View>
@@ -104,7 +107,7 @@ export function DrawerContent(props) {
                             size={size}
                         />
                     )}
-                    label="Log In"
+                    label="Log out"
                     onPress={() => {props.navigation.navigate('Inputs')}}
                 />
             </Drawer.Section>

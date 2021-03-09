@@ -44,7 +44,7 @@ export const AboutStack = ({navigation}) => (
       name='Inputs'
       component={Inputs}
       options={{ 
-        title: 'Log In', 
+        title: 'Create Tournament Arc', 
         headerTitleAlign: 'center',
         headerLeft: () => (
           <Icon.Button name = "ios-menu" size={25}

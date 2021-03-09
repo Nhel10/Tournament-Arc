@@ -13,6 +13,13 @@ import TabNavigator from './bottomTab';
 import HomeStack from './homeStack';
 import AboutStack from './aboutStack';
 import RegistrationStack from './registrationStack';
+
+import FollowStack from './followingStack';
+import SearchStack from './searchStack';
+import CreateTourneyStack from './createTourneyStack';
+import ChatStack from './chatStack';
+
+
 import { DrawerContent } from './drawerContent';
 
 const { Navigator, Screen } = createDrawerNavigator(); // Creates Stack navigation 
@@ -35,6 +42,22 @@ export const RootDrawerNavigator = () => (
     />
     <Screen
       name='About'
+      component={AboutStack}
+    />
+    <Screen
+      name='Follow'
+      component={FollowStack}
+    />
+    <Screen
+      name='Search'
+      component={AboutStack}
+    />
+    <Screen
+      name='Create Tournament'
+      component={AboutStack}
+    />
+    <Screen
+      name='Chaat'
       component={AboutStack}
     />
   </Navigator>

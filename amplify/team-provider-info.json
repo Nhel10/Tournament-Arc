@@ -16,5 +16,23 @@
         "tournamentarc892a423d": {}
       }
     }
+  },
+  "rnamplify": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-tournamentarc-rnamplify-134432-authRole",
+      "UnauthRoleArn": "arn:aws:iam::504496283587:role/amplify-tournamentarc-rnamplify-134432-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::504496283587:role/amplify-tournamentarc-rnamplify-134432-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-tournamentarc-rnamplify-134432-deployment",
+      "UnauthRoleName": "amplify-tournamentarc-rnamplify-134432-unauthRole",
+      "StackName": "amplify-tournamentarc-rnamplify-134432",
+      "StackId": "arn:aws:cloudformation:us-west-2:504496283587:stack/amplify-tournamentarc-rnamplify-134432/04e0ae70-7945-11eb-8ccb-0a64a191e09f",
+      "AmplifyAppId": "d35d1x27b6fsky"
+    },
+    "categories": {
+      "auth": {
+        "tournamentarc892a423d": {}
+      }
+    }
   }
 }
