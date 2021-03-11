@@ -9,7 +9,7 @@ import Home from './screens/home';
 import {AppLoading} from 'expo';
 import { AppNavigator } from './routes/drawer';
 import Amplify, { Auth } from 'aws-amplify';
-import awsconfig from './aws-exports';
+import awsconfig from './src/aws-exports';
 Amplify.configure(awsconfig);
 
 const getFonts = () => Font.loadAsync({
