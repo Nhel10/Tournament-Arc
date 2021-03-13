@@ -7,11 +7,11 @@
 ---*/
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Create from '../screens/createTournament';
+import Create from '../screens/createEvent';
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const CreateTourneyStack = ({navigation}) => (
+export const CreateEventStack = ({navigation}) => (
   <Navigator
     headerMode='screen'
     screenOptions={{
@@ -23,14 +23,14 @@ export const CreateTourneyStack = ({navigation}) => (
     }}
   >
     <Screen
-      name='CreateTourney'
+      name='Create Event'
       component={Create}
       options={{ 
-        title: 'Create A Tournament', 
+        title: 'Create an Event', 
         headerTitleAlign: 'center',
         }}
     />
   </Navigator>
 );
 
-export default CreateTourneyStack;
+export default CreateEventStack;
