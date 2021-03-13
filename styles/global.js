@@ -6,13 +6,13 @@ export const globalStyles = StyleSheet.create({
         padding: 24,
     },
     titleText: {
-        fontFamily: 'nunito-bold',
+        //fontFamily: 'nunito-bold',
         fontSize: 50,
         color: '#333',
         padding: 10,
     },
     pageText: {
-        fontFamily: 'nunito-regular',
+        //fontFamily: 'nunito-regular',
         fontSize: 12,
         justifyContent: 'center',
         alignItems: 'center',

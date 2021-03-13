@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "api": {
     "tournamentarc": {
       "service": "AppSync",
@@ -23,6 +24,10 @@
   },
   "auth": {
     "tournamentarc892a423d": {
+=======
+  "auth": {
+    "tournamentarc5c9b77a3": {
+>>>>>>> Stashed changes
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
