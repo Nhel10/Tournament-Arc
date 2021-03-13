@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeStack from './homeStack';
 import FollowStack from './followingStack';
 import SearchStack from './searchStack';
-import CreateTourneyStack from './createTourneyStack';
+import CreateEventStack from './createEventStack';
 import ChatStack from './chatStack';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -54,10 +54,10 @@ export const MyTabs = () => (
       }}
     />
     <Tab.Screen
-      name="CreateTourney"
-      component={CreateTourneyStack}
+      name="CreateEvent"
+      component={CreateEventStack}
       options={{
-        tabBarLabel: 'Create Tournament',
+        tabBarLabel: 'Create Event',
         tabBarColor: '#3C896D',
         tabBarIcon: ({ color }) => (
           <Icon name="ios-git-network" color={color} size={26} />

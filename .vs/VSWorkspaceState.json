@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\.expo",
+    "\\assets\\fonts",
+    "\\routes",
+    "\\screens"
   ],
-  "SelectedNode": "\\App.js",
+  "SelectedNode": "\\screens\\createTournament.js",
   "PreviewInSolutionExplorer": false
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { Avatar } from 'react-native-paper';
 
-export default function ReviewDetails({ navigation }) {
+export default function eventScreen({ navigation }) {
     var eventName = "Event Name";
     var eventDescription = "This is the event description. It will describe the purpose of the event and the tournaments that are organized around it.";
 
@@ -56,8 +56,8 @@ export default function ReviewDetails({ navigation }) {
                     {eventName}
                 </Text>
             </View>
-                <Text style={{padding: 10, fontSize:18, color: 'gray'}}>
-                    {eventDescription}
+            <Text style={{ padding: 10, fontSize: 18, color: 'gray' }}>
+                {eventDescription}
             </Text>
             <Text style={style.titles}>Tournaments</Text>
             <View style={styles.scrollViewHolder}>
@@ -100,7 +100,7 @@ export default function ReviewDetails({ navigation }) {
             <View style={styles.scrollViewHolder}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                        <Avatar.Image size={50} source={require('../assets/bienfu.png')} />                
+                        <Avatar.Image size={50} source={require('../assets/bienfu.png')} />
                         <Text style={styles.item}>Player 1</Text>
                     </View>
                     <View style={styles.separator} />
@@ -161,24 +161,3 @@ export default function ReviewDetails({ navigation }) {
         </ScrollView>
     )
 }
-
-const style = StyleSheet.create({
-    firstContainer: {
-        paddingTop: 30,
-        paddingLeft: 10,
-    },
-    secondContainer: {
-        paddingLeft: 5,
-    },
-    thirdContainer: {
-        paddingLeft: 10,
-    },
-    fourthContainer: {
-        paddingLeft: 10,
-    },
-    titles: {
-        fontWeight: "bold",
-        fontSize: 20,
-        textAlign: 'center'
-    },
-});
