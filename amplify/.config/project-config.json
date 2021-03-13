@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "providers": [
     "awscloudformation"
   ],
@@ -10,4 +11,21 @@
       "ResDir": "app/src/main/res"
     }
   }
+=======
+  "projectName": "TournamentArc",
+  "version": "3.0",
+  "frontend": "javascript",
+  "javascript": {
+    "framework": "react-native",
+    "config": {
+      "SourceDir": "./",
+      "DistributionDir": "./",
+      "BuildCommand": "npm run-script build",
+      "StartCommand": "npm run-script start"
+    }
+  },
+  "providers": [
+    "awscloudformation"
+  ]
+>>>>>>> Stashed changes
 }

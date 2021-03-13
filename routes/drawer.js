@@ -12,6 +12,7 @@ import TabNavigator from './bottomTab';
 /* --- Import all the stack routes file location --- */
 import HomeStack from './homeStack';
 import AboutStack from './aboutStack';
+import ProfileStack from './profileStack';
 import RegistrationStack from './registrationStack';
 import { DrawerContent } from './drawerContent';
 
@@ -36,6 +37,10 @@ export const RootDrawerNavigator = () => (
     <Screen
       name='About'
       component={AboutStack}
+    />
+    <Screen
+      name='Profile'
+      component={ProfileStack}
     />
   </Navigator>
 );
