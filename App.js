@@ -8,9 +8,19 @@ import React, { useState } from 'react';
 import * as Font from 'expo-font';
 import Home from './screens/home';
 import {AppLoading} from 'expo';
-import { AppNavigator } from './routes/drawer';
+import AppNavigator from './routes/drawer';
+import { NavigationContainer } from "@react-navigation/native";
+
+const App = () => {
+  return (
+    <AppNavigator/>
+  );
+};
+
+export default App;
 
 
+/*
 const getFonts = () => Font.loadAsync({
   'nunito-regular': require('./assets/fonts/Nunito-Regular.ttf'),
   'nunito-bold': require('./assets/fonts/Nunito-Bold.ttf')
@@ -34,3 +44,4 @@ export default function App(){
       )
   }
 }
+*/
