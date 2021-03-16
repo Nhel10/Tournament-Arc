@@ -40,33 +40,6 @@ export const AboutStack = ({navigation}) => (
         }}
     />
 
-    <Screen
-      name='Inputs'
-      component={Inputs}
-      options={{ 
-        title: 'Log In', 
-        headerTitleAlign: 'center',
-        headerLeft: () => (
-          <Icon.Button name = "ios-menu" size={25}
-          backgroundColor="#304857" onPress={() => navigation.openDrawer()}
-          ></Icon.Button>
-         )
-      }}
-    />  
-
-    <Screen
-      name='Register'
-      component={Registration}
-      options={{ 
-        title: 'Register',
-        headerTitleAlign: 'center',
-        headerLeft: () => (
-          <Icon.Button name = "ios-menu" size={25}
-          backgroundColor="#304857" onPress={() => navigation.openDrawer()}
-          ></Icon.Button>
-         )
-       }}
-    />
 
   </Navigator>
 );

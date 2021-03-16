@@ -17,7 +17,7 @@ function GoToButton({ screenName }) {
       />
     );
 }
-
+/* */
 class Registration extends Component {
     state = {
         email: '',

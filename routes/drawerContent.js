@@ -1,3 +1,6 @@
+/* The purpose of this code is to display the drawer navigation and connect the buttons to the 
+    appropriate screens */
+
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import {
@@ -31,8 +34,8 @@ export function DrawerContent(props) {
                                 marginLeft: 15,
                                 flexDirection: 'column'
                             }}>
-                                <Title style={styles.title}>Guest User</Title>
-                                <Caption style={styles.caption}>@GuestUser</Caption>
+                                <Title style={styles.title}>Louie</Title>
+                                <Caption style={styles.caption}>@KirbyKiller</Caption>
                             </View>
                         </View>
                     </View>
@@ -57,7 +60,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => { }}
+                            onPress={() => {props.navigation.navigate('Profile')}}
                         />
                         <DrawerItem
                             icon={({ color, size }) => (
@@ -68,7 +71,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="My Tournaments"
-                            onPress={() => { }}
+                            onPress={() => {props.navigation.navigate('My Tournament')}}
                         />
                         <DrawerItem
                             icon={({ color, size }) => (
@@ -79,7 +82,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="Settings"
-                            onPress={() => { }}
+                            onPress={() => {props.navigation.navigate('Setting')}}
                         />
                         <DrawerItem
                             icon={({ color, size }) => (
@@ -104,8 +107,8 @@ export function DrawerContent(props) {
                             size={size}
                         />
                     )}
-                    label="Log In"
-                    onPress={() => {props.navigation.navigate('Inputs')}}
+                    label="Log out"
+                    onPress={() => {props.navigation.navigate('Log In')}}
                 />
             </Drawer.Section>
         </View>

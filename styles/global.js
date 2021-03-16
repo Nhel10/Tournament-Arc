@@ -5,14 +5,12 @@ export const globalStyles = StyleSheet.create({
         flex: 20,
         padding: 24,
     },
-    titleText: {
-        fontFamily: 'nunito-bold',
+    titleText: {  
         fontSize: 50,
         color: '#333',
         padding: 10,
     },
     pageText: {
-        fontFamily: 'nunito-regular',
         fontSize: 12,
         justifyContent: 'center',
         alignItems: 'center',
