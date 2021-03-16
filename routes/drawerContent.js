@@ -70,7 +70,7 @@ export function DrawerContent(props) {
                                     size={size}
                                 />
                             )}
-                            label="My Tournaments"
+                            label="Tournament Events"
                             onPress={() => {props.navigation.navigate('My Tournament')}}
                         />
                         <DrawerItem
