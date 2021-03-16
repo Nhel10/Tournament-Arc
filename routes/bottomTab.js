@@ -8,7 +8,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeStack from './homeStack';
 import FollowStack from './followingStack';
 import SearchStack from './searchStack';
-import CreateTourneyStack from './createTourneyStack';
 import ChatStack from './chatStack';
 
 const Tab = createMaterialBottomTabNavigator();
