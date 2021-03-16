@@ -19,10 +19,15 @@
     "amazon-cognito-identity-js": "^4.5.12",
     "aws-amplify": "^3.3.21",
     "aws-amplify-react-native": "^4.3.1",
+<<<<<<< Updated upstream
     "aws-config": "^1.4.0",
     "expo": "^39.0.5",
     "expo-ads-admob": "~8.3.0",
     "expo-font": "^9.0.0",
+=======
+    "expo": "~39.0.2",
+    "expo-font": "~8.3.0",
+>>>>>>> Stashed changes
     "expo-status-bar": "~1.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
