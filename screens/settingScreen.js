@@ -6,7 +6,7 @@ export default function chatScreen({navigation}) {
     return (
         <View style={globalStyles.container}>
             <Text style={globalStyles.pageText}>
-                 Chat Page
+                 Setting Screen
             </Text>
         </View>
     )

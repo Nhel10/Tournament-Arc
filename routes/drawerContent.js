@@ -60,7 +60,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="Profile"
-                            onPress={() => { }}
+                            onPress={() => {props.navigation.navigate('Profile')}}
                         />
                         <DrawerItem
                             icon={({ color, size }) => (
@@ -71,7 +71,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="My Tournaments"
-                            onPress={() => { }}
+                            onPress={() => {props.navigation.navigate('My Tournament')}}
                         />
                         <DrawerItem
                             icon={({ color, size }) => (
@@ -82,7 +82,7 @@ export function DrawerContent(props) {
                                 />
                             )}
                             label="Settings"
-                            onPress={() => { }}
+                            onPress={() => {props.navigation.navigate('Setting')}}
                         />
                         <DrawerItem
                             icon={({ color, size }) => (
@@ -108,7 +108,7 @@ export function DrawerContent(props) {
                         />
                     )}
                     label="Log out"
-                    onPress={() => {props.navigation.navigate('Inputs')}}
+                    onPress={() => {props.navigation.navigate('Log In')}}
                 />
             </Drawer.Section>
         </View>

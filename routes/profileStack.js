@@ -1,21 +1,12 @@
-/*--- 
-  SUMMARY:
-  This file creates the stack navigation for navigating the About Screen
-
-  SCREENS:
-  - about.js
----*/
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import About from '../screens/about';
-import Registration from '../screens/registration';
-import Inputs from '../screens/input';
+import Profile from '../screens/profileScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const AboutStack = ({navigation}) => (
+export const ProfileStack = ({navigation}) => (
   <Navigator
     headerMode='screen'
     screenOptions={{
@@ -27,10 +18,10 @@ export const AboutStack = ({navigation}) => (
     }}
   >
     <Screen
-      name='About'
-      component={About}
+      name='Profile'
+      component={Profile}
       options={{ 
-        title: 'About Tournament Arc', 
+        title: 'Profile Screen', 
         headerTitleAlign: 'center',
          headerLeft: () => (
           <Icon.Button name = "ios-menu" size={25}
@@ -44,4 +35,4 @@ export const AboutStack = ({navigation}) => (
   </Navigator>
 );
 
-export default AboutStack;
+export default ProfileStack;

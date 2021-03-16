@@ -13,6 +13,9 @@ import TabNavigator from './bottomTab';
 import HomeStack from './homeStack';
 import AboutStack from './aboutStack';
 import RegistrationStack from './registrationStack';
+import ProfileStack from './profileStack';
+import MyTournamentStack from './myTournamentStack';
+import SettingStack from './settingStack';
 
 import FollowStack from './followingStack';
 import SearchStack from './searchStack';
@@ -36,30 +39,27 @@ export const RootDrawerNavigator = () => (
       name='Home'
       component={TabNavigator}
     />
+    <Screen
+      name='Profile'
+      component={ProfileStack}
+    />
+    <Screen
+      name='My Tournament'
+      component={MyTournamentStack}
+    />
      <Screen
       name='Log In'
       component={RegistrationStack}
     />
     <Screen
+      name='Setting'
+      component={SettingStack}
+    />
+     <Screen
       name='About'
       component={AboutStack}
     />
-    <Screen
-      name='Follow'
-      component={FollowStack}
-    />
-    <Screen
-      name='Search'
-      component={AboutStack}
-    />
-    <Screen
-      name='Create Tournament'
-      component={AboutStack}
-    />
-    <Screen
-      name='Chaat'
-      component={AboutStack}
-    />
+    
   </Navigator>
 );
 

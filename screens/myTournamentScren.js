@@ -2,11 +2,11 @@ import React from 'react';
 import { Button, View, Text } from 'react-native';
 import { globalStyles } from '../styles/global';
 
-export default function chatScreen({navigation}) {
+export default function myTournamentScreen({navigation}) {
     return (
         <View style={globalStyles.container}>
             <Text style={globalStyles.pageText}>
-                 Chat Page
+                 My Tournament Screen
             </Text>
         </View>
     )
