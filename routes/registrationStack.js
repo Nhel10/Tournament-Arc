@@ -30,7 +30,7 @@ export const RegistrationStack = ({navigation}) => (
     <Screen
       name='Inputs'
       component={Inputs}
-      options={{ 
+      options={{  
         title: 'Log In', 
         headerTitleAlign: 'center',
         headerLeft: () => (
