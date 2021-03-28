@@ -1,3 +1,11 @@
+type RegisteredUsers @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  gamerTag: String
+  name: String
+  location: String
+  TournamentBrackets: [TournamentBracket] @connection(keyName: "byRegisteredUsers", fields: ["id"])
+}
+
 type GameOnPlatform @model @auth(rules: [{allow: public}]) @key(name: "byGame", fields: ["gameID"]) @key(name: "byPlatform", fields: ["platformID"]) {
   id: ID!
   gameID: ID
@@ -22,12 +30,13 @@ type Controller @model @auth(rules: [{allow: public}]) {
   ControllerToPlatform: Platform @connection
 }
 
-type TournamentBracket @model @auth(rules: [{allow: public}]) @key(name: "byTournamentArc", fields: ["tournamentarcID"]) {
+type TournamentBracket @model @auth(rules: [{allow: public}]) @key(name: "byTournamentArc", fields: ["tournamentarcID"]) @key(name: "byRegisteredUsers", fields: ["registeredusersID"]) {
   id: ID!
   tournamentarcID: ID
   bracketType: String
   startDate: AWSDateTime
   endDat: AWSDateTime
+  registeredusersID: ID
 }
 
 type TournamentArc @model @auth(rules: [{allow: public}]) @key(name: "byTournamentEvent", fields: ["tournamenteventID"]) {
@@ -42,6 +51,11 @@ type TournamentArc @model @auth(rules: [{allow: public}]) @key(name: "byTourname
   ArcToBrackets: [TournamentBracket] @connection(keyName: "byTournamentArc", fields: ["id"])
 }
 
+"""
+Tournament Event Table model object, represents a Tournament Event
+includes below attributes
+##Relationships to be added later
+"""
 type TournamentEvent @model {
   id: ID!
   eventName: String
@@ -53,4 +67,4 @@ type TournamentEvent @model {
   totalPrizeMoney: Float
   EventToArcs: [TournamentArc] @connection(keyName: "byTournamentEvent", fields: ["id"])
 }
-  
+ 

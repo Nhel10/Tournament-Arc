@@ -25,17 +25,20 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
   @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
 @Index(name = "byTournamentArc", fields = {"tournamentarcID"})
+@Index(name = "byRegisteredUsers", fields = {"registeredusersID"})
 public final class TournamentBracket implements Model {
   public static final QueryField ID = field("TournamentBracket", "id");
   public static final QueryField TOURNAMENTARC_ID = field("TournamentBracket", "tournamentarcID");
   public static final QueryField BRACKET_TYPE = field("TournamentBracket", "bracketType");
   public static final QueryField START_DATE = field("TournamentBracket", "startDate");
   public static final QueryField END_DAT = field("TournamentBracket", "endDat");
+  public static final QueryField REGISTEREDUSERS_ID = field("TournamentBracket", "registeredusersID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="ID") String tournamentarcID;
   private final @ModelField(targetType="String") String bracketType;
   private final @ModelField(targetType="AWSDateTime") Temporal.DateTime startDate;
   private final @ModelField(targetType="AWSDateTime") Temporal.DateTime endDat;
+  private final @ModelField(targetType="ID") String registeredusersID;
   public String getId() {
       return id;
   }
@@ -56,12 +59,17 @@ public final class TournamentBracket implements Model {
       return endDat;
   }
   
-  private TournamentBracket(String id, String tournamentarcID, String bracketType, Temporal.DateTime startDate, Temporal.DateTime endDat) {
+  public String getRegisteredusersId() {
+      return registeredusersID;
+  }
+  
+  private TournamentBracket(String id, String tournamentarcID, String bracketType, Temporal.DateTime startDate, Temporal.DateTime endDat, String registeredusersID) {
     this.id = id;
     this.tournamentarcID = tournamentarcID;
     this.bracketType = bracketType;
     this.startDate = startDate;
     this.endDat = endDat;
+    this.registeredusersID = registeredusersID;
   }
   
   @Override
@@ -76,7 +84,8 @@ public final class TournamentBracket implements Model {
               ObjectsCompat.equals(getTournamentarcId(), tournamentBracket.getTournamentarcId()) &&
               ObjectsCompat.equals(getBracketType(), tournamentBracket.getBracketType()) &&
               ObjectsCompat.equals(getStartDate(), tournamentBracket.getStartDate()) &&
-              ObjectsCompat.equals(getEndDat(), tournamentBracket.getEndDat());
+              ObjectsCompat.equals(getEndDat(), tournamentBracket.getEndDat()) &&
+              ObjectsCompat.equals(getRegisteredusersId(), tournamentBracket.getRegisteredusersId());
       }
   }
   
@@ -88,6 +97,7 @@ public final class TournamentBracket implements Model {
       .append(getBracketType())
       .append(getStartDate())
       .append(getEndDat())
+      .append(getRegisteredusersId())
       .toString()
       .hashCode();
   }
@@ -100,7 +110,8 @@ public final class TournamentBracket implements Model {
       .append("tournamentarcID=" + String.valueOf(getTournamentarcId()) + ", ")
       .append("bracketType=" + String.valueOf(getBracketType()) + ", ")
       .append("startDate=" + String.valueOf(getStartDate()) + ", ")
-      .append("endDat=" + String.valueOf(getEndDat()))
+      .append("endDat=" + String.valueOf(getEndDat()) + ", ")
+      .append("registeredusersID=" + String.valueOf(getRegisteredusersId()))
       .append("}")
       .toString();
   }
@@ -133,6 +144,7 @@ public final class TournamentBracket implements Model {
       null,
       null,
       null,
+      null,
       null
     );
   }
@@ -142,7 +154,8 @@ public final class TournamentBracket implements Model {
       tournamentarcID,
       bracketType,
       startDate,
-      endDat);
+      endDat,
+      registeredusersID);
   }
   public interface BuildStep {
     TournamentBracket build();
@@ -151,6 +164,7 @@ public final class TournamentBracket implements Model {
     BuildStep bracketType(String bracketType);
     BuildStep startDate(Temporal.DateTime startDate);
     BuildStep endDat(Temporal.DateTime endDat);
+    BuildStep registeredusersId(String registeredusersId);
   }
   
 
@@ -160,6 +174,7 @@ public final class TournamentBracket implements Model {
     private String bracketType;
     private Temporal.DateTime startDate;
     private Temporal.DateTime endDat;
+    private String registeredusersID;
     @Override
      public TournamentBracket build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -169,7 +184,8 @@ public final class TournamentBracket implements Model {
           tournamentarcID,
           bracketType,
           startDate,
-          endDat);
+          endDat,
+          registeredusersID);
     }
     
     @Override
@@ -196,6 +212,12 @@ public final class TournamentBracket implements Model {
         return this;
     }
     
+    @Override
+     public BuildStep registeredusersId(String registeredusersId) {
+        this.registeredusersID = registeredusersId;
+        return this;
+    }
+    
     /** 
      * WARNING: Do not set ID when creating a new object. Leave this blank and one will be auto generated for you.
      * This should only be set when referring to an already existing object.
@@ -219,12 +241,13 @@ public final class TournamentBracket implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String tournamentarcId, String bracketType, Temporal.DateTime startDate, Temporal.DateTime endDat) {
+    private CopyOfBuilder(String id, String tournamentarcId, String bracketType, Temporal.DateTime startDate, Temporal.DateTime endDat, String registeredusersId) {
       super.id(id);
       super.tournamentarcId(tournamentarcId)
         .bracketType(bracketType)
         .startDate(startDate)
-        .endDat(endDat);
+        .endDat(endDat)
+        .registeredusersId(registeredusersId);
     }
     
     @Override
@@ -245,6 +268,11 @@ public final class TournamentBracket implements Model {
     @Override
      public CopyOfBuilder endDat(Temporal.DateTime endDat) {
       return (CopyOfBuilder) super.endDat(endDat);
+    }
+    
+    @Override
+     public CopyOfBuilder registeredusersId(String registeredusersId) {
+      return (CopyOfBuilder) super.registeredusersId(registeredusersId);
     }
   }
   
