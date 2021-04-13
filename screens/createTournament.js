@@ -4,9 +4,13 @@ import { globalStyles } from '../styles/global';
 import Amplify, { API, graphqlOperation } from 'aws-amplify';
 //import { CreateTournamentEvent } from './src/graphql/mutations.graphql';
 import { CreateTournamentEvent } from 'graphql';
+import { crtTour as createTournamentEvent, dltTour as deleteTournamentEvent, updTour as updateTournamentEvent } from './'
 
-export default function ReviewDetails({navigation}) {
+//const initialFormState = { eventName: '', eventDescription: '', eventOrganizingBody: '', eventLocation: '', eventStartDate: '', eventEndDate: '', eventPrizeMoney: '' }
+
+export default function CreateTournamentEvent({navigation}) {
     //https://acloudguru.com/blog/engineering/8-steps-to-building-your-own-serverless-graphql-api-using-aws-amplify used this source
+    //const [eventName, ]
     state = { eventName: '', eventDescription: '', eventOrganizingBody: '', eventLocation: '', eventStartDate: '', eventEndDate: '', eventPrizeMoney: '' }
     createEvent = async () => {
         const tournamentEvent = { 
@@ -20,6 +24,8 @@ export default function ReviewDetails({navigation}) {
         await API.graphql(graphqlOperation(CreateTournamentEvent, tournamentEvent))
         console.log('Tournament Event successfully created')
     }
+
+    //async function 
     return (
         <View style={globalStyles.container}>
             <Text style={globalStyles.pageText}>
