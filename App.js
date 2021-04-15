@@ -15,35 +15,11 @@ import * as subscriptions from './graphql/subscriptions';
 
 Amplify.configure(awsconfig);
 
-//const initialFormState = { eventName: '', eventDescription: '', eventOrganizingBody: '', eventLocation: '', eventStartDate: '', eventEndDate: '', eventPrizeMoney: '' }
-
-export default function App() {
-  // const [tourInfo, setTourInfo] = useState([]);
-  // const [formData, setFormData] = useState(initialFormState);
-
-  // useEffect(() => {
-  //   fetchTourInfo();
-  // }, []);
-
-  // async function fetchTourInfo() {
-  //   const apiData = await API.graphql({ query: tourInfo });
-  //   setNotes(apiData.data.tourInfo.items);
-  //   console.log('Tournament Event info access granted')
-  // }
-
-  // async function createTournamentEvent() {
-  //   if (!formData.eventName || !formData.eventDescription || !formData.eventOrganizingBody || !formData.eventLocation 
-  //     || !formData.eventStartDate || !formData.eventEndDate || !formData.eventPrizeMoney) return;
-  //   await API.graphql({ query: crtTour, variables: { input: formData } });
-  //   setTourInfo([ ...tourInfo, formData ]);
-  //   setFormData(initialFormState);
-  //   console.log('Tournament Event successfully created')
-  // }
-
-  
+export default function App() { 
   async function createTournamentEvent() {
     try {
-      const createTournament = await API.graphql(graphqlOperation(queries.CreateTournamentEvent)); 
+      //const createTournament = await API.graphql({ query: queries.listTodos, authMode: 'AWS_IAM'}); 
+      const createTournament = await API.graphql(graphqlOperation(queries.getTodo, { id: 'id', authMode: 'AWS_IAM' }));
       console.log(createTournament);
     } catch (error) {
       console.log(error);
