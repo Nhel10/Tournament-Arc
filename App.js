@@ -7,20 +7,31 @@ import { AppNavigator } from "./routes/drawer";
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import { Authenticator } from "aws-amplify-react-native";
 import awsconfig from "./src/aws-exports";
-//import { crtTour as createTournamentEvent, dltTour as deleteTournamentEvent, updTour as updateTournamentEvent } from './graphql/mutations'
 import * as queries from './graphql/queries';
-import { CreateTournamentEvent } from './graphql/queries';
+import CreateTournamentEvent from './src/graphql/mutations.graphql';
 import * as mutations from './graphql/mutations';
 import * as subscriptions from './graphql/subscriptions';
 
 Amplify.configure(awsconfig);
 
 export default function App() { 
-  async function createTournamentEvent() {
+  async function createEvent() {
     try {
-      //const createTournament = await API.graphql({ query: queries.listTodos, authMode: 'AWS_IAM'}); 
-      const createTournament = await API.graphql(graphqlOperation(queries.listTodos, { id: 'id', authMode: 'API_KEY' }));
-      console.log(createTournament);
+      const createTournament = await API.graphql({
+        query: CreateTournamentEvent, 
+        variables: {
+          input: {
+            eventName: "Hope this works",
+            description: "I really, really, really hope this works, but itll suck to hardcode it all",
+            organizingBody: "JRs",
+            location: "CSULB",
+            startDate: "2021-15-04",
+            endDate: "2021-16-04",
+            totalPrizeMoney: 100000
+          }
+        }
+      });
+      console.log(createTournament, 'New thing made');
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +42,7 @@ export default function App() {
     <View style={styles.container}>
       <Authenticator>
         <Text>Home</Text>
-        <button onClick={createTournamentEvent}>Create Tournament</button>
+        <button onClick={createEvent}>Create Tournament</button>
       </Authenticator>
     </View>
   );
