@@ -10,18 +10,12 @@ import awsconfig from "./src/aws-exports";
 // import * as queries from './graphql/queries';
 // import * as mutations from './graphql/mutations';
 // import * as subscriptions from './graphql/subscriptions';
-import CreateTournamentEvent from './src/graphql/mutations.graphql';
+import { CreateTournamentEvent } from './src/graphql/mutations.graphql';
 
 Amplify.configure(awsconfig);
 
 const createEventInputs = {
-  eventName: "Hope this works",
-  description: "WORK DAMN IT",
-  organizingBody: "JRs",
-  location: "CSULB",
-  startDate: "2021-04-15",
-  endDate: "2021-04-16",
-  totalPrizeMoney: 100000
+  eventName: "Hope this works"
 };
 
 export default function App() { 
