@@ -19,7 +19,7 @@ export default function App() {
   async function createTournamentEvent() {
     try {
       //const createTournament = await API.graphql({ query: queries.listTodos, authMode: 'AWS_IAM'}); 
-      const createTournament = await API.graphql(graphqlOperation(queries.getTodo, { id: 'id', authMode: 'AWS_IAM' }));
+      const createTournament = await API.graphql(graphqlOperation(queries.listTodos, { id: 'id', authMode: 'API_KEY' }));
       console.log(createTournament);
     } catch (error) {
       console.log(error);

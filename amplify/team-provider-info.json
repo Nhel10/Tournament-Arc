@@ -13,7 +13,12 @@
     },
     "categories": {
       "auth": {
-        "tournamentarc892a423d": {}
+        "tournamentarc892a423d": {
+          "facebookAppId": "0",
+          "googleClientId": "0",
+          "googleAndroid": "0",
+          "amazonAppId": "0"
+        }
       }
     }
   }

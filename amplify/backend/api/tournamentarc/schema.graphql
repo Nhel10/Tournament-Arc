@@ -51,12 +51,7 @@ type TournamentArc @model @auth(rules: [{allow: public}]) @key(name: "byTourname
   ArcToBrackets: [TournamentBracket] @connection(keyName: "byTournamentArc", fields: ["id"])
 }
 
-"""
-Tournament Event Table model object, represents a Tournament Event
-includes below attributes
-##Relationships to be added later
-"""
-type TournamentEvent @model {
+type TournamentEvent @model @auth(rules: [{allow: public}]) {
   id: ID!
   eventName: String
   description: String
