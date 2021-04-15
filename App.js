@@ -4,7 +4,6 @@ import * as Font from "expo-font";
 import Home from "./screens/home";
 import { AppLoading } from "expo";
 import { AppNavigator } from "./routes/drawer";
-<<<<<<< HEAD
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import { Authenticator } from "aws-amplify-react-native";
 import awsconfig from "./src/aws-exports";
@@ -28,15 +27,6 @@ export default function App() {
     
   }
 
-=======
-import Amplify from "aws-amplify";
-import { Authenticator } from "aws-amplify-react-native";
-import awsconfig from "./src/aws-exports";
-
-Amplify.configure(awsconfig);
-
-export default function App() {
->>>>>>> parent of 2cf2f18 (Making some changes)
   return (
     <View style={styles.container}>
       <Authenticator>
