@@ -62,4 +62,3 @@ type TournamentEvent @model @auth(rules: [{allow: public}]) {
   totalPrizeMoney: Float
   EventToArcs: [TournamentArc] @connection(keyName: "byTournamentEvent", fields: ["id"])
 }
- 

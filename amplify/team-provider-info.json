@@ -1,25 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-tournamentarc-dev-231555-authRole",
-      "UnauthRoleArn": "arn:aws:iam::504496283587:role/amplify-tournamentarc-dev-231555-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::504496283587:role/amplify-tournamentarc-dev-231555-authRole",
+      "AuthRoleName": "amplify-tournamentarc-dev-174339-authRole",
+      "UnauthRoleArn": "arn:aws:iam::504496283587:role/amplify-tournamentarc-dev-174339-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::504496283587:role/amplify-tournamentarc-dev-174339-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-tournamentarc-dev-231555-deployment",
-      "UnauthRoleName": "amplify-tournamentarc-dev-231555-unauthRole",
-      "StackName": "amplify-tournamentarc-dev-231555",
-      "StackId": "arn:aws:cloudformation:us-west-2:504496283587:stack/amplify-tournamentarc-dev-231555/fc200f60-6c38-11eb-9d8f-06a35f9061a9",
-      "AmplifyAppId": "d35d1x27b6fsky"
-    },
-    "categories": {
-      "auth": {
-        "tournamentarc892a423d": {
-          "facebookAppId": "0",
-          "googleClientId": "0",
-          "googleAndroid": "0",
-          "amazonAppId": "0"
-        }
-      }
+      "DeploymentBucketName": "amplify-tournamentarc-dev-174339-deployment",
+      "UnauthRoleName": "amplify-tournamentarc-dev-174339-unauthRole",
+      "StackName": "amplify-tournamentarc-dev-174339",
+      "StackId": "arn:aws:cloudformation:us-west-2:504496283587:stack/amplify-tournamentarc-dev-174339/ca780b20-9e4c-11eb-b52c-061401d3c053",
+      "AmplifyAppId": "d2dcqi2kx4rck6"
     }
   }
 }
