@@ -15,7 +15,13 @@ import { CreateTournamentEvent } from './src/graphql/mutations.graphql';
 Amplify.configure(awsconfig);
 
 const createEventInputs = {
-  eventName: "Hope this works"
+  eventName: "Hope this works",
+  description: "I really, really, really hope this works, but itll suck to hardcode it all",
+  organizingBody: "JRs",
+  location: "CSULB",
+  startDate: "2021-15-04",
+  endDate: "2021-16-04",
+  totalPrizeMoney: 100000
 };
 
 export default function App() { 
