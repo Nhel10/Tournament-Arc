@@ -11,6 +11,11 @@ export const createRegisteredUsers = /* GraphQL */ `
       gamerTag
       name
       location
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       TournamentBrackets {
         items {
           id
@@ -19,13 +24,15 @@ export const createRegisteredUsers = /* GraphQL */ `
           startDate
           endDat
           registeredusersID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -39,6 +46,11 @@ export const updateRegisteredUsers = /* GraphQL */ `
       gamerTag
       name
       location
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       TournamentBrackets {
         items {
           id
@@ -47,13 +59,15 @@ export const updateRegisteredUsers = /* GraphQL */ `
           startDate
           endDat
           registeredusersID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -67,6 +81,11 @@ export const deleteRegisteredUsers = /* GraphQL */ `
       gamerTag
       name
       location
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       TournamentBrackets {
         items {
           id
@@ -75,13 +94,15 @@ export const deleteRegisteredUsers = /* GraphQL */ `
           startDate
           endDat
           registeredusersID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -94,6 +115,9 @@ export const createGameOnPlatform = /* GraphQL */ `
       id
       gameID
       platformID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -108,6 +132,9 @@ export const updateGameOnPlatform = /* GraphQL */ `
       id
       gameID
       platformID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -122,6 +149,9 @@ export const deleteGameOnPlatform = /* GraphQL */ `
       id
       gameID
       platformID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -135,18 +165,25 @@ export const createPlatform = /* GraphQL */ `
     createPlatform(input: $input, condition: $condition) {
       id
       platformName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       PlatformToGOP {
         items {
           id
           gameID
           platformID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -158,18 +195,25 @@ export const updatePlatform = /* GraphQL */ `
     updatePlatform(input: $input, condition: $condition) {
       id
       platformName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       PlatformToGOP {
         items {
           id
           gameID
           platformID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -181,18 +225,25 @@ export const deletePlatform = /* GraphQL */ `
     deletePlatform(input: $input, condition: $condition) {
       id
       platformName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       PlatformToGOP {
         items {
           id
           gameID
           platformID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -204,18 +255,25 @@ export const createGame = /* GraphQL */ `
     createGame(input: $input, condition: $condition) {
       id
       gameTitle
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       GameToGOP {
         items {
           id
           gameID
           platformID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -227,18 +285,25 @@ export const updateGame = /* GraphQL */ `
     updateGame(input: $input, condition: $condition) {
       id
       gameTitle
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       GameToGOP {
         items {
           id
           gameID
           platformID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -250,18 +315,25 @@ export const deleteGame = /* GraphQL */ `
     deleteGame(input: $input, condition: $condition) {
       id
       gameTitle
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       GameToGOP {
         items {
           id
           gameID
           platformID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -273,17 +345,24 @@ export const createController = /* GraphQL */ `
     createController(input: $input, condition: $condition) {
       id
       controllerName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       ControllerToPlatform {
         id
         platformName
-        PlatformToGOP {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        PlatformToGOP {
+          nextToken
+          startedAt
+        }
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -295,17 +374,24 @@ export const updateController = /* GraphQL */ `
     updateController(input: $input, condition: $condition) {
       id
       controllerName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       ControllerToPlatform {
         id
         platformName
-        PlatformToGOP {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        PlatformToGOP {
+          nextToken
+          startedAt
+        }
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -317,17 +403,24 @@ export const deleteController = /* GraphQL */ `
     deleteController(input: $input, condition: $condition) {
       id
       controllerName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       ControllerToPlatform {
         id
         platformName
-        PlatformToGOP {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        PlatformToGOP {
+          nextToken
+          startedAt
+        }
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -343,6 +436,9 @@ export const createTournamentBracket = /* GraphQL */ `
       startDate
       endDat
       registeredusersID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -360,6 +456,9 @@ export const updateTournamentBracket = /* GraphQL */ `
       startDate
       endDat
       registeredusersID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -377,6 +476,9 @@ export const deleteTournamentBracket = /* GraphQL */ `
       startDate
       endDat
       registeredusersID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -396,6 +498,11 @@ export const createTournamentArc = /* GraphQL */ `
       startDate
       endDate
       totalPrizeMoney
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       ArcToBrackets {
         items {
           id
@@ -404,13 +511,15 @@ export const createTournamentArc = /* GraphQL */ `
           startDate
           endDat
           registeredusersID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -428,6 +537,11 @@ export const updateTournamentArc = /* GraphQL */ `
       startDate
       endDate
       totalPrizeMoney
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       ArcToBrackets {
         items {
           id
@@ -436,13 +550,15 @@ export const updateTournamentArc = /* GraphQL */ `
           startDate
           endDat
           registeredusersID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -460,6 +576,11 @@ export const deleteTournamentArc = /* GraphQL */ `
       startDate
       endDate
       totalPrizeMoney
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       ArcToBrackets {
         items {
           id
@@ -468,13 +589,15 @@ export const deleteTournamentArc = /* GraphQL */ `
           startDate
           endDat
           registeredusersID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -492,6 +615,11 @@ export const createTournamentEvent = /* GraphQL */ `
       startDate
       endDate
       totalPrizeMoney
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       EventToArcs {
         items {
           id
@@ -502,13 +630,15 @@ export const createTournamentEvent = /* GraphQL */ `
           startDate
           endDate
           totalPrizeMoney
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -526,6 +656,11 @@ export const updateTournamentEvent = /* GraphQL */ `
       startDate
       endDate
       totalPrizeMoney
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       EventToArcs {
         items {
           id
@@ -536,13 +671,15 @@ export const updateTournamentEvent = /* GraphQL */ `
           startDate
           endDate
           totalPrizeMoney
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -560,6 +697,11 @@ export const deleteTournamentEvent = /* GraphQL */ `
       startDate
       endDate
       totalPrizeMoney
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       EventToArcs {
         items {
           id
@@ -570,13 +712,15 @@ export const deleteTournamentEvent = /* GraphQL */ `
           startDate
           endDate
           totalPrizeMoney
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;

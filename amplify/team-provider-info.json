@@ -10,6 +10,12 @@
       "StackName": "amplify-tournamentarc-dev-174339",
       "StackId": "arn:aws:cloudformation:us-west-2:504496283587:stack/amplify-tournamentarc-dev-174339/ca780b20-9e4c-11eb-b52c-061401d3c053",
       "AmplifyAppId": "d2dcqi2kx4rck6"
+    },
+    "categories": {
+      "auth": {
+        "tournamentarc17fdb3ea": {},
+        "TournamentArc": {}
+      }
     }
   }
 }

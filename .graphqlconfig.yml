@@ -1,6 +1,6 @@
 projects:
   tournamentarc:
-    schemaPath: src/graphql/schema.json
+    schemaPath: amplify/backend/api/tournamentarc/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:

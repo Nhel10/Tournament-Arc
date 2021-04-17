@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { Component } from 'react'
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Button } from "react-native";
-import { Account, accounts } from '../App.js'
+//import { Account, accounts } from '../App.js'
 
 function GoToButton({ screenName }) {
     const navigation = useNavigation();

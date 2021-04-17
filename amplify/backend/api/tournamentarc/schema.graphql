@@ -6,7 +6,7 @@ type RegisteredUsers @model @auth(rules: [{allow: public}]) {
   TournamentBrackets: [TournamentBracket] @connection(keyName: "byRegisteredUsers", fields: ["id"])
 }
 
-type GameOnPlatform @model @auth(rules: [{allow: public}]) @key(name: "byGame", fields: ["gameID"]) @key(name: "byPlatform", fields: ["platformID"]) {
+type GameOnPlatform @model @key(name: "byGame", fields: ["gameID"]) @key(name: "byPlatform", fields: ["platformID"]) @auth(rules: [{allow: public}]) {
   id: ID!
   gameID: ID
   platformID: ID
@@ -30,7 +30,7 @@ type Controller @model @auth(rules: [{allow: public}]) {
   ControllerToPlatform: Platform @connection
 }
 
-type TournamentBracket @model @auth(rules: [{allow: public}]) @key(name: "byTournamentArc", fields: ["tournamentarcID"]) @key(name: "byRegisteredUsers", fields: ["registeredusersID"]) {
+type TournamentBracket @model @key(name: "byTournamentArc", fields: ["tournamentarcID"]) @key(name: "byRegisteredUsers", fields: ["registeredusersID"]) @auth(rules: [{allow: public}]) {
   id: ID!
   tournamentarcID: ID
   bracketType: String
@@ -39,7 +39,7 @@ type TournamentBracket @model @auth(rules: [{allow: public}]) @key(name: "byTour
   registeredusersID: ID
 }
 
-type TournamentArc @model @auth(rules: [{allow: public}]) @key(name: "byTournamentEvent", fields: ["tournamenteventID"]) {
+type TournamentArc @model @key(name: "byTournamentEvent", fields: ["tournamenteventID"]) @auth(rules: [{allow: public}]) {
   id: ID!
   tournamenteventID: ID
   arcName: String

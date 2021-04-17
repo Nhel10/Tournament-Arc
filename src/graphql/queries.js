@@ -8,6 +8,11 @@ export const getRegisteredUsers = /* GraphQL */ `
       gamerTag
       name
       location
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       TournamentBrackets {
         items {
           id
@@ -16,13 +21,15 @@ export const getRegisteredUsers = /* GraphQL */ `
           startDate
           endDat
           registeredusersID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -42,13 +49,51 @@ export const listRegisteredUserss = /* GraphQL */ `
         gamerTag
         name
         location
-        TournamentBrackets {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        TournamentBrackets {
+          nextToken
+          startedAt
+        }
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncRegisteredUsers = /* GraphQL */ `
+  query SyncRegisteredUsers(
+    $filter: ModelRegisteredUsersFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncRegisteredUsers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        gamerTag
+        name
+        location
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        TournamentBrackets {
+          nextToken
+          startedAt
+        }
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -58,6 +103,9 @@ export const getGameOnPlatform = /* GraphQL */ `
       id
       gameID
       platformID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -74,30 +122,42 @@ export const listGameOnPlatforms = /* GraphQL */ `
         id
         gameID
         platformID
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
     }
   }
 `;
-export const getPlatform = /* GraphQL */ `
-  query GetPlatform($id: ID!) {
-    getPlatform(id: $id) {
-      id
-      platformName
-      PlatformToGOP {
-        items {
-          id
-          gameID
-          platformID
-          createdAt
-          updatedAt
-        }
-        nextToken
+export const syncGameOnPlatforms = /* GraphQL */ `
+  query SyncGameOnPlatforms(
+    $filter: ModelGameOnPlatformFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncGameOnPlatforms(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        gameID
+        platformID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
       }
-      createdAt
-      updatedAt
+      nextToken
+      startedAt
     }
   }
 `;
@@ -111,13 +171,76 @@ export const listPlatforms = /* GraphQL */ `
       items {
         id
         platformName
-        PlatformToGOP {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        PlatformToGOP {
+          nextToken
+          startedAt
+        }
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const getPlatform = /* GraphQL */ `
+  query GetPlatform($id: ID!) {
+    getPlatform(id: $id) {
+      id
+      platformName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      PlatformToGOP {
+        items {
+          id
+          gameID
+          platformID
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+    }
+  }
+`;
+export const syncPlatforms = /* GraphQL */ `
+  query SyncPlatforms(
+    $filter: ModelPlatformFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncPlatforms(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        platformName
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        PlatformToGOP {
+          nextToken
+          startedAt
+        }
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -126,18 +249,25 @@ export const getGame = /* GraphQL */ `
     getGame(id: $id) {
       id
       gameTitle
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       GameToGOP {
         items {
           id
           gameID
           platformID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -151,13 +281,49 @@ export const listGames = /* GraphQL */ `
       items {
         id
         gameTitle
-        GameToGOP {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        GameToGOP {
+          nextToken
+          startedAt
+        }
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncGames = /* GraphQL */ `
+  query SyncGames(
+    $filter: ModelGameFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncGames(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        gameTitle
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        GameToGOP {
+          nextToken
+          startedAt
+        }
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -166,17 +332,24 @@ export const getController = /* GraphQL */ `
     getController(id: $id) {
       id
       controllerName
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       ControllerToPlatform {
         id
         platformName
-        PlatformToGOP {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        PlatformToGOP {
+          nextToken
+          startedAt
+        }
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -190,16 +363,59 @@ export const listControllers = /* GraphQL */ `
       items {
         id
         controllerName
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
         ControllerToPlatform {
           id
           platformName
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
-        createdAt
-        updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncControllers = /* GraphQL */ `
+  query SyncControllers(
+    $filter: ModelControllerFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncControllers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        controllerName
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        ControllerToPlatform {
+          id
+          platformName
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -212,6 +428,9 @@ export const getTournamentBracket = /* GraphQL */ `
       startDate
       endDat
       registeredusersID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -235,10 +454,45 @@ export const listTournamentBrackets = /* GraphQL */ `
         startDate
         endDat
         registeredusersID
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncTournamentBrackets = /* GraphQL */ `
+  query SyncTournamentBrackets(
+    $filter: ModelTournamentBracketFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncTournamentBrackets(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        tournamentarcID
+        bracketType
+        startDate
+        endDat
+        registeredusersID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -253,6 +507,11 @@ export const getTournamentArc = /* GraphQL */ `
       startDate
       endDate
       totalPrizeMoney
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       ArcToBrackets {
         items {
           id
@@ -261,13 +520,15 @@ export const getTournamentArc = /* GraphQL */ `
           startDate
           endDat
           registeredusersID
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -287,13 +548,55 @@ export const listTournamentArcs = /* GraphQL */ `
         startDate
         endDate
         totalPrizeMoney
-        ArcToBrackets {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        ArcToBrackets {
+          nextToken
+          startedAt
+        }
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncTournamentArcs = /* GraphQL */ `
+  query SyncTournamentArcs(
+    $filter: ModelTournamentArcFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncTournamentArcs(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        tournamenteventID
+        arcName
+        description
+        organizingBody
+        startDate
+        endDate
+        totalPrizeMoney
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        ArcToBrackets {
+          nextToken
+          startedAt
+        }
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -308,6 +611,11 @@ export const getTournamentEvent = /* GraphQL */ `
       startDate
       endDate
       totalPrizeMoney
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
       EventToArcs {
         items {
           id
@@ -318,13 +626,15 @@ export const getTournamentEvent = /* GraphQL */ `
           startDate
           endDate
           totalPrizeMoney
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
-      createdAt
-      updatedAt
     }
   }
 `;
@@ -348,13 +658,55 @@ export const listTournamentEvents = /* GraphQL */ `
         startDate
         endDate
         totalPrizeMoney
-        EventToArcs {
-          nextToken
-        }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
+        EventToArcs {
+          nextToken
+          startedAt
+        }
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncTournamentEvents = /* GraphQL */ `
+  query SyncTournamentEvents(
+    $filter: ModelTournamentEventFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncTournamentEvents(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        eventName
+        description
+        organizingBody
+        location
+        startDate
+        endDate
+        totalPrizeMoney
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        EventToArcs {
+          nextToken
+          startedAt
+        }
+      }
+      nextToken
+      startedAt
     }
   }
 `;
