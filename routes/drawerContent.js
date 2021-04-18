@@ -73,6 +73,19 @@ export function DrawerContent(props) {
                             label="Tournament Events"
                             onPress={() => {props.navigation.navigate('My Tournament')}}
                         />
+
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <Icon
+                                    name="account-multiple"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Co-Host"
+                            onPress={() => {props.navigation.navigate('CoHost Gateway')}}
+                        />
+
                         <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon
