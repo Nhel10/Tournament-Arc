@@ -8,8 +8,8 @@
           "defaultAuthentication": {
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
+              "apiKeyExpirationDays": 365,
+              "description": ""
             }
           },
           "additionalAuthenticationProviders": [
@@ -21,12 +21,5 @@
       }
     }
   },
-  "auth": {
-    "TournamentArc": {
-      "service": "Cognito",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [],
-      "customAuth": false
-    }
-  }
+  "auth": {}
 }

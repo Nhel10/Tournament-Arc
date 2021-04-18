@@ -54,6 +54,10 @@ export const schema = {
                     "properties": {}
                 },
                 {
+                    "type": "aws_api_key",
+                    "properties": {}
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -143,6 +147,10 @@ export const schema = {
                     }
                 },
                 {
+                    "type": "aws_api_key",
+                    "properties": {}
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -211,6 +219,10 @@ export const schema = {
                     }
                 },
                 {
+                    "type": "aws_api_key",
+                    "properties": {}
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -265,6 +277,10 @@ export const schema = {
             "attributes": [
                 {
                     "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "aws_api_key",
                     "properties": {}
                 },
                 {
@@ -325,6 +341,10 @@ export const schema = {
                     "properties": {}
                 },
                 {
+                    "type": "aws_api_key",
+                    "properties": {}
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -378,6 +398,10 @@ export const schema = {
             "attributes": [
                 {
                     "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "aws_api_key",
                     "properties": {}
                 },
                 {
@@ -489,6 +513,10 @@ export const schema = {
                     }
                 },
                 {
+                    "type": "aws_api_key",
+                    "properties": {}
+                },
+                {
                     "type": "auth",
                     "properties": {
                         "rules": [
@@ -585,6 +613,10 @@ export const schema = {
             "attributes": [
                 {
                     "type": "model",
+                    "properties": {}
+                },
+                {
+                    "type": "aws_api_key",
                     "properties": {}
                 },
                 {

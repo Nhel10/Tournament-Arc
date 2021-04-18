@@ -7,11 +7,8 @@ import { AppNavigator } from "./routes/drawer";
 import Amplify, { API, graphqlOperation } from "aws-amplify";
 import { Authenticator } from "aws-amplify-react-native";
 import awsconfig from "./src/aws-exports";
-// import * as queries from './graphql/queries';
-// import * as mutations from './graphql/mutations';
-// import * as subscriptions from './graphql/subscriptions';
-// import { CreateTournamentEvent } from './src/graphql/mutations.graphql';
-import { listTournamentEvents } from './src/graphql/queries';
+import * as queries from './src/graphql/queries';
+import * as mutations from './src/graphql/mutations';
 
 Amplify.configure(awsconfig);
 
@@ -31,7 +28,7 @@ export default function App() {
   //     const createTournament = await API.graphql(graphqlOperation(CreateTournamentEvent, {input: createEventInputs}));
   //     console.log(createTournament, 'New event made');
   //   } catch (error) {
-  //     console.log(error);
+  //     console.log(error)
   //   }
     
   // }
@@ -39,22 +36,20 @@ export default function App() {
     const fetchTournaments = async () => {
         //fetch all tournaments
         try {
-            const tourneyList = await API.graphql(graphqlOperation(listTournamentEvents));
-            const tourneyInfo = tourneyList.data.listTournamentEvents.items;
-            console.log(tourneyInfo);
+            const tourneyList = await API.graphql(graphqlOperation(queries.getTournamentEvent));
+            //const tourneyInfo = tourneyList.data.listTournamentEvents.items;
+            console.log(tourneyList);
         } catch(error) {
             console.log(error);
         }
     }
 
-    //fetchTournaments();
-
   return (
     <View style={styles.container}>
-      {/* <Authenticator> */}
+      <Authenticator>
         <Text>Home</Text>
         <button onClick={fetchTournaments}>Create Tournament</button>
-      {/* </Authenticator> */}
+      </Authenticator>
     </View>
   );
 }

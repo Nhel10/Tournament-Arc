@@ -1,4 +1,4 @@
-type RegisteredUsers @model @auth(rules: [{allow: public}]) {
+type RegisteredUsers @model @aws_api_key @auth(rules: [{allow: public}]) {
   id: ID!
   gamerTag: String
   name: String
@@ -6,31 +6,31 @@ type RegisteredUsers @model @auth(rules: [{allow: public}]) {
   TournamentBrackets: [TournamentBracket] @connection(keyName: "byRegisteredUsers", fields: ["id"])
 }
 
-type GameOnPlatform @model @key(name: "byGame", fields: ["gameID"]) @key(name: "byPlatform", fields: ["platformID"]) @auth(rules: [{allow: public}]) {
+type GameOnPlatform @model @key(name: "byGame", fields: ["gameID"]) @key(name: "byPlatform", fields: ["platformID"]) @aws_api_key @auth(rules: [{allow: public}]) {
   id: ID!
   gameID: ID
   platformID: ID
 }
 
-type Platform @model @auth(rules: [{allow: public}]) {
+type Platform @model @aws_api_key @auth(rules: [{allow: public}]) {
   id: ID!
   platformName: String
   PlatformToGOP: [GameOnPlatform] @connection(keyName: "byPlatform", fields: ["id"])
 }
 
-type Game @model @auth(rules: [{allow: public}]) {
+type Game @model @aws_api_key @auth(rules: [{allow: public}]) {
   id: ID!
   gameTitle: String
   GameToGOP: [GameOnPlatform] @connection(keyName: "byGame", fields: ["id"])
 }
 
-type Controller @model @auth(rules: [{allow: public}]) {
+type Controller @model @aws_api_key @auth(rules: [{allow: public}]) {
   id: ID!
   controllerName: String
   ControllerToPlatform: Platform @connection
 }
 
-type TournamentBracket @model @key(name: "byTournamentArc", fields: ["tournamentarcID"]) @key(name: "byRegisteredUsers", fields: ["registeredusersID"]) @auth(rules: [{allow: public}]) {
+type TournamentBracket @model @key(name: "byTournamentArc", fields: ["tournamentarcID"]) @key(name: "byRegisteredUsers", fields: ["registeredusersID"]) @aws_api_key @auth(rules: [{allow: public}]) {
   id: ID!
   tournamentarcID: ID
   bracketType: String
@@ -39,7 +39,7 @@ type TournamentBracket @model @key(name: "byTournamentArc", fields: ["tournament
   registeredusersID: ID
 }
 
-type TournamentArc @model @key(name: "byTournamentEvent", fields: ["tournamenteventID"]) @auth(rules: [{allow: public}]) {
+type TournamentArc @model @key(name: "byTournamentEvent", fields: ["tournamenteventID"]) @aws_api_key @auth(rules: [{allow: public}]) {
   id: ID!
   tournamenteventID: ID
   arcName: String
@@ -51,7 +51,7 @@ type TournamentArc @model @key(name: "byTournamentEvent", fields: ["tournamentev
   ArcToBrackets: [TournamentBracket] @connection(keyName: "byTournamentArc", fields: ["id"])
 }
 
-type TournamentEvent @model @auth(rules: [{allow: public}]) {
+type TournamentEvent @model @aws_api_key @auth(rules: [{allow: public}]) {
   id: ID!
   eventName: String
   description: String
