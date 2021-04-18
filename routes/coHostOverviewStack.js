@@ -11,7 +11,6 @@ export const CoHostOverViewStack = () => (
         component={OverviewScreen}
         options={{ 
           headerShown: false
-          
           }}
       />
   

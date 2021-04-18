@@ -8,7 +8,7 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './bottomTab';
-import TopTabNavigator from './tournamentTopTab';
+import TourneyStack from './tournamentStack';
 
 /* --- Import all the stack routes file location --- */
 import HomeStack from './homeStack';
@@ -47,7 +47,7 @@ export const RootDrawerNavigator = () => (
     />
     <Screen
       name='My Tournament'
-      component={TopTabNavigator}
+      component={TourneyStack}
     />
      <Screen
       name='Log In'

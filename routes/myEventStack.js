@@ -11,11 +11,7 @@ export const MyEventStack = ({navigation}) => (
         name='My Events'
         component={MyEvent}
         options={{ 
-           headerLeft: () => (
-            <Icon.Button name = "ios-menu" size={25}
-            backgroundColor="#304857" onPress={() => navigation.openDrawer()}
-            ></Icon.Button>
-           )
+          headerShown: false
           }}
       />
   

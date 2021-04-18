@@ -10,11 +10,7 @@ export const CurrentEventStack = ({navigation}) => (
         name='Current Event'
         component={CurrentEvent}
         options={{ 
-           headerLeft: () => (
-            <Icon.Button name = "ios-menu" size={25}
-            backgroundColor="#304857" onPress={() => navigation.openDrawer()}
-            ></Icon.Button>
-           )
+          headerShown: false
           }}
       />
   
