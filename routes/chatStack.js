@@ -7,7 +7,7 @@
 ---*/
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Chat from '../screens/chat';
+import Chat from '../screens/addCoHost';
 
 const { Navigator, Screen } = createStackNavigator();
 
