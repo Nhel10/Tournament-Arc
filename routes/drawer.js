@@ -18,6 +18,7 @@ import ProfileStack from './profileStack';
 import MyTournamentStack from './myTournamentStack';
 import SettingStack from './settingStack';
 import CoHostGateway from './coHostGatewayStack';
+import CompGateway from './competitorGatewayStack';
 
 import FollowStack from './followingStack';
 import SearchStack from './searchStack';
@@ -64,6 +65,10 @@ export const RootDrawerNavigator = () => (
     <Screen
       name='CoHost Gateway'
       component={CoHostGateway}
+    />
+    <Screen
+      name='Competitor Gateway'
+      component={CompGateway}
     />
     
   </Navigator>

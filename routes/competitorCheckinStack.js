@@ -1,13 +1,13 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import OverviewScreen from '../screens/coHostOverviewScreen';
+import CompCheckin from '../screens/competitorCheckinScreen';
 const { Navigator, Screen } = createStackNavigator();
 
-export const CoHostOverViewStack = () => (
+export const CompetitorCheckinStack = () => (
     <Navigator>
       <Screen
-        name='OverviewScreen'
-        component={OverviewScreen}
+        name='Competitor Check In'
+        component={CompCheckin}
         options={{ 
           headerShown: false
           }}
@@ -17,4 +17,4 @@ export const CoHostOverViewStack = () => (
     </Navigator>
   );
   
-  export default CoHostOverViewStack;
+  export default CompetitorCheckinStack;

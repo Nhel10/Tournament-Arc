@@ -77,6 +77,18 @@ export function DrawerContent(props) {
                         <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon
+                                    name="karate"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Competitor"
+                            onPress={() => {props.navigation.navigate('Competitor Gateway')}}
+                        />
+
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <Icon
                                     name="account-multiple"
                                     color={color}
                                     size={size}
