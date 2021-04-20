@@ -14,8 +14,6 @@ export const MyEventStack = ({navigation}) => (
           headerShown: false
           }}
       />
-  
-  
     </Navigator>
   );
   

@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { Button, View, Text, StyleSheet, TextInput, } from 'react-native';
+import { Button, View, Text, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { EventButton } from '../components/event';
+import { UserButton } from '../components/user';
+import { Avatar } from 'react-native-paper';
 
 export default function CreateEventScreen({ navigation }) {
     const [date, setDate] = useState(new Date());
@@ -10,6 +14,8 @@ export default function CreateEventScreen({ navigation }) {
     const [endMode, setEndMode] = useState('date');
     const [show, setShow] = useState(false);
     const [endShow, setEndShow] = useState(false);
+    const [eventName, setName] = React.useState("");
+    const [eventDesc, setDesc] = React.useState("");
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -59,7 +65,7 @@ export default function CreateEventScreen({ navigation }) {
                 padding={10}
                 margin={15}
                 height={40}
-                onPress={() => navigation.navigate(screenName)}
+                onPress={() => { console.log(date); console.log(endDate); navigation.navigate(screenName); }}
             />
         );
     }
@@ -110,30 +116,44 @@ export default function CreateEventScreen({ navigation }) {
                 placeholderTextColor="#304857"
                 autoCapitalize="none"
                 //onChangeText={this.handleEmail}
+                value={eventName}
+                onChangeText={setName}
                 maxLength={50}
                 textAlign="center"
                 //value={this.state.email}
             />
 
-            <TextInput style={ styles.input }
+            <TextInput style={styles.input}
                 underlineColorAndroid="transparent"
-                placeholder="Description"
+                placeholder="A Short Description"
                 placeholderTextColor="#304857"
                 autoCapitalize="none"
+                value={eventDesc}
                 //onChangeText={this.handleUsername}
-                maxLength={200}
+                onChangeText={setDesc}
+                maxLength={1000}
                 textAlign="center"
                 //value={this.state.username}
             />
             <Text style={styles.titles}>Starts</Text>
-            <View style={styles.separator}>
-                <View style={{ justifyContent: 'space-evenly', flexDirection: 'row'  }}>
-                    <Button
-                        width={25}
-                        onPress={showDatepicker} title="Start Date" />
-                    <Button
-                        width={25}
-                        onPress={showTimepicker} title="Start Time" />
+            <View style={{ justifyContent: 'space-evenly', flexDirection: 'row'  }}>
+                <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                <TouchableOpacity activeOpacity={0.5} onPress={showDatepicker}>
+                    <Icon
+                        name="calendar-blank"
+                        size={25}
+                    />
+                    </TouchableOpacity>
+                    <Text>{date.getMonth()+1}/{date.getDate()}</Text>
+                </View>
+                <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                <TouchableOpacity activeOpacity={0.5} onPress={showTimepicker}>
+                    <Icon
+                        name="clock-outline"
+                        size={25}
+                    />
+                </TouchableOpacity>
+                    <Text>{date.getHours()}:{date.getMinutes()}</Text>
                 </View>
             </View>
 
@@ -147,16 +167,27 @@ export default function CreateEventScreen({ navigation }) {
                     onChange={onChange}
                 />
             )}
-
             <Text style={styles.titles}>Ends</Text>
-            <View style={styles.separator}>
+            <View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
-                    <Button
-                        width={25}
-                        onPress={endShowDatepicker} title="End Date" />
-                    <Button
-                        width={25}
-                        onPress={endShowTimepicker} title="End Time" />
+                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                    <TouchableOpacity activeOpacity={0.5} onPress={endShowDatepicker}>
+                        <Icon
+                            name="calendar"
+                            size={25}
+                        />
+                        </TouchableOpacity>
+                        <Text>{endDate.getMonth() + 1}/{endDate.getDate()}</Text>
+                    </View>
+                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                    <TouchableOpacity activeOpacity={0.5} onPress={endShowTimepicker}>
+                        <Icon
+                            name="clock"
+                            size={25}
+                        />
+                        </TouchableOpacity>
+                        <Text>{endDate.getHours()}:{endDate.getMinutes()}</Text>
+                    </View>
                 </View>
             </View>
 
@@ -171,9 +202,10 @@ export default function CreateEventScreen({ navigation }) {
                 />
             )}
 
-
+            <EventButton name={eventName} date={date} endDate={endDate}>
+            </EventButton>
             <GoToButton screenName="Chat" />
-
         </View>
+ 
     )
 }
