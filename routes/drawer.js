@@ -20,15 +20,15 @@ import SettingStack from './settingStack';
 import CoHostGateway from './coHostGatewayStack';
 import CompGateway from './competitorGatewayStack';
 
-import FollowStack from './followingStack';
-import SearchStack from './searchStack';
-import CreateTourneyStack from './createTourneyStack';
-import ChatStack from './chatStack';
+import FollowStack from "./followingStack";
+import SearchStack from "./searchStack";
+import CreateTourneyStack from "./createTourneyStack";
+import ChatStack from "./chatStack";
+import CompetitorTopTab from "./competitorTopTab";
 
+import { DrawerContent } from "./drawerContent";
 
-import { DrawerContent } from './drawerContent';
-
-const { Navigator, Screen } = createDrawerNavigator(); // Creates Stack navigation 
+const { Navigator, Screen } = createDrawerNavigator(); // Creates Stack navigation
 
 /*---
   This function represents all the stack navigation routes to be displayed  

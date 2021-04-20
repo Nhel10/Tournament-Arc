@@ -101,6 +101,17 @@ export function DrawerContent(props) {
                         <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon
+                                    name="robot"
+                                    color={color}
+                                    size={size}
+                                />
+                            )}
+                            label="Competitor"
+                            onPress={() => {props.navigation.navigate('Competitor')}}
+                        />
+                        <DrawerItem
+                            icon={({ color, size }) => (
+                                <Icon
                                     name="cog"
                                     color={color}
                                     size={size}

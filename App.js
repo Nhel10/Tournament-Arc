@@ -10,6 +10,14 @@ import Home from './screens/home';
 import {AppLoading} from 'expo';
 import AppNavigator from './routes/drawer';
 import { NavigationContainer } from "@react-navigation/native";
+<<<<<<< Updated upstream
+=======
+import ProfileEdit from './screens/profileEdit';
+import Profile from './routes/profileStack';
+import ProfileScreen from './screens/profileScreen';
+import CompetitorCheckIn from './screens/competitorCheckIn';
+import CompetitorBracket from './screens/competitorBracket';
+>>>>>>> Stashed changes
 
 const App = () => {
   return (
