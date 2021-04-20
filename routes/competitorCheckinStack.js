@@ -1,6 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import CompCheckin from '../screens/competitorCheckinScreen';
+import CompCheckin from '../screens/competitorCheckIn';
 const { Navigator, Screen } = createStackNavigator();
 
 export const CompetitorCheckinStack = () => (
