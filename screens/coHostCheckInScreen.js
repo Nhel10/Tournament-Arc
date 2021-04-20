@@ -1,66 +1,92 @@
-import React from 'react';
-import { Alert, moment } from 'react-native';
-import { Button } from 'react-native';
-import { StyleSheet, View, Text } from 'react-native';
-import { globalStyles } from '../styles/global';
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  Button,
+  TouchableHighlight,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
+import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 
-export default function CoHostCheckInScreen() {
+export default class CompetitorCheckIn extends Component {
+  state = {
+    toggle: false,
+  };
+
+  _onPress = () => {
+    const newState = !this.state.toggle;
+    this.setState({
+      toggle: newState,
+    });
+  };
+
+  render() {
+    const { toggle } = this.state;
+    const textValue = toggle ? "Check-In" : "Done";
+    const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
+    const marginText = toggle ? 80 : 90;
     return (
-        <View style={globalStyles.container}>
-            <Text style={style.headerTitle}>
-                <Button 
-                    title = "Co-host click here to check in"
-                    onPress = {() => Alert.alert("Co-host checked in at ", new Date().getTime)}
-                    /*
-                    Username/ID is taken and put into a list that holds all co-hosts that have checked in.
-                    */
-                />
-            </Text>
-        </View>
-    )
+      <View>
+        <Card>
+          <View style={{ flexDirection: "row" }}>
+            <Image
+              style={{
+                marginLeft: 10,
+                marginTop: 10,
+                marginBottom: 10,
+                width: 140,
+                height: 140,
+              }}
+              source={require("../assets/undernight.jpg")}
+            ></Image>
+            <View style={{ flexDirection: "column", marginLeft: 10 }}>
+              <Title style={{ fontSize: 14 }}>
+                Planned Under Night Event 1
+              </Title>
+              <Paragraph style={{ color: "gray", fontSize: 10 }}>
+                Bracket 2
+              </Paragraph>
+              <Paragraph style={{ color: "gray", fontSize: 10 }}>
+                Under Night In-Birth EXE: Late [cl-r]
+              </Paragraph>
+              <Paragraph style={{ color: "gray", fontSize: 10 }}>
+                May 19th, 2021
+              </Paragraph>
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                  onPress={() => this._onPress()}
+                  style={{
+                    marginBottom: 10,
+                    marginTop: 5,
+                    flex: 1,
+                    height: 15,
+                    width: 220,
+                    backgroundColor: buttonBg,
+                    justifyContent: "center",
+                  }}
+                >
+                  <Text style={{color: "white", marginLeft: marginText}}>{textValue}</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </Card>
+      </View>
+    );
+  }
 }
 
-const style = StyleSheet.create({
-    userCard: {
-      flex: 1,
-      flexDirection: "row",
-    },
-    socials: {
-      width: 25,
-      height: 25,
-      marginRight: 10,
-    },
-    username: {
-      fontWeight: "bold",
-      fontSize: 20,
-      paddingLeft: 10,
-      paddingTop: 15,
-    },
-    eventCard: {
-      marginTop: 15,
-    },
-    headerTitle: {
-      paddingLeft: 10,
-      paddingTop: 10,
-      paddingBottom: 10,
-      fontSize: 25,
-      fontWeight: "bold"
-    },
-    image: {
-      width: 415,
-      height: 120,
-      resizeMode: "stretch",
-    },
-    eventTitle: {
-      fontSize: 15,
-      paddingLeft: 10,
-    },
-    avatar: {
-      width: 80,
-      height: 80,
-      borderRadius: 60,
-      marginTop: 5,
-      marginBottom: 5,
-      marginLeft: 5,
-    },
+const styles = StyleSheet.create({
+  green: {
+    backgroundColor: "green",
+  },
+  buttonContainer: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 });
