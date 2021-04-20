@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
 import { Avatar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon2 from 'react-native-vector-icons/MaterialIcons'
@@ -201,6 +201,10 @@ export default function CurrentEventScreen({ navigation }) {
                     </View>
                     <View style={styles.separator} />
                 </ScrollView>
+                <Button 
+                onPress = {() => navigation.navigate('Register')}
+                title = 'Register'
+                 />
             </View>
             <View style={style.firstContainer}>
                 <Text style={style.titles}>Players </Text>
