@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, ScrollView, Text, Image, View } from "react-native";
+import { StyleSheet, ScrollView, Text, Image, View, Button } from "react-native";
 import { globalStyles } from "../styles/global";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 
-export default function Profile() {
+export default function Profile({navigation}) {
     return (
       <ScrollView style={globalStyles.container}>
   
@@ -16,9 +16,6 @@ export default function Profile() {
             <Title style={style.eventTitle}>
               Planned Under Night Event 1 
             </Title>
-            <Card.Actions>
-            <Button>View</Button>
-            </Card.Actions>
           </Card>
 
           <Card>
@@ -29,9 +26,10 @@ export default function Profile() {
              <Title style={style.eventTitle}>
               Planned Guilty Gear Event 2 
             </Title>
-            <Card.Actions>
-            <Button>View</Button>
-            </Card.Actions>
+            <Button
+                onPress = {() => navigation.navigate('Guilty Gear')}
+                title = 'View'
+                 />
           </Card>
 
           <Card>
@@ -42,9 +40,10 @@ export default function Profile() {
             <Title style={style.eventTitle}>
               Planned Blazeblue Event 3
             </Title>
-            <Card.Actions>
-            <Button>View</Button>
-            </Card.Actions>
+            <Button
+                onPress = {() => navigation.navigate('Blazeblue')}
+                title = 'View'
+                 />
           </Card>
         </Card>
         

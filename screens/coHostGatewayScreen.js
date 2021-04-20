@@ -17,7 +17,6 @@ export default function CoHostGatewayScreen({navigation}) {
               Planned Under Night Event 1 - Bracket 2
             </Title>
             <Button
-                
                 onPress = {() => navigation.navigate('Co-Host Interface')}
                 title = 'View'
                  />

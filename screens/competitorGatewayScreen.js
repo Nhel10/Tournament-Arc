@@ -11,10 +11,10 @@ export default function CompetitorGatewayScreen({navigation}) {
           <Card>
             <Image
               style={style.image}
-              source={require("../assets/guiltygear.jpg")}
+              source={require("../assets/ultimate.jpg")}
             ></Image>
             <Title style={style.eventTitle}>
-              Guilty Gear Tournament
+              Smash Ultimate Tournament
             </Title>
             <Button
                 
