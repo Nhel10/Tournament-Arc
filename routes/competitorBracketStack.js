@@ -2,15 +2,15 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import MyTournament from "../screens/myTournamentScren";
 import Icon from "react-native-vector-icons/Ionicons";
-import CompetitorCheckIn from '../screens/competitorCheckIn' 
+import CompetitorBracket from '../screens/competitorBracket' 
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const CompetitorCheckInStack = ({ navigation }) => (
+export const CompetitorBracketStack = ({ navigation }) => (
   <Navigator>
     <Screen
-      name="Check In"
-      component={CompetitorCheckIn}
+      name="Brackets"
+      component={CompetitorBracket}
       options={{
         headerLeft: () => (
           <Icon.Button
@@ -25,4 +25,4 @@ export const CompetitorCheckInStack = ({ navigation }) => (
   </Navigator>
 );
 
-export default CompetitorCheckInStack;
+export default CompetitorBracketStack;
