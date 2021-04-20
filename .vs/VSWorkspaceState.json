@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\graphql",
+    "\\assets",
+    "\\components",
     "\\routes",
     "\\screens"
   ],
-  "SelectedNode": "\\screens\\Login.js",
+  "SelectedNode": "\\routes\\profileStack.js",
   "PreviewInSolutionExplorer": false
 }
