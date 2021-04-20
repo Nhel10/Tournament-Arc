@@ -39,99 +39,120 @@ const images3 = [
 class HomePage extends Component {
   state = {
     active: 0,
-    active2: 0
-  }
+    active2: 0,
+  };
 
-  change = ({nativeEvent}) => {
-    const slide = Math.ceil(nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width);
-    if(slide !== this.state.active){
-      this.setState({active: slide})
+  change = ({ nativeEvent }) => {
+    const slide = Math.ceil(
+      nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width
+    );
+    if (slide !== this.state.active) {
+      this.setState({ active: slide });
     }
-  }
-
+  };
 
   render() {
     return (
       <ScrollView>
         <View style={style.container}>
-        <Text>Featured Events</Text>
-        <ScrollView 
-        pagingEnabled 
-        horizontal 
-        onScroll={this.change}
-        showsHorizontalScrollIndicator={false}
-        style={style.scroll}>
-          {images.map((image, index) => (
-            <Image
-              key={index}
-              source={{ uri: image }}
-              style={style.image}
-            ></Image>
-          ))}
-        </ScrollView>
-        <View style={style.pagination}>
-          {
-            images.map((i, k) => (
-              <Text key={k} style={k==this.state.active ? style.pagingActiveText : style.pagingText}>•</Text>
-            ))
-          }
+          <Text>Featured Events</Text>
+          <ScrollView
+            pagingEnabled
+            horizontal
+            onScroll={this.change}
+            showsHorizontalScrollIndicator={false}
+            style={style.scroll}
+          >
+            {images.map((image, index) => (
+              <Image
+                key={index}
+                source={{ uri: image }}
+                style={style.image}
+              ></Image>
+            ))}
+          </ScrollView>
+          <View style={style.pagination}>
+            {images.map((i, k) => (
+              <Text
+                key={k}
+                style={
+                  k == this.state.active
+                    ? style.pagingActiveText
+                    : style.pagingText
+                }
+              >
+                •
+              </Text>
+            ))}
+          </View>
         </View>
-      </View>
 
-      <View style={style.container}>
-        <Text>Upcoming Events</Text>
-        <ScrollView 
-        pagingEnabled 
-        horizontal 
-        onScroll={this.change}
-        showsHorizontalScrollIndicator={false}
-        style={style.scroll}>
-          {images2.map((image, index) => (
-            <Image
-              key={index}
-              source={{ uri: image }}
-              style={style.image}
-            ></Image>
-          ))}
-        </ScrollView>
-        <View style={style.pagination}>
-          {
-            images2.map((i, k) => (
-              <Text key={k} style={k==this.state.active ? style.pagingActiveText : style.pagingText}>•</Text>
-            ))
-          }
+        <View style={style.container}>
+          <Text>Upcoming Events</Text>
+          <ScrollView
+            pagingEnabled
+            horizontal
+            onScroll={this.change}
+            showsHorizontalScrollIndicator={false}
+            style={style.scroll}
+          >
+            {images2.map((image, index) => (
+              <Image
+                key={index}
+                source={{ uri: image }}
+                style={style.image}
+              ></Image>
+            ))}
+          </ScrollView>
+          <View style={style.pagination}>
+            {images2.map((i, k) => (
+              <Text
+                key={k}
+                style={
+                  k == this.state.active
+                    ? style.pagingActiveText
+                    : style.pagingText
+                }
+              >
+                •
+              </Text>
+            ))}
+          </View>
         </View>
-      </View>
 
-      <View style={style.container}>
-        <Text>Live Events</Text>
-        <ScrollView 
-        pagingEnabled 
-        horizontal 
-        onScroll={this.change}
-        showsHorizontalScrollIndicator={false}
-        style={style.scroll}>
-          {images3.map((image, index) => (
-            <Image
-              key={index}
-              source={{ uri: image }}
-              style={style.image}
-            ></Image>
-          ))}
-        </ScrollView>
-        <View style={style.pagination}>
-          {
-            images3.map((i, k) => (
-              <Text key={k} style={k==this.state.active ? style.pagingActiveText : style.pagingText}>•</Text>
-            ))
-          }
+        <View style={style.container}>
+          <Text>Live Events</Text>
+          <ScrollView
+            pagingEnabled
+            horizontal
+            onScroll={this.change}
+            showsHorizontalScrollIndicator={false}
+            style={style.scroll}
+          >
+            {images3.map((image, index) => (
+              <Image
+                key={index}
+                source={{ uri: image }}
+                style={style.image}
+              ></Image>
+            ))}
+          </ScrollView>
+          <View style={style.pagination}>
+            {images3.map((i, k) => (
+              <Text
+                key={k}
+                style={
+                  k == this.state.active
+                    ? style.pagingActiveText
+                    : style.pagingText
+                }
+              >
+                •
+              </Text>
+            ))}
+          </View>
         </View>
-      </View>
-
-
       </ScrollView>
-      
-      
     );
   }
 }
@@ -139,52 +160,47 @@ class HomePage extends Component {
 export default HomePage;
 
 const style = StyleSheet.create({
-  pagination : {
-    flexDirection: 'row',
-    position: 'absolute',
+  pagination: {
+    flexDirection: "row",
+    position: "absolute",
     bottom: 0,
-    alignSelf: 'center'
+    alignSelf: "center",
   },
 
-  pagingText : {
-    color: '#888',
-    margin: 3
+  pagingText: {
+    color: "#888",
+    margin: 3,
   },
 
-  pagingActiveText : {
-    color: '#fff',
-    margin: 3
+  pagingActiveText: {
+    color: "#fff",
+    margin: 3,
   },
 
-  pagingText2 : {
-    color: '#888',
-    margin: 3
+  pagingText2: {
+    color: "#888",
+    margin: 3,
   },
 
-  pagingActiveText : {
-    color: '#fff',
-    margin: 3
+  pagingActiveText: {
+    color: "#fff",
+    margin: 3,
   },
 
   scroll: {
-    width, 
-    height
+    width,
+    height,
   },
 
   container: {
-     marginTop: 5, 
-     width, 
-     height 
+    marginTop: 5,
+    width,
+    height,
   },
 
   image: {
-    width, 
+    width,
     height,
-    resizeMode: 'cover'
- },
-
-
-
-
-
+    resizeMode: "cover",
+  },
 });
