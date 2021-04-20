@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
-import { Button, View, Text, Image, TextInput, Switch} from 'react-native';
+import { SafeAreaView, StyleSheet, Button, View, Text, Image, TextInput, Switch} from 'react-native';
 import { globalStyles } from '../styles/global';
 
 //Develop an interface for players to check in their competing bracket 
-
+//simple box for user input and a button for submit
 export default function ReviewDetails({navigation}) {
     const [isEnabled1, setIsEnabled1] = useState(false);
     const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
+
     return (
         <View style={globalStyles.container}>
             <Text style={globalStyles.pageText}>
                  Competitor Check-In
             
-            </Text>
+            </Text> 
+        
+            <TextInput placeholder="Check-in code" style={{ fontSize: 15, paddingLeft: 3 }} />
 
+
+       
             <Text style={globalStyles.pageText}>
                 Do you want to check in? 
                 <Switch

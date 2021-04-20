@@ -15,7 +15,7 @@ export default function ReviewDetails({navigation}) {
             <Text style={globalStyles.pageText}></Text>
 
 
-            <Text style={globalStyles.pageText}> Are you sure unregister  from this event/tournament?</Text>
+            <Text style={globalStyles.pageText}> Are you sure unregister from this event/tournament?</Text>
 
             <Text style={globalStyles.pageText}>
                 <Switch
@@ -29,6 +29,17 @@ export default function ReviewDetails({navigation}) {
             
             <Image style={{ width: 400, height: 300}} source={{uri: 'https://cdn.vox-cdn.com/thumbor/YZJgSAOkS1GJtUhmonX3d460Dz8=/0x51:500x332/1600x900/cdn.vox-cdn.com/uploads/chorus_image/image/36992002/tumblr_lmwsamrrxT1qagx30.0.0.gif'}}/>
 
+            <Text style={globalStyles.pageText}> Are you sure?</Text>
+
+            <Text style={globalStyles.pageText}>
+                <Switch
+                    trackColor={{ false: "#fad3aa", true: "#7fc8c9" }}
+                    thumbColor={isEnabled1 ? "#000000" : "#000000"}
+                    ios_backgroundColor="#3e3e3e"
+                    onValueChange={toggleSwitch1}
+                    value={isEnabled1}
+                />
+            </Text>
         </View>
         
     )
