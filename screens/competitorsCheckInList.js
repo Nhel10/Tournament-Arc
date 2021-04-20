@@ -9,7 +9,7 @@ export default function ReviewDetails({navigation}) {
     const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
     return (
         <View style={globalStyles.container}>
-           <Text style={globalStyles.pageText}><Text style={{ fontSize: 15 }}><Text style={{ color: 'gray' }}> List of Competitors</Text></Text></Text>
+           <Text style={globalStyles.pageText}><Text style={{ fontSize: 15 }}><Text style={{ color: 'gray' }}> List of ompetitors</Text></Text></Text>
            <Image
                 style={{ width: 30, height: 30}}
                 source={{uri: 'https://images.smash.gg/images/user/820380/image-1ceeec8a61bc5c0396cb6e7ca81e1657.gif'}}
