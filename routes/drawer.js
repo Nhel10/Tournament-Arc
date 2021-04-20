@@ -8,7 +8,7 @@ import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import TabNavigator from './bottomTab';
-import TopTabNavigator from './tournamentTopTab';
+import TourneyStack from './tournamentStack';
 
 /* --- Import all the stack routes file location --- */
 import HomeStack from './homeStack';
@@ -17,6 +17,8 @@ import RegistrationStack from './registrationStack';
 import ProfileStack from './profileStack';
 import MyTournamentStack from './myTournamentStack';
 import SettingStack from './settingStack';
+import CoHostGateway from './coHostGatewayStack';
+import CompGateway from './competitorGatewayStack';
 
 import FollowStack from './followingStack';
 import SearchStack from './searchStack';
@@ -46,7 +48,7 @@ export const RootDrawerNavigator = () => (
     />
     <Screen
       name='My Tournament'
-      component={TopTabNavigator}
+      component={TourneyStack}
     />
      <Screen
       name='Log In'
@@ -59,6 +61,14 @@ export const RootDrawerNavigator = () => (
      <Screen
       name='About'
       component={AboutStack}
+    />
+    <Screen
+      name='CoHost Gateway'
+      component={CoHostGateway}
+    />
+    <Screen
+      name='Competitor Gateway'
+      component={CompGateway}
     />
     
   </Navigator>

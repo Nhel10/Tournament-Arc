@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
+    "\\components",
     "\\routes",
     "\\screens"
   ],
-  "SelectedNode": "\\App.js",
+  "SelectedNode": "\\routes\\profileStack.js",
   "PreviewInSolutionExplorer": false
 }

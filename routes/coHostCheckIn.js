@@ -1,16 +1,18 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import CreateEvent from '../screens/createEventScreen';
-import Icon from 'react-native-vector-icons/Ionicons';
+import CheckInScreen from '../screens/coHostCheckInScreen';
 const { Navigator, Screen } = createStackNavigator();
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export const CreateEventStack = ({navigation}) => (
+export const CoHostCheckInStack = () => (
     <Navigator>
+      
       <Screen
-        name='Create Event'
-        component={CreateEvent}
+        name='Check In'
+        component={CheckInScreen }
         options={{ 
           headerShown: false
+          
           }}
       />
   
@@ -18,4 +20,4 @@ export const CreateEventStack = ({navigation}) => (
     </Navigator>
   );
   
-  export default CreateEventStack;
+  export default CoHostCheckInStack  ;

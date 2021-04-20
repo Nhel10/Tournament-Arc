@@ -1,20 +1,20 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import MyEvent from '../screens/myEventScreen';
-import Icon from 'react-native-vector-icons/Ionicons';
-
+import CompCheckin from '../screens/competitorCheckinScreen';
 const { Navigator, Screen } = createStackNavigator();
 
-export const MyEventStack = ({navigation}) => (
+export const CompetitorCheckinStack = () => (
     <Navigator>
       <Screen
-        name='My Events'
-        component={MyEvent}
+        name='Competitor Check In'
+        component={CompCheckin}
         options={{ 
           headerShown: false
           }}
       />
+  
+  
     </Navigator>
   );
   
-  export default MyEventStack;
+  export default CompetitorCheckinStack;

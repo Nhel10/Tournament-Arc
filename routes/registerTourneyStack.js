@@ -1,36 +1,29 @@
-/*--- 
-  SUMMARY:
-
-
-  SCREENS:
- 
----*/
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Chat from '../screens/registerTourneyScreen';
+import Register from '../screens/registerTourneyScreen';
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const ChatStack = ({navigation}) => (
+export const RegisterTourneyStack = ({navigation}) => (
   <Navigator
     headerMode='screen'
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#BE7C4D',
+        backgroundColor: '#3C896D',
       },
       headerTintColor: '#fff',
       height: 60
     }}
   >
     <Screen
-      name='Chat'
-      component={Chat}
+      name='RegisterTourney'
+      component={Register}
       options={{ 
-        title: 'Chat', 
+        title: 'Create A Tournament', 
         headerTitleAlign: 'center',
         }}
     />
   </Navigator>
 );
 
-export default ChatStack;
+export default RegisterTourneyStack ;
