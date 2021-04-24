@@ -10,7 +10,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import Registration from '../screens/registration';
-import Inputs from '../screens/input';
+import Inputs from '../screens/settingScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
