@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, Text, Image, View, Button } from "react-native"
 import { globalStyles } from "../styles/global";
 import { Avatar, Card, Title, Paragraph, Icon} from "react-native-paper";
 
-export default function CoHostGatewayScreen({navigation}) {
+export default function GGSgatewayScreen ({navigation}) {
     return (
       <ScrollView style={globalStyles.container}>
   
@@ -11,13 +11,23 @@ export default function CoHostGatewayScreen({navigation}) {
           <Card>
             <Image
               style={style.image}
-              source={require("../assets/night.jpg")}
+              source={require("../assets/evo.jpg")}
             ></Image>
             <Title style={style.eventTitle}>
-              Planned Under Night Event 1 - Bracket 2
+              Evo 2020
+            </Title>
+            
+          </Card>
+          <Card>
+            <Image
+              style={style.image}
+              source={require("../assets/arcevo.jpg")}
+            ></Image>
+            <Title style={style.eventTitle}>
+              ARC ARCREVO AMERICA 2019
             </Title>
             <Button
-                onPress = {() => navigation.navigate('Co-Host Interface')}
+                onPress = {() => navigation.navigate('Mock GGS Event')}
                 title = 'View'
                  />
             
@@ -61,7 +71,7 @@ const style = StyleSheet.create({
       width: 415,
       height: 120,
       resizeMode: "stretch",
-      paddingTop: 15,
+      
     },
     eventTitle: {
       fontSize: 15,
