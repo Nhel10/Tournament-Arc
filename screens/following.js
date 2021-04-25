@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, ScrollView, Text, Image, View } from "react-native";
+import { StyleSheet, ScrollView, Text, Image, View, Button } from "react-native";
 import { globalStyles } from "../styles/global";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 import { block } from "react-native-reanimated";
 import { SocialIcon } from "react-native-elements";
 
-export default function Profile() {
+export default function Following({navigation}) {
   return (
     <ScrollView style={globalStyles.container}>
 
@@ -19,6 +19,10 @@ export default function Profile() {
           <Title style={style.eventTitle}>
             Under Night In-Birth Exe:Late[st]
           </Title>
+          <Button
+                onPress = {() => navigation.navigate('UNICLR Gateway')}
+                title = 'View'
+                 />
         </Card>
         <Card>
           <Image
@@ -28,16 +32,12 @@ export default function Profile() {
           <Title style={style.eventTitle}>
             Guilty Gear Strive 
           </Title>
+          <Button
+                onPress = {() => navigation.navigate('GGS Gateway')}
+                title = 'View'
+                 />
         </Card>
-        <Card>
-          <Image
-            style={style.image}
-            source={require("../assets/blaze.jpg")}
-          ></Image>
-          <Title style={style.eventTitle}>
-            Blazeblue Central Fiction
-          </Title>
-        </Card>
+        
       </Card>
       
 
@@ -94,6 +94,7 @@ const style = StyleSheet.create({
     width: 415,
     height: 120,
     resizeMode: "stretch",
+    
   },
   eventTitle: {
     fontSize: 15,
