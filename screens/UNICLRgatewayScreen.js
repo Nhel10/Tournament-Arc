@@ -3,7 +3,7 @@ import { StyleSheet, ScrollView, Text, Image, View, Button } from "react-native"
 import { globalStyles } from "../styles/global";
 import { Avatar, Card, Title, Paragraph, Icon} from "react-native-paper";
 
-export default function CoHostGatewayScreen({navigation}) {
+export default function UNICLRgatewayScreen ({navigation}) {
     return (
       <ScrollView style={globalStyles.container}>
   
@@ -14,12 +14,34 @@ export default function CoHostGatewayScreen({navigation}) {
               source={require("../assets/night.jpg")}
             ></Image>
             <Title style={style.eventTitle}>
-              Planned Under Night Event 1 - Bracket 2
+              Beginner Friendly Online Tournament 
+            </Title>
+          
+            
+          </Card>
+          <Card>
+            <Image
+              style={style.image}
+              source={require("../assets/beachcon.png")}
+            ></Image>
+            <Title style={style.eventTitle}>
+              CSULB Beach Con FGC Tournament
             </Title>
             <Button
-                onPress = {() => navigation.navigate('Co-Host Interface')}
+                onPress = {() => navigation.navigate('Mock UNICLR Event')}
                 title = 'View'
                  />
+            
+          </Card>
+          <Card>
+            <Image
+              style={style.image}
+              source={require("../assets/club.png")}
+            ></Image>
+            <Title style={style.eventTitle}>
+              Anime Club Anime Fighters Tournament 
+            </Title>
+           
             
           </Card>
         </Card>
@@ -61,7 +83,7 @@ const style = StyleSheet.create({
       width: 415,
       height: 120,
       resizeMode: "stretch",
-      paddingTop: 15,
+      
     },
     eventTitle: {
       fontSize: 15,
