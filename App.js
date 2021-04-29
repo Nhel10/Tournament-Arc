@@ -21,7 +21,7 @@ import Register from "./components/auth/register";
 import Landing from "./components/auth/landing";
 import Main from "./components/main";
 import Login from "./components/auth/login";
-
+import { Event } from './components/event';
 
 /*
 const App = () => {
