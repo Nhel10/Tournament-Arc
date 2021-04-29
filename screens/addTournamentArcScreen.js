@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { EventButton } from '../components/event';
 import SelectPicker from 'react-native-form-select-picker';
 import DropdownMenu from 'react-native-dropdown-menu';
-import { globalStyles } from '../styles/global';
 import CheckBox from '@react-native-community/checkbox';
 import DialogBox from 'react-native-dialogbox';
 import {
