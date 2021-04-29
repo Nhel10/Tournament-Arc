@@ -1,3 +1,4 @@
+import { useRoute } from "@react-navigation/core";
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -8,26 +9,42 @@ import {
   TouchableHighlight,
   Pressable,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
+//import { useRoute } from '@react-navigation/native';
+import coHostCheckIn from '../routes/coHostCheckIn';
+
+function showCode({ route }) {
+  const givenCode = route.params;
+  return (
+    <Text>{ givenCode }</Text>
+  );
+}
 
 export default class CompetitorCheckIn extends Component {
-  state = {
-    toggle: false,
-  };
+  // state = {
+  //   toggle: false,
+  // };
 
-  _onPress = () => {
-    const newState = !this.state.toggle;
-    this.setState({
-      toggle: newState,
-    });
-  };
+  constructor(props) {
+    super(props)
+    this.state = {reenCode:''};
+  }
+
+  // _onPress = () => {
+  //   const newState = !this.state.toggle;
+  //   this.setState({
+  //     toggle: newState,
+  //   });
+  // };
 
   render() {
-    const { toggle } = this.state;
-    const textValue = toggle ? "Check-In" : "Done";
-    const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
-    const marginText = toggle ? 80 : 90;
+    // const { toggle } = this.state;
+    // const textValue = toggle ? "Check-In" : "Done";
+    // const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
+    // const marginText = toggle ? 80 : 90;
+
     return (
       <View>
         <Card>
@@ -56,7 +73,34 @@ export default class CompetitorCheckIn extends Component {
                 April 18th, 2021 @7:00 PDT
               </Paragraph>
               <View style={styles.buttonContainer}>
-                <TouchableOpacity
+                <Text>
+                  Check-in code: {() => showCode() }
+                </Text>
+                <TextInput
+                  enterCode = 'Enter custom code'
+                  onChangeText = {reenCode=>this.setState({reenCode})}
+                />
+                <Button
+                  onPress={() => this.props.navigation.navigate('CoHost Gateway', 
+                  {screen: 'Co-Host Interface', params: 
+                  {screen: 'CheckIn', P2: this.state.reenCode}})}
+                  title="Confirm check-in"
+                />
+                {/* <TouchableOpacity
+                  onPress={() => this._onPress()}
+                  style={{
+                    marginBottom: 10,
+                    marginTop: 5,
+                    flex: 1,
+                    height: 15,
+                    width: 220,
+                    backgroundColor: buttonBg,
+                    justifyContent: "center",
+                  }}
+                >
+                  onPress={() => this.props.navigation.navigate(coHostCheckIn, {P2: this.state.reenCode})}
+                </TouchableOpacity> */}
+                {/* <TouchableOpacity
                   onPress={() => this._onPress()}
                   style={{
                     marginBottom: 10,
@@ -69,7 +113,7 @@ export default class CompetitorCheckIn extends Component {
                   }}
                 >
                   <Text style={{color: "white", marginLeft: marginText}}>{textValue}</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>

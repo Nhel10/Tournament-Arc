@@ -8,26 +8,32 @@ import {
   TouchableHighlight,
   Pressable,
   TouchableOpacity,
+  TextInput,
 } from "react-native";
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 
-export default class CompetitorCheckIn extends Component {
-  state = {
-    toggle: false,
-  };
+export default class CoHostCheckInScreen extends Component {
+  // state = {
+  //   toggle: false,
+  // };
 
-  _onPress = () => {
-    const newState = !this.state.toggle;
-    this.setState({
-      toggle: newState,
-    });
-  };
+  constructor(props) {
+    super(props)
+    this.state = {unqCode:''};
+  }
+
+  // _onPress = () => {
+  //   const newState = !this.state.toggle;
+  //   this.setState({
+  //     toggle: newState,
+  //   });
+  // };
 
   render() {
-    const { toggle } = this.state;
-    const textValue = toggle ? "Check-In" : "Done";
-    const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
-    const marginText = toggle ? 80 : 90;
+    // const { toggle } = this.state;
+    // const textValue = toggle ? "Check-In" : "Done";
+    // const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
+    // const marginText = toggle ? 80 : 90;
     return (
       <View>
         <Card>
@@ -56,6 +62,20 @@ export default class CompetitorCheckIn extends Component {
                 May 19th, 2021
               </Paragraph>
               <View style={styles.buttonContainer}>
+                <TextInput
+                  placeholder = "Enter custom code"
+                  onChangeText = {unqCode=>this.setState({unqCode})}
+                />
+                {/*Must navigate from drawer level first then work way down*/}
+                <Button
+                  onPress={() => this.props.navigation.navigate('Competitor Gateway', 
+                    {screen: 'Competitor Interface', params: 
+                    {screen: 'CheckIn', P1: this.state.unqCode}})}
+                  title="Send code to competitors"
+                />
+                {/* <Text>
+                  Approve code: {this.props.navigation.state.params.P2}
+                </Text>
                 <TouchableOpacity
                   onPress={() => this._onPress()}
                   style={{
@@ -69,7 +89,7 @@ export default class CompetitorCheckIn extends Component {
                   }}
                 >
                   <Text style={{color: "white", marginLeft: marginText}}>{textValue}</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>
