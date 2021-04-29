@@ -3,6 +3,7 @@ import { StyleSheet, View, Text, SafeAreaView, TextInput, Button, Alert, Touchab
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { EventButton } from '../components/event';
+import SelectPicker from 'react-native-form-select-picker';
 import DropdownMenu from 'react-native-dropdown-menu';
 import { globalStyles } from '../styles/global';
 import CheckBox from '@react-native-community/checkbox';
@@ -27,6 +28,9 @@ export default function addTournamentArc() {
     const [show, setShow] = useState(false);
     const [endShow, setEndShow] = useState(false);
     const [eventName, setName] = React.useState("");
+
+    const options = ["Apple", "Banana", "Orange"];
+    const [selected, setSelected] = useState();
 
     const onChange = (event, selectedDate) => {
         const currentDate = selectedDate || date;
@@ -69,7 +73,7 @@ export default function addTournamentArc() {
     return (
         <View style={{flex: 1}}>
             <View style={{marginLeft: 5}}>
-
+            
             <List.Section title="Pick Game">
                 <List.Accordion
                     title="Expand Game List"
@@ -81,7 +85,7 @@ export default function addTournamentArc() {
                     <List.Item title="Guilty Gear Strive" />
                     <List.Item title="Blazeblue Centralfiction" />
                 </List.Accordion>
-                </List.Section>
+                </List.Section> 
 
             <View style = {{flexDirection: 'row'}}>
                 <RadioButton
@@ -195,6 +199,8 @@ export default function addTournamentArc() {
             <EventButton  name={eventName} date={date} endDate={endDate}>
             </EventButton>
 
+            
+
             <View style = {{paddingTop: 15}}>
                 <Button
                     title="Confirm"
@@ -202,6 +208,9 @@ export default function addTournamentArc() {
                     onPress={() => Alert.alert('Tournament Entered')}
                     />
             </View>
+
+      
+           
 
             </View>
 
@@ -251,4 +260,12 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         flexDirection: 'column',
       },
+
+      container : {
+        marginTop: 30,
+        flex            : 1,
+        backgroundColor : "#fff",
+        alignItems      : "center",
+        justifyContent  : "center",
+    },
 });
