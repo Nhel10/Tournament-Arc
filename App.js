@@ -5,14 +5,7 @@
 ---*/
 import { User} from "./components/user";
 import React, { useState } from 'react';
-import * as Font from 'expo-font';
-import Home from './screens/home';
-import {AppLoading} from 'expo';
 import AppNavigator from './routes/drawer';
-import { NavigationContainer } from "@react-navigation/native";
-import ProfileEdit from './screens/profileEdit';
-import Profile from './routes/profileStack';
-import ProfileScreen from './screens/profileScreen';
 import { Event } from './components/event';
 
 const App = () => {
