@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, SafeAreaView, TextInput, Button, Alert} from 'react-native';
 import { globalStyles } from '../styles/global';
-import CheckBox from '@react-native-community/checkbox';
+// import CheckBox from '@react-native-community/checkbox';
 import DialogBox from 'react-native-dialogbox';
 import {
     Avatar,
