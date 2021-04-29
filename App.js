@@ -2,6 +2,7 @@
   SUMMARY:
   This is the main file that the program will run 
 ---*/
+
 import { User } from "./components/user";
 import React, { useState, Component } from "react";
 import * as Font from "expo-font";
@@ -34,6 +35,36 @@ const firebaseConfig = {
   messagingSenderId: "179357543662",
   appId: "1:179357543662:web:cbce9794bbbab3d2e197ff",
   measurementId: "G-E84FVP32MN",
+
+import { User} from "./components/user";
+import React, { useState } from 'react';
+import AppNavigator from './routes/drawer';
+import { Event } from './components/event';
+
+const App = () => {
+    window.users = []
+    window.events = [];
+    new User("johniscool123", "image1");
+    new User("bienfu", "image1");
+    new User("dawg", "image2");
+    new User("mancake", "image3");
+    new User("LoLboy", "image4");
+    new User("torny", "image5");
+    new User("monke", "image6");
+    new User("pander", "image7");
+    new User("what", "image8");
+    new Event("Event 0", "This is Event 0's Description", new Date(), new Date(), users[0]);
+    new Event("Event 1", "This is Event 1's Description", new Date(), new Date(), users[0]);
+    events[0].addPlayer(users[1]);
+    events[0].addPlayer(users[2]);
+    window.players = [users[1], users[2], users[3]];
+    window.cohosts = [window.players[0], window.players[1]]
+    window.eventID = 0;
+    window.userID = 0;
+  return (
+    <AppNavigator/>
+  );
+
 };
 
 if (firebase.apps.length === 0) {

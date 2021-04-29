@@ -8,22 +8,27 @@ import { useState } from "react";
 import { User, UserButton } from "../components/user";
 
 export default function CurrentEventScreen({ navigation }) {
+    var event = window.events[window.eventID];
     var eventNameTemp = "Event Name";
     var eventDescriptionTemp = "This is the event description. It will describe the purpose of the event and the tournaments that are organized around it.";
-    const [eventName, setName] = React.useState(eventNameTemp);
-    const [eventDescription, setDescription] = React.useState(eventDescriptionTemp);
+    const [eventName, setName] = React.useState(event.name);
+    const [eventDescription, setDescription] = React.useState(event.desc);
     const [visible1, setVisible1] = useState(false);
     const [visible2, setVisible2] = useState(false);
     const [visible3, setVisible3] = useState(false);
     const [visible4, setVisible4] = useState(false);
-    const [name, onChangeName] = React.useState(eventNameTemp);
-    const [desc, onChangeDesc] = React.useState(eventDescriptionTemp);
+    const [name, onChangeName] = React.useState(event.name);
+    const [desc, onChangeDesc] = React.useState(event.desc);
     const [playerName, onChangePlayerName] = React.useState("")
     const [cohostName, onChangeCohostName] = React.useState("");
 
     const showEventDialog = () => {
         setVisible1(true);
     };
+
+    showTournamentDialog = () => {
+        setVisible2(true);
+    }
 
     const showPlayerDialog = () => {
         setVisible3(true);
@@ -45,20 +50,22 @@ export default function CurrentEventScreen({ navigation }) {
         // The user has pressed the "Delete" button, so here you can do your own logic.
         // ...Your logic
         setName(name);
-        setDescription(desc)
-        console.log(eventName);
+        setDescription(desc);
+        event.name = name;
+        event.desc = desc;
+        console.log(window.events[window.eventID].name);
         setVisible1(false);
     };
 
     const handlePlayerAdd = () => {
         var hi = new User(playerName, "image0");
-        window.players.push(hi);
+        event.addPlayer(hi);
         setVisible3(false);
     }
 
     const handleCohostAdd = () => {
         var hi = new User(cohostName, "image0");
-        window.cohosts.push(hi);
+        event.addCohost(hi);
         setVisible4(false);
     }
 
@@ -106,12 +113,12 @@ export default function CurrentEventScreen({ navigation }) {
     })
 
     var players = [];
-    for (let i = 0; i < window.players.length; i++) {
+    for (let i = 0; i < window.events[window.eventID].players.length; i++) {
         players.push(
             <View>
                 <View style={styles.separator} />
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <UserButton username={window.players[i].username} img={window.players[i].image}>
+                    <UserButton username={event.players[i].username} img={event.players[i].image}>
                 </UserButton>
             </View>
             <View style={styles.separator} />
@@ -120,12 +127,21 @@ export default function CurrentEventScreen({ navigation }) {
     }
 
     var hosts = [];
-    for (let i = 0; i < window.cohosts.length; i++) {
+    hosts.push(
+        <View>
+        <View style={styles.separator} />
+            <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+                <UserButton username={event.host.username} img={event.host.image}>
+            </UserButton>
+        </View>
+        <View style={styles.separator} />
+    </View>)
+    for (let i = 0; i < event.cohosts.length; i++) {
         hosts.push(
             <View>
                 <View style={styles.separator} />
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <UserButton username={window.cohosts[i].username} img={window.cohosts[i].image}>
+                    <UserButton username={event.cohosts[i].username} img={event.cohosts[i].image}>
                     </UserButton>
                 </View>
                 <View style={styles.separator} />
@@ -159,12 +175,41 @@ export default function CurrentEventScreen({ navigation }) {
             </Text>
             <View style={style.firstContainer}>
                 <Text style={style.titles}>Tournaments </Text>
-                <TouchableOpacity activeOpacity={0.5} onPress={showEventDialog}>
+                <TouchableOpacity activeOpacity={0.5} onPress={showTournamentDialog}>
                     <Icon
                         name="tournament"
                         size={25}
                     />
                 </TouchableOpacity>
+                <Dialog.Container visible={visible2}>
+                    <Dialog.Title> Create New Tournament </Dialog.Title>
+                    <Dialog.Input label="Tournament Name" value={name} onChangeText={onChangeName}></Dialog.Input>
+                    <Dialog.Input label="Tournament Description" numberOfLines={4} multiline value={desc} onChangeText={onChangeDesc}></Dialog.Input>
+                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                        <Text> Start </Text>
+                        <Icon
+                        name="calendar-blank"
+                        size={25}
+                        />
+                        <Icon
+                        name="clock-outline"
+                        size={25}
+                        />
+                    </View>
+                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                        <Text> End </Text>
+                        <Icon
+                            name="calendar"
+                            size={25}
+                        />
+                        <Icon
+                            name="clock"
+                            size={25}
+                        />
+                    </View>
+                    <Dialog.Button label="Cancel" onPress={handleCancel} />
+                    <Dialog.Button label="Save" onPress={handleEventSave} />
+                </Dialog.Container>
             </View>
             <View style={styles.scrollViewHolder}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
