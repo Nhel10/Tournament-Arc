@@ -19,12 +19,12 @@ import rootReducer from "./redux/reducers";
 import thunk from "redux-thunk";
 import Register from "./components/auth/register";
 import Landing from "./components/auth/landing";
-import Main from "./components/main";
+import Main from "./routes/drawer";
 import Login from "./components/auth/login";
 import { Event } from './components/event';
 
-/*
-const App = () => {
+
+/*const App = () => {
     window.users = []
     window.events = [];
     new User("johniscool123", "image1");

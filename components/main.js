@@ -22,14 +22,14 @@ export class Main extends Component {
   render() {
     const { currentUser } = this.props;
     console.log()
-    if(currentUser === undefined){
+    if(currentUser == undefined){
       return(
         <View></View>
       )
     }
     return (
       <View style={{ flex: 1, justifyContent: "center" }}>
-        <Text>user is logged in</Text>
+        <Text>{currentUser.name} is logged in</Text>
         <Button
         title="Logout"
         onPress={() => onLogout()}/>

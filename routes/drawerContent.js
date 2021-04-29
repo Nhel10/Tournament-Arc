@@ -1,6 +1,6 @@
 /* The purpose of this code is to display the drawer navigation and connect the buttons to the 
     appropriate screens */
-
+import firebase from "firebase";
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import {
@@ -18,8 +18,16 @@ import {
     Switch
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { fetchUser, clearData } from "../redux/actions/index";
+
+const onLogout = () => {
+    firebase.auth().signOut();
+  }
 
 export function DrawerContent(props) {
+    
     return (
         <View style={{ flex: 1 }}>
             <DrawerContentScrollView {...props}>
@@ -133,7 +141,7 @@ export function DrawerContent(props) {
                         />
                     )}
                     label="Log out"
-                    onPress={() => {props.navigation.navigate('Log In')}}
+                    onPress={() => {onLogout()}}
                 />
             </Drawer.Section>
         </View>
