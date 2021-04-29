@@ -11,9 +11,6 @@ import { AppLoading } from "expo";
 import AppNavigator from "./routes/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { View, Text } from "react-native";
-import ProfileEdit from "./screens/profileEdit";
-import Profile from "./routes/profileStack";
-import ProfileScreen from "./screens/profileScreen";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
@@ -25,22 +22,8 @@ import Landing from "./components/auth/landing";
 import Main from "./components/main";
 import Login from "./components/auth/login";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
 
-const firebaseConfig = {
-  apiKey: "AIzaSyBzjtcqcgkOB6DvvcocbHiDjzJjijhRwBw",
-  authDomain: "tournament-arc-main.firebaseapp.com",
-  projectId: "tournament-arc-main",
-  storageBucket: "tournament-arc-main.appspot.com",
-  messagingSenderId: "179357543662",
-  appId: "1:179357543662:web:cbce9794bbbab3d2e197ff",
-  measurementId: "G-E84FVP32MN",
-
-import { User} from "./components/user";
-import React, { useState } from 'react';
-import AppNavigator from './routes/drawer';
-import { Event } from './components/event';
-
+/*
 const App = () => {
     window.users = []
     window.events = [];
@@ -63,10 +46,23 @@ const App = () => {
     window.userID = 0;
   return (
     <AppNavigator/>
-  );
+  ); */
 
-};
+  
+  const store = createStore(rootReducer, applyMiddleware(thunk));
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyBzjtcqcgkOB6DvvcocbHiDjzJjijhRwBw",
+    authDomain: "tournament-arc-main.firebaseapp.com",
+    projectId: "tournament-arc-main",
+    storageBucket: "tournament-arc-main.appspot.com",
+    messagingSenderId: "179357543662",
+    appId: "1:179357543662:web:cbce9794bbbab3d2e197ff",
+    measurementId: "G-E84FVP32MN",
+  
+  };
+
+// Initializes the firebase 
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -128,7 +124,7 @@ export class App extends Component {
       </Provider>
     );
   }
-}
+} 
 
 export default App;
 
