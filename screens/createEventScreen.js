@@ -3,7 +3,7 @@ import { Button, View, Text, StyleSheet, TextInput, TouchableOpacity } from 'rea
 import { useNavigation } from '@react-navigation/native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { EventButton } from '../components/event';
+import { Event, EventButton } from '../components/event';
 import { UserButton } from '../components/user';
 import { Avatar } from 'react-native-paper';
 
@@ -65,7 +65,7 @@ export default function CreateEventScreen({ navigation }) {
                 padding={10}
                 margin={15}
                 height={40}
-                onPress={() => { console.log(date); console.log(endDate); navigation.navigate(screenName); }}
+                onPress={() => { new Event(eventName, eventDesc, date, endDate, window.users[0]), console.log(window.events); navigation.navigate(screenName); }}
             />
         );
     }
@@ -202,8 +202,6 @@ export default function CreateEventScreen({ navigation }) {
                 />
             )}
 
-            <EventButton name={eventName} date={date} endDate={endDate}>
-            </EventButton>
             <GoToButton screenName="Chat" />
         </View>
  
