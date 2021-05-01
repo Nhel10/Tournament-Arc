@@ -70,7 +70,7 @@ export default class CoHostCheckInScreen extends Component {
                 <Button
                   onPress={() => this.props.navigation.navigate('Competitor Gateway', 
                     {screen: 'Competitor Interface', params: 
-                    {screen: 'CheckIn', P1: this.state.unqCode}})}
+                    {screen: 'CheckIn', params: this.state.unqCode}})}
                   title="Send code to competitors"
                 />
                 {/* <Text>

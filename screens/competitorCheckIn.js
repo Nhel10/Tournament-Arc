@@ -1,4 +1,4 @@
-import { useRoute } from "@react-navigation/core";
+//import { useRoute } from "@react-navigation/core";
 import React, { Component } from "react";
 import {
   StyleSheet,
@@ -12,14 +12,11 @@ import {
   TextInput,
 } from "react-native";
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
-//import { useRoute } from '@react-navigation/native';
-import coHostCheckIn from '../routes/coHostCheckIn';
+import { useRoute } from '@react-navigation/native';
 
-function showCode({ route }) {
-  const givenCode = route.params;
-  return (
-    <Text>{ givenCode }</Text>
-  );
+function showCode({ route, navigation }) {
+  const { givenCode } = route.params;
+  return <Text>{ givenCode }</Text>;
 }
 
 export default class CompetitorCheckIn extends Component {
@@ -77,13 +74,13 @@ export default class CompetitorCheckIn extends Component {
                   Check-in code: {() => showCode() }
                 </Text>
                 <TextInput
-                  enterCode = 'Enter custom code'
+                  enterCode = 'Enter valid code'
                   onChangeText = {reenCode=>this.setState({reenCode})}
                 />
                 <Button
                   onPress={() => this.props.navigation.navigate('CoHost Gateway', 
                   {screen: 'Co-Host Interface', params: 
-                  {screen: 'CheckIn', P2: this.state.reenCode}})}
+                  {screen: 'CheckIn', params: this.state.reenCode}})}
                   title="Confirm check-in"
                 />
                 {/* <TouchableOpacity
