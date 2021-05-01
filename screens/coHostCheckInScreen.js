@@ -13,27 +13,27 @@ import {
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 
 export default class CoHostCheckInScreen extends Component {
-  // state = {
-  //   toggle: false,
-  // };
+  state = {
+    toggle: false,
+  };
 
   constructor(props) {
     super(props)
     this.state = {unqCode:''};
   }
 
-  // _onPress = () => {
-  //   const newState = !this.state.toggle;
-  //   this.setState({
-  //     toggle: newState,
-  //   });
-  // };
+  _onPress = () => {
+    const newState = !this.state.toggle;
+    this.setState({
+      toggle: newState,
+    });
+  };
 
   render() {
-    // const { toggle } = this.state;
-    // const textValue = toggle ? "Check-In" : "Done";
-    // const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
-    // const marginText = toggle ? 80 : 90;
+    const { toggle } = this.state;
+    const textValue = toggle ? "Check-In" : "Done";
+    const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
+    const marginText = toggle ? 80 : 90;
     return (
       <View>
         <Card>
@@ -44,23 +44,27 @@ export default class CoHostCheckInScreen extends Component {
                 marginTop: 10,
                 marginBottom: 10,
                 width: 140,
-                height: 140,
+                height: 160,
               }}
-              source={require("../assets/undernight.jpg")}
+              source={require("../assets/smash.jpg")} //../assets/undernight.jpg
+              //Planned Under Night Event 1
+              //Bracket 2
+              //Under Night In-Birth EXE: Late [cl-r]
+              //May 19th, 2021
             ></Image>
             <View style={{ flexDirection: "column", marginLeft: 10 }}>
               <Title style={{ fontSize: 14 }}>
-                Planned Under Night Event 1
-              </Title>
+                Super Smash Bros World Tour 2020 
+              </Title> 
+              {/* <Paragraph style={{ color: "gray", fontSize: 10 }}> 
+                Singles 
+              </Paragraph> 
               <Paragraph style={{ color: "gray", fontSize: 10 }}>
-                Bracket 2
-              </Paragraph>
-              <Paragraph style={{ color: "gray", fontSize: 10 }}>
-                Under Night In-Birth EXE: Late [cl-r]
-              </Paragraph>
-              <Paragraph style={{ color: "gray", fontSize: 10 }}>
-                May 19th, 2021
-              </Paragraph>
+                Super Smash Bros. Ultimate 
+              </Paragraph> */}
+              <Text style={{ color: "gray", fontSize: 10 }}>
+                April 18th, 2021 @7:00 PDT 
+              </Text>
               <View style={styles.buttonContainer}>
                 <TextInput
                   placeholder = "Enter custom code"
@@ -73,8 +77,8 @@ export default class CoHostCheckInScreen extends Component {
                     {screen: 'CheckIn', params: this.state.unqCode}})}
                   title="Send code to competitors"
                 />
-                {/* <Text>
-                  Approve code: {this.props.navigation.state.params.P2}
+                <Text>
+                  Approve code: 
                 </Text>
                 <TouchableOpacity
                   onPress={() => this._onPress()}
@@ -89,7 +93,7 @@ export default class CoHostCheckInScreen extends Component {
                   }}
                 >
                   <Text style={{color: "white", marginLeft: marginText}}>{textValue}</Text>
-                </TouchableOpacity> */}
+                </TouchableOpacity>
               </View>
             </View>
           </View>

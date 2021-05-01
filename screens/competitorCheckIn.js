@@ -60,12 +60,12 @@ export default class CompetitorCheckIn extends Component {
               <Title style={{ fontSize: 14 }}>
                 Super Smash Bros World Tour 2020
               </Title>
-              <Paragraph style={{ color: "gray", fontSize: 10 }}>
+              {/* <Paragraph style={{ color: "gray", fontSize: 10 }}>
                 Singles
               </Paragraph>
               <Paragraph style={{ color: "gray", fontSize: 10 }}>
                 Super Smash Bros. Ultimate
-              </Paragraph>
+              </Paragraph> */}
               <Paragraph style={{ color: "gray", fontSize: 10 }}>
                 April 18th, 2021 @7:00 PDT
               </Paragraph>

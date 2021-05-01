@@ -10,7 +10,7 @@ export default function CoHostOverviewScreen(navigation) {
                 <Card>
                   <Image
                     style={style.image}
-                    source={require("../assets/night.jpg")}
+                    source={require("../assets/smash.jpg")} //../assets/night.jpg
                   ></Image>
                   <Title style={style.title}>
                     Planned Under Night Event 1 - Bracket 2
