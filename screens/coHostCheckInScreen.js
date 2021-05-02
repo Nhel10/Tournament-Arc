@@ -77,7 +77,7 @@ export default class CoHostCheckInScreen extends Component {
                     {screen: 'CheckIn', params: this.state.unqCode}})}
                   title="Send code to competitors"
                 />
-                <Text>
+                {/* <Text>
                   Approve code: 
                 </Text>
                 <TouchableOpacity
@@ -93,10 +93,35 @@ export default class CoHostCheckInScreen extends Component {
                   }}
                 >
                   <Text style={{color: "white", marginLeft: marginText}}>{textValue}</Text>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
               </View>
             </View>
           </View>
+        </Card>
+        <Card
+          style={{
+            marginTop: 1,
+            alignItems: "center",
+            height: 50,
+          }}
+        >
+          <Text>
+            Approve code: 
+          </Text>
+          <TouchableOpacity
+            onPress={() => this._onPress()}
+            style={{
+              marginBottom: 10,
+              marginTop: 5,
+              flex: 1,
+              height: 15,
+              width: 220,
+              backgroundColor: buttonBg,
+              justifyContent: "center",
+            }}
+          >
+            <Text style={{color: "white", marginLeft: marginText}}>{textValue}</Text>
+          </TouchableOpacity>
         </Card>
       </View>
     );
