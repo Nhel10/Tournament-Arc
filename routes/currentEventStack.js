@@ -1,6 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import CurrentEvent from '../screens/currentEventScreen';
+import CurrentEvents from '../screens/currentEventsScreen';
 import register from '../screens/registerTourneyScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 const { Navigator, Screen } = createStackNavigator();
@@ -15,8 +16,13 @@ export const CurrentEventStack = ({navigation}) => (
         headerTintColor: '#fff',
         height: 60
       }}
-      initialRouteName = 'Current Event'
+      initialRouteName = 'Current Events'
     >
+        <Screen
+            name='Current Events'
+            component={CurrentEvents}
+        />
+
       <Screen
         name='Current Event'
         component={CurrentEvent}
@@ -30,7 +36,7 @@ export const CurrentEventStack = ({navigation}) => (
         component={register}
       />
   
-  
+
     </Navigator>
   );
   

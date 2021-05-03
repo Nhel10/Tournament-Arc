@@ -1,11 +1,17 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Button, SafeAreaView, TextInput, Alert} from 'react-native';
 import { Avatar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon2 from 'react-native-vector-icons/MaterialIcons'
 import Dialog from "react-native-dialog";
 import { useState } from "react";
 import { User, UserButton } from "../components/user";
+import {
+    Title,
+    List,
+    RadioButton,
+} from 'react-native-paper';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function CurrentEventScreen({ navigation }) {
     var event = window.events[window.eventID];
@@ -21,6 +27,59 @@ export default function CurrentEventScreen({ navigation }) {
     const [desc, onChangeDesc] = React.useState(event.desc);
     const [playerName, onChangePlayerName] = React.useState("")
     const [cohostName, onChangeCohostName] = React.useState("");
+    const [expanded, setExpanded] = React.useState(true);
+    const handlePress = () => setExpanded(!expanded);
+    const [checked, setChecked] = React.useState('first');
+
+    const [date, setDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [endMode, setEndMode] = useState('date');
+    const [show, setShow] = useState(false);
+    const [endShow, setEndShow] = useState(false);
+    const [tName, setTName] = React.useState("");
+    const [tDesc, setTdesc] = React.useState("");
+
+    const options = ["Apple", "Banana", "Orange"];
+    const [selected, setSelected] = useState();
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+    };
+
+    const onEndChange = (event, selectedDate) => {
+        const currentDate = selectedDate || endDate;
+        setEndShow(Platform.OS === 'ios');
+        setEndDate(currentDate);
+    };
+
+    const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+    };
+
+    const endShowMode = (currentMode) => {
+        setEndShow(true);
+        setEndMode(currentMode);
+    };
+
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const showTimepicker = () => {
+        showMode('time');
+    };
+
+    const endShowDatepicker = () => {
+        endShowMode('date');
+    };
+
+    const endShowTimepicker = () => {
+        endShowMode('time');
+    };
 
     const showEventDialog = () => {
         setVisible1(true);
@@ -78,6 +137,11 @@ export default function CurrentEventScreen({ navigation }) {
             height: 40,
             borderColor: '#304857',
             borderWidth: 2
+        },
+        inputs: {
+            margin: 1,
+            borderWidth: 1,
+            flexDirection: 'column',
         },
         submitButton: {
             backgroundColor: '#304857',
@@ -181,35 +245,156 @@ export default function CurrentEventScreen({ navigation }) {
                         size={25}
                     />
                 </TouchableOpacity>
+                
                 <Dialog.Container visible={visible2}>
+                    <ScrollView>
                     <Dialog.Title> Create New Tournament </Dialog.Title>
-                    <Dialog.Input label="Tournament Name" value={name} onChangeText={onChangeName}></Dialog.Input>
-                    <Dialog.Input label="Tournament Description" numberOfLines={4} multiline value={desc} onChangeText={onChangeDesc}></Dialog.Input>
-                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
-                        <Text> Start </Text>
-                        <Icon
-                        name="calendar-blank"
-                        size={25}
-                        />
-                        <Icon
-                        name="clock-outline"
-                        size={25}
-                        />
+                    <View style={{ flex: 1 }}>
+                        <View style={{ marginLeft: 5 }}>
+
+                            <List.Section title="Pick Game">
+                                <List.Accordion
+                                    title="Expand Game List"
+                                    left={props => <List.Icon {...props} />}>
+                                    <List.Item title="Street Fighter 5" />
+                                    <List.Item title="Tekken 7" />
+                                    <List.Item title="Super Smash Bros Ultimate" />
+                                    <List.Item title="Under Night In-Birth Exe:late cl-r" />
+                                    <List.Item title="Guilty Gear Strive" />
+                                    <List.Item title="Blazeblue Centralfiction" />
+                                </List.Accordion>
+                            </List.Section>
+
+                            <View style={{ flexDirection: 'row' }}>
+                                <RadioButton
+                                    value="first"
+                                    status={checked === 'first' ? 'checked' : 'unchecked'}
+                                    onPress={() => setChecked('first')}
+                                />
+                                <View style={{ marginLeft: 5 }}>
+                                    <Title style={styles.checkbox}>Online</Title>
+                                </View>
+                            </View>
+
+                            <View style={{ flexDirection: 'row' }}>
+                                <RadioButton
+                                    value="second"
+                                    status={checked === 'second' ? 'checked' : 'unchecked'}
+                                    onPress={() => setChecked('second')}
+                                />
+                                <View style={{ marginLeft: 5 }}>
+                                    <Title style={styles.checkbox}>Offline</Title>
+                                </View>
+                            </View>
+
+                            <Title style={styles.moreInput}>Tournament Name</Title>
+                            <SafeAreaView>
+                                <TextInput
+                                        style={styles.input}
+                                        onChangeText={setTName}
+                                    value={tName}
+                                    placeholder=" Tournament Name"
+                                />
+                            </SafeAreaView>
+
+                            <Title style={styles.moreInput}>Tournament Description</Title>
+                            <SafeAreaView>
+                                <TextInput
+                                    style={styles.inputs}
+                                    onChangeText={tDesc}
+                                    value={setTdesc}
+                                    numberOfLines={4}
+                                    multiline
+                                    placeholder=" Description"
+                                />
+                            </SafeAreaView>
+
+                            <Text style={styles.titles}>Starts</Text>
+                            <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                    <TouchableOpacity activeOpacity={0.5} onPress={showDatepicker}>
+                                        <Icon
+                                            name="calendar-blank"
+                                            size={25}
+                                        />
+                                    </TouchableOpacity>
+                                    <Text>{date.getMonth() + 1}/{date.getDate()}</Text>
+                                </View>
+                                <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                    <TouchableOpacity activeOpacity={0.5} onPress={showTimepicker}>
+                                        <Icon
+                                            name="clock-outline"
+                                            size={25}
+                                        />
+                                    </TouchableOpacity>
+                                    <Text>{date.getHours()}:{date.getMinutes()}</Text>
+                                </View>
+                            </View>
+
+                            {show && (
+                                <DateTimePicker
+                                    testID="dateTimePicker"
+                                    value={date}
+                                    mode={mode}
+                                    is24Hour={true}
+                                    display="default"
+                                    onChange={onChange}
+                                />
+                            )}
+                            <Text style={styles.titles}>Ends</Text>
+                            <View>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                        <TouchableOpacity activeOpacity={0.5} onPress={endShowDatepicker}>
+                                            <Icon
+                                                name="calendar"
+                                                size={25}
+                                            />
+                                        </TouchableOpacity>
+                                        <Text>{endDate.getMonth() + 1}/{endDate.getDate()}</Text>
+                                    </View>
+                                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                        <TouchableOpacity activeOpacity={0.5} onPress={endShowTimepicker}>
+                                            <Icon
+                                                name="clock"
+                                                size={25}
+                                            />
+                                        </TouchableOpacity>
+                                        <Text>{endDate.getHours()}:{endDate.getMinutes()}</Text>
+                                    </View>
+                                </View>
+                            </View>
+
+                            {endShow && (
+                                <DateTimePicker
+                                    testID="endDateTimePicker"
+                                    value={endDate}
+                                    mode={endMode}
+                                    is24Hour={true}
+                                    display="default"
+                                    onChange={onEndChange}
+                                />
+                            )}
+
+
+
+                            <View style={{ paddingTop: 15 }}>
+                                <Button
+                                    title="Confirm"
+                                    color="#f194ff"
+                                    onPress={() => Alert.alert('Tournament Entered')}
+                                />
+                            </View>
+
+
+
+
+                        </View>
+
                     </View>
-                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
-                        <Text> End </Text>
-                        <Icon
-                            name="calendar"
-                            size={25}
-                        />
-                        <Icon
-                            name="clock"
-                            size={25}
-                        />
-                    </View>
-                    <Dialog.Button label="Cancel" onPress={handleCancel} />
-                    <Dialog.Button label="Save" onPress={handleEventSave} />
-                </Dialog.Container>
+                        <Dialog.Button label="Cancel" onPress={handleCancel} />
+                    </ScrollView>
+                    </Dialog.Container>
             </View>
             <View style={styles.scrollViewHolder}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>

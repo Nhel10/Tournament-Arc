@@ -24,7 +24,6 @@ import Login from "./components/auth/login";
 import { Event } from './components/event';
 
 
-/*const App = () => {
     window.users = []
     window.events = [];
     new User("johniscool123", "image1");
@@ -44,9 +43,7 @@ import { Event } from './components/event';
     window.cohosts = [window.players[0], window.players[1]]
     window.eventID = 0;
     window.userID = 0;
-  return (
-    <AppNavigator/>
-  ); */
+
 
   
   const store = createStore(rootReducer, applyMiddleware(thunk));
