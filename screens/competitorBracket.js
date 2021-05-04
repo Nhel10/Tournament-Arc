@@ -10,15 +10,10 @@ import {
 } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
-class CompetitorBracket extends Component {
-  state = {
-    modalVisible: false,
-  };
 
-  setModalVisible = (visible) => {
-    this.setState({ modalVisible: visible });
-  };
-  render() {
+export default function CompetitorBracket() {
+  var bracket = window.brackets[0];
+  console.log(bracket);
     return (
       <ScrollView horizontal={true}>
         <View style={{ flexDirection: "column" }}>
@@ -48,7 +43,7 @@ class CompetitorBracket extends Component {
             <View>
               <TouchableOpacity style={styles.firstBracket}>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.username}>BigFoot</Text>
+                  <Text style={styles.username}>bracket.Round.matchList[0]</Text>
                   <View
                     style={{
                       backgroundColor: "gray",
@@ -324,8 +319,7 @@ class CompetitorBracket extends Component {
       </ScrollView>
     );
   }
-}
-export default CompetitorBracket;
+
 
 const styles = StyleSheet.create({
   firstBracket: {

@@ -22,11 +22,13 @@ import Landing from "./components/auth/landing";
 import Main from "./routes/drawer";
 import Login from "./components/auth/login";
 import { Event } from './components/event';
+import {Bracket} from './components/bracket';
 
 
-/*const App = () => {
+    
     window.users = []
     window.events = [];
+    window.brackets = [];
     new User("johniscool123", "image1");
     new User("bienfu", "image1");
     new User("dawg", "image2");
@@ -44,9 +46,18 @@ import { Event } from './components/event';
     window.cohosts = [window.players[0], window.players[1]]
     window.eventID = 0;
     window.userID = 0;
-  return (
-    <AppNavigator/>
-  ); */
+
+    console.log(brackets);
+    brackets.push(new Bracket("Bracket 1", "This is a description", "Steet Fighter 5"));
+    brackets[0].addPlayer(users[1]);
+    brackets[0].addPlayer(users[2]);
+    brackets[0].addPlayer(users[3]);
+    brackets[0].addPlayer(users[4]);
+    brackets[0].startBracket();
+    console.log(brackets);
+
+
+  
 
   
   const store = createStore(rootReducer, applyMiddleware(thunk));
@@ -123,7 +134,7 @@ export class App extends Component {
         <Main />
       </Provider>
     );
-  }
+  } 
 } 
 
 export default App;
