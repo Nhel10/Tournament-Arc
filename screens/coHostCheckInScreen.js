@@ -72,6 +72,9 @@ export default class CoHostCheckInScreen extends Component {
                 April 18th, 2021 @7:00 PDT 
               </Text>
               <View style={styles.buttonContainer}>
+                <Text>
+                  Use code 1234 as a test
+                </Text>
                 <TextInput
                   placeholder = "Enter custom code"
                   onChangeText = {unqCode=>this.setState({unqCode})}
