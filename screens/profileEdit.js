@@ -1,13 +1,51 @@
-import React from "react";
-import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
-import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Platform,
+  Button
+} from "react-native";
+import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 import { globalStyles } from "../styles/global";
 import { TextInput } from "react-native-paper";
+import * as ImagePicker from "expo-image-picker";
 
 export default function ProfileEdit() {
   const [userNameText, setText] = React.useState("");
   const [locationText, setText2] = React.useState("");
   const [twitchText, setText3] = React.useState("");
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      if (Platform.OS !== "web") {
+        const {
+          status,
+        } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+        if (status !== "granted") {
+          alert("Sorry, we need camera roll permissions to make this work!");
+        }
+      }
+    })();
+  }, []);
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setImage(result.uri);
+    }
+  };
 
   return (
     <View>
@@ -26,10 +64,26 @@ export default function ProfileEdit() {
         </Card>
       </View>
       {/* This is for the avatar for the user, still need to add changing photos. */}
-      <View style={style.avatarPosition}>
-        <Avatar.Image size={100} source={require("../assets/bienfu.png")} />
+      <View style={{ marginTop: 10, alignItems: "center" }}>
+        <Button
+          title="+"
+          onPress={pickImage}
+          style={{
+            backgroundColor: "gray",
+            borderRadius: 100,
+            height: 100,
+            width: 100,
+          }}
+        ></Button>
+
+        {image && (
+          <Image
+            source={{ uri: image }}
+            style={{ width: 100, height: 100, borderRadius: 50 }}
+          />
+        )}
       </View>
-      
+
       <View style={{ alignItems: "center" }}>
         <TextInput
           style={style.textArea}
@@ -79,8 +133,8 @@ const style = StyleSheet.create({
     marginTop: 10,
     width: 400,
   },
-  avatarPosition : {
+  avatarPosition: {
     marginTop: 10,
-    alignItems: "center"
-  }
+    alignItems: "center",
+  },
 });
