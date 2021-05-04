@@ -1,6 +1,7 @@
-import { USER_STATE_CHANGE, CLEAR_DATA } from "../constants/index";
+import { USER_STATE_CHANGE, USER_PROFILE_STATE_CHANGE, CLEAR_DATA } from "../constants/index";
 /* Make calls to fetch a user, save a user, save events, and etc */
 import firebase from "firebase";
+import { SnapshotViewIOSComponent } from "react-native";
 
 /* Responsible for deleting everything from redux store so we can can clear previous users information*/ 
 export function clearData(){
@@ -25,6 +26,27 @@ export function fetchUser() {
                 else {
                     console.log('does not exist')
                 }
+            })
+    })
+}
+
+
+export function fetchUserProfile() {
+    return ((dispatch) => {
+        firebase.firestore()
+            .collection("userProfile")
+            .doc(firebase.auth().currentUser.uid)
+            .get()
+            .then((snapshot) => {
+                let userProfile = snapshot.docs.map(doc => {
+                    const data = doc.data();
+                    const id = doc.id;
+                    return {id, ...data}
+                })
+                console.log(userProfile)
+                dispatch({ type: USER_PROFILE_STATE_CHANGE, userProfile})
+
+
             })
     })
 }

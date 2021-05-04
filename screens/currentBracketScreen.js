@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
-class CompetitorBracket extends Component {
+class currentBracketScreen extends Component {
   state = {
     modalVisible: false,
   };
@@ -183,7 +183,6 @@ class CompetitorBracket extends Component {
               </TouchableOpacity>
             </View>
             {/* End of the first round */}
-
             {/* Start of the second round */}
             <View style={{ marginLeft: 10 }}>
               <TouchableOpacity
@@ -320,14 +319,13 @@ class CompetitorBracket extends Component {
                 </View>
               </TouchableOpacity>
             </View>
-            {/* End of the final round */}
           </View>
         </View>
       </ScrollView>
     );
   }
 }
-export default CompetitorBracket;
+export default currentBracketScreen;
 
 const styles = StyleSheet.create({
   firstBracket: {

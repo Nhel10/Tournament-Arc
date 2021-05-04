@@ -1,13 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Button } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Button, SafeAreaView, TextInput, Alert} from 'react-native';
 import { Avatar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Icon2 from 'react-native-vector-icons/MaterialIcons'
 import Dialog from "react-native-dialog";
 import { useState } from "react";
 import { User, UserButton } from "../components/user";
+import {
+    Title,
+    List,
+    RadioButton,
+} from 'react-native-paper';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import { Tournament, TournamentButton } from "../components/tournament";
 
 export default function CurrentEventScreen({ navigation }) {
+    
     var event = window.events[window.eventID];
     var eventNameTemp = "Event Name";
     var eventDescriptionTemp = "This is the event description. It will describe the purpose of the event and the tournaments that are organized around it.";
@@ -21,12 +29,89 @@ export default function CurrentEventScreen({ navigation }) {
     const [desc, onChangeDesc] = React.useState(event.desc);
     const [playerName, onChangePlayerName] = React.useState("")
     const [cohostName, onChangeCohostName] = React.useState("");
+    const [expanded, setExpanded] = React.useState(true);
+    const handlePress = () => setExpanded(!expanded);
+    const [checked, setChecked] = React.useState('first');
+    const [game, setGame] = React.useState("");
+    const [date, setDate] = useState(new Date());
+    const [endDate, setEndDate] = useState(new Date());
+    const [mode, setMode] = useState('date');
+    const [endMode, setEndMode] = useState('date');
+    const [show, setShow] = useState(false);
+    const [endShow, setEndShow] = useState(false);
+    const [tName, setTName] = React.useState("");
+    const [tDesc, setTdesc] = React.useState("");
+
+    const options = ["Apple", "Banana", "Orange"];
+    const [selected, setSelected] = useState();
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(Platform.OS === 'ios');
+        setDate(currentDate);
+    };
+
+    const onEndChange = (event, selectedDate) => {
+        const currentDate = selectedDate || endDate;
+        setEndShow(Platform.OS === 'ios');
+        setEndDate(currentDate);
+    };
+
+    const showMode = (currentMode) => {
+        setShow(true);
+        setMode(currentMode);
+    };
+
+    const endShowMode = (currentMode) => {
+        setEndShow(true);
+        setEndMode(currentMode);
+    };
+
+    const changeGame1 = () => {
+        setGame("StreetFighter5");
+    }
+
+    const changeGame2 = () => {
+        setGame("Tekken7");
+    }
+
+    const changeGame3 = () => {
+        setGame("SSBU");
+    }
+
+    const changeGame4 = () => {
+        setGame("UnderNightInBirth");
+    }
+
+    const changeGame5 = () => {
+        setGame("GuiltyGearStrive");
+    }
+
+    const changeGame6 = () => {
+        setGame("Blazeblue");
+    }
+
+    const showDatepicker = () => {
+        showMode('date');
+    };
+
+    const showTimepicker = () => {
+        showMode('time');
+    };
+
+    const endShowDatepicker = () => {
+        endShowMode('date');
+    };
+
+    const endShowTimepicker = () => {
+        endShowMode('time');
+    };
 
     const showEventDialog = () => {
         setVisible1(true);
     };
 
-    showTournamentDialog = () => {
+    const showTournamentDialog = () => {
         setVisible2(true);
     }
 
@@ -79,6 +164,11 @@ export default function CurrentEventScreen({ navigation }) {
             borderColor: '#304857',
             borderWidth: 2
         },
+        inputs: {
+            margin: 1,
+            borderWidth: 1,
+            flexDirection: 'column',
+        },
         submitButton: {
             backgroundColor: '#304857',
             padding: 10,
@@ -122,6 +212,20 @@ export default function CurrentEventScreen({ navigation }) {
                 </UserButton>
             </View>
             <View style={styles.separator} />
+            </View>
+        )
+    }
+
+    var tournaments = [];
+    for (let i = 0; i < window.events[window.eventID].tournaments.length; i++) {
+        tournaments.push(
+            <View>
+                <View style={styles.separator} />
+                <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+                    <TournamentButton name={event.tournaments[i].name} img={event.tournaments[i].game} date={event.tournaments[i].date} endDate={event.tournaments[i].endDate} EID={event.tournaments[i].EID} TID={event.tournaments[i].TID}>
+                    </TournamentButton>
+                </View>
+                <View style={styles.separator} />
             </View>
         )
     }
@@ -173,6 +277,9 @@ export default function CurrentEventScreen({ navigation }) {
                 <Text style={{padding: 10, fontSize:18, color: 'gray'}}>
                     {eventDescription}
             </Text>
+            <Text style={{ padding: 10, fontSize: 18}}>
+                {event.startDate.toDateString()} - {event.endDate.toDateString()}
+            </Text>
             <View style={style.firstContainer}>
                 <Text style={style.titles}>Tournaments </Text>
                 <TouchableOpacity activeOpacity={0.5} onPress={showTournamentDialog}>
@@ -181,36 +288,159 @@ export default function CurrentEventScreen({ navigation }) {
                         size={25}
                     />
                 </TouchableOpacity>
+                
                 <Dialog.Container visible={visible2}>
+                    <ScrollView>
                     <Dialog.Title> Create New Tournament </Dialog.Title>
-                    <Dialog.Input label="Tournament Name" value={name} onChangeText={onChangeName}></Dialog.Input>
-                    <Dialog.Input label="Tournament Description" numberOfLines={4} multiline value={desc} onChangeText={onChangeDesc}></Dialog.Input>
-                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
-                        <Text> Start </Text>
-                        <Icon
-                        name="calendar-blank"
-                        size={25}
-                        />
-                        <Icon
-                        name="clock-outline"
-                        size={25}
-                        />
+                    <View style={{ flex: 1 }}>
+                        <View style={{ marginLeft: 5 }}>
+
+                            <List.Section title="Pick Game">
+                                <List.Accordion
+                                    title="Expand Game List"
+                                        left={props => <List.Icon {...props} />}>
+                                        <List.Item title="Street Fighter 5" value="Street Fighter 5" onPress={changeGame1} />
+                                        <List.Item title="Tekken 7" value="Tekken 7" onPress={changeGame2} />
+                                        <List.Item title="Super Smash Bros Ultimate" onPress={changeGame3}/>
+                                        <List.Item title="Under Night In-Birth Exe:late cl-r" onPress={changeGame4}/>
+                                        <List.Item title="Guilty Gear Strive" onPress={changeGame5}/>
+                                        <List.Item title="Blazeblue Centralfiction" onPress={changeGame6} />
+                                </List.Accordion>
+                            </List.Section>
+
+                            <View style={{ flexDirection: 'row' }}>
+                                <RadioButton
+                                    value="first"
+                                    status={checked === 'first' ? 'checked' : 'unchecked'}
+                                    onPress={() => setChecked('first')}
+                                />
+                                <View style={{ marginLeft: 5 }}>
+                                    <Title style={styles.checkbox}>Online</Title>
+                                </View>
+                            </View>
+
+                            <View style={{ flexDirection: 'row' }}>
+                                <RadioButton
+                                    value="second"
+                                    status={checked === 'second' ? 'checked' : 'unchecked'}
+                                    onPress={() => setChecked('second')}
+                                />
+                                <View style={{ marginLeft: 5 }}>
+                                    <Title style={styles.checkbox}>Offline</Title>
+                                </View>
+                            </View>
+
+                            <Title style={styles.moreInput}>Tournament Name</Title>
+                            <SafeAreaView>
+                                <TextInput
+                                        style={styles.input}
+                                        onChangeText={setTName}
+                                    value={tName}
+                                    placeholder=" Tournament Name"
+                                />
+                            </SafeAreaView>
+
+                            <Title style={styles.moreInput}>Tournament Description</Title>
+                            <SafeAreaView>
+                                <TextInput
+                                    style={styles.inputs}
+                                    onChangeText={setTdesc}
+                                    value={tDesc}
+                                    numberOfLines={4}
+                                    multiline
+                                    placeholder=" Description"
+                                />
+                            </SafeAreaView>
+
+                            <Text style={styles.titles}>Starts</Text>
+                            <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                    <TouchableOpacity activeOpacity={0.5} onPress={showDatepicker}>
+                                        <Icon
+                                            name="calendar-blank"
+                                            size={25}
+                                        />
+                                    </TouchableOpacity>
+                                    <Text>{date.getMonth() + 1}/{date.getDate()}</Text>
+                                </View>
+                                <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                    <TouchableOpacity activeOpacity={0.5} onPress={showTimepicker}>
+                                        <Icon
+                                            name="clock-outline"
+                                            size={25}
+                                        />
+                                    </TouchableOpacity>
+                                    <Text>{date.getHours()}:{date.getMinutes()}</Text>
+                                </View>
+                            </View>
+
+                            {show && (
+                                <DateTimePicker
+                                    testID="dateTimePicker"
+                                    value={date}
+                                    mode={mode}
+                                    is24Hour={true}
+                                    display="default"
+                                    onChange={onChange}
+                                />
+                            )}
+                            <Text style={styles.titles}>Ends</Text>
+                            <View>
+                                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                        <TouchableOpacity activeOpacity={0.5} onPress={endShowDatepicker}>
+                                            <Icon
+                                                name="calendar"
+                                                size={25}
+                                            />
+                                        </TouchableOpacity>
+                                        <Text>{endDate.getMonth() + 1}/{endDate.getDate()}</Text>
+                                    </View>
+                                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
+                                        <TouchableOpacity activeOpacity={0.5} onPress={endShowTimepicker}>
+                                            <Icon
+                                                name="clock"
+                                                size={25}
+                                            />
+                                        </TouchableOpacity>
+                                        <Text>{endDate.getHours()}:{endDate.getMinutes()}</Text>
+                                    </View>
+                                </View>
+                            </View>
+
+                            {endShow && (
+                                <DateTimePicker
+                                    testID="endDateTimePicker"
+                                    value={endDate}
+                                    mode={endMode}
+                                    is24Hour={true}
+                                    display="default"
+                                    onChange={onEndChange}
+                                />
+                            )}
+
+
+
+                            <View style={{ paddingTop: 15 }}>
+                                    <Button
+                                        title="Confirm"
+                                        color="#f194ff"
+                                        onPress={() => {event.addTournament(tName, tDesc, date, endDate, game); console.log(event.tournaments)}}
+                                />
+                            </View>
+
+
+
+
+                        </View>
+
                     </View>
-                    <View style={{ justifyContent: 'space-evenly', flexDirection: 'row' }}>
-                        <Text> End </Text>
-                        <Icon
-                            name="calendar"
-                            size={25}
-                        />
-                        <Icon
-                            name="clock"
-                            size={25}
-                        />
-                    </View>
-                    <Dialog.Button label="Cancel" onPress={handleCancel} />
-                    <Dialog.Button label="Save" onPress={handleEventSave} />
-                </Dialog.Container>
+                        <Dialog.Button label="Cancel" onPress={handleCancel} />
+                    </ScrollView>
+                    </Dialog.Container>
             </View>
+            {tournaments}
+            {/* 
             <View style={styles.scrollViewHolder}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
@@ -251,6 +481,7 @@ export default function CurrentEventScreen({ navigation }) {
                 title = 'Register'
                  />
             </View>
+            */}
             <View style={style.firstContainer}>
                 <Text style={style.titles}>Players </Text>
                 <TouchableOpacity activeOpacity={0.5} onPress={showPlayerDialog}>
