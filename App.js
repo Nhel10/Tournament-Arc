@@ -27,6 +27,10 @@ import Profile from "./screens/profile";
 import Main from "./components/main";
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     window.users = []
     window.events = [];
     new User("johniscool123", "image1");
@@ -48,6 +52,7 @@ import Main from "./components/main";
     window.userID = 0;
 
 
+<<<<<<< Updated upstream
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 const firebaseConfig = {
@@ -61,6 +66,23 @@ const firebaseConfig = {
 };
 
 // Initializes the firebase
+=======
+  
+  const store = createStore(rootReducer, applyMiddleware(thunk));
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBzjtcqcgkOB6DvvcocbHiDjzJjijhRwBw",
+    authDomain: "tournament-arc-main.firebaseapp.com",
+    projectId: "tournament-arc-main",
+    storageBucket: "tournament-arc-main.appspot.com",
+    messagingSenderId: "179357543662",
+    appId: "1:179357543662:web:cbce9794bbbab3d2e197ff",
+    measurementId: "G-E84FVP32MN",
+  
+  };
+
+// Initializes the firebase 
+>>>>>>> Stashed changes
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
