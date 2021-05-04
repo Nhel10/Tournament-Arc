@@ -27,6 +27,7 @@ import ChatStack from './chatStack';
 
 
 import { DrawerContent } from './drawerContent';
+import ProfileScreen from '../screens/profileScreen';
 
 const { Navigator, Screen } = createDrawerNavigator(); // Creates Stack navigation 
 
@@ -44,7 +45,7 @@ export const RootDrawerNavigator = () => (
     />
     <Screen
       name='Profile'
-      component={ProfileStack}
+      component={ProfileScreen}
     />
     <Screen
       name='My Tournament'

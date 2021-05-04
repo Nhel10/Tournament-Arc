@@ -183,6 +183,7 @@ class CompetitorBracket extends Component {
               </TouchableOpacity>
             </View>
             {/* End of the first round */}
+
             {/* Start of the second round */}
             <View style={{ marginLeft: 10 }}>
               <TouchableOpacity
@@ -319,6 +320,7 @@ class CompetitorBracket extends Component {
                 </View>
               </TouchableOpacity>
             </View>
+            {/* End of the final round */}
           </View>
         </View>
       </ScrollView>

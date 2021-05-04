@@ -14,6 +14,7 @@ import {
 import DateTimePicker from '@react-native-community/datetimepicker';
 
 export default function CurrentEventScreen({ navigation }) {
+    
     var event = window.events[window.eventID];
     var eventNameTemp = "Event Name";
     var eventDescriptionTemp = "This is the event description. It will describe the purpose of the event and the tournaments that are organized around it.";
@@ -85,7 +86,7 @@ export default function CurrentEventScreen({ navigation }) {
         setVisible1(true);
     };
 
-    showTournamentDialog = () => {
+    const showTournamentDialog = () => {
         setVisible2(true);
     }
 
