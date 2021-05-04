@@ -20,6 +20,7 @@ export default class CoHostCheckInScreen extends Component {
   constructor(props) {
     super(props)
     this.state = {unqCode:''};
+    this.state = {showMe: false};
   }
 
   _onPress = () => {
@@ -29,11 +30,16 @@ export default class CoHostCheckInScreen extends Component {
     });
   };
 
+  _renderVisible = () => {
+    this.setState({ showMe : !this.state.showMe });
+  };
+
   render() {
     const { toggle } = this.state;
     const textValue = toggle ? "Check-In" : "Done";
     const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
     const marginText = toggle ? 80 : 90;
+    console.log(this.state.unqCode);
     return (
       <View>
         <Card>
@@ -72,9 +78,13 @@ export default class CoHostCheckInScreen extends Component {
                 />
                 {/*Must navigate from drawer level first then work way down*/}
                 <Button
-                  onPress={() => this.props.navigation.navigate('Competitor Gateway', 
-                    {screen: 'Competitor Interface', params: 
-                    {screen: 'CheckIn', params: this.state.unqCode}})}
+                  onPress={() => {this.props.navigation.navigate('Competitor Gateway', {
+                    screen: 'Competitor Interface', 
+                    params: {
+                      screen: 'CheckIn', 
+                      params: { 
+                        P1: this.state.unqCode, }}}), 
+                  this._renderVisible()}}
                   title="Send code to competitors"
                 />
                 {/* <Text>
@@ -105,9 +115,17 @@ export default class CoHostCheckInScreen extends Component {
             height: 50,
           }}
         >
-          <Text>
-            Approve code: 
-          </Text>
+          <View style={{
+            flexDirection: "row",
+          }}>
+            <Text>Approve code: </Text>
+            {
+              this.state.showMe?
+              <Text>
+                5678
+              </Text> : null
+            }
+          </View>
           <TouchableOpacity
             onPress={() => this._onPress()}
             style={{
