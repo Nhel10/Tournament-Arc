@@ -46,6 +46,7 @@ import Main from "./components/main";
     window.cohosts = [window.players[0], window.players[1]]
     window.eventID = 0;
     window.userID = 0;
+
     window.tournamentiD = 0;
 
 

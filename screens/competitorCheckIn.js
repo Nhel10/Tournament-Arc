@@ -14,10 +14,12 @@ import {
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 import { useRoute } from '@react-navigation/native';
 
-function showCode({ route, navigation }) {
-  const { givenCode } = route.params;
-  return <Text>{ givenCode }</Text>;
-}
+// function showCode({ route, navigation }) {
+//   const { givenCode } = route.params;
+//   console.log("Hi");
+//   //console.log(this.props.navigation.state.params);
+//   return <Text>{ givenCode }</Text>;
+// }
 
 export default class CompetitorCheckIn extends Component {
   // state = {
@@ -36,12 +38,20 @@ export default class CompetitorCheckIn extends Component {
   //   });
   // };
 
+  // _getData = ({ route }) => {
+  //   console.log(route);
+  //   console.log(route.params);
+  //   const { givenCode } = route.params;
+  //   return ({ givenCode });
+  // }
+
   render() {
     // const { toggle } = this.state;
     // const textValue = toggle ? "Check-In" : "Done";
     // const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
     // const marginText = toggle ? 80 : 90;
-
+    const { route, navigation } = this.props;
+    //const { givenCode } = route.params;
     return (
       <View>
         <Card>
@@ -60,27 +70,30 @@ export default class CompetitorCheckIn extends Component {
               <Title style={{ fontSize: 14 }}>
                 Super Smash Bros World Tour 2020
               </Title>
-              <Paragraph style={{ color: "gray", fontSize: 10 }}>
+              {/* <Paragraph style={{ color: "gray", fontSize: 10 }}>
                 Singles
               </Paragraph>
               <Paragraph style={{ color: "gray", fontSize: 10 }}>
                 Super Smash Bros. Ultimate
-              </Paragraph>
+              </Paragraph> */}
               <Paragraph style={{ color: "gray", fontSize: 10 }}>
                 April 18th, 2021 @7:00 PDT
               </Paragraph>
               <View style={styles.buttonContainer}>
                 <Text>
-                  Check-in code: {() => showCode() }
+                  Check-in code: 1234
                 </Text>
                 <TextInput
                   enterCode = 'Enter valid code'
                   onChangeText = {reenCode=>this.setState({reenCode})}
                 />
                 <Button
-                  onPress={() => this.props.navigation.navigate('CoHost Gateway', 
-                  {screen: 'Co-Host Interface', params: 
-                  {screen: 'CheckIn', params: this.state.reenCode}})}
+                  onPress={() => this.props.navigation.navigate('CoHost Gateway', {
+                    screen: 'Co-Host Interface', 
+                    params: {
+                      screen: 'CheckIn', 
+                      params: {
+                        P2: this.state.reenCode }}})}
                   title="Confirm check-in"
                 />
                 {/* <TouchableOpacity

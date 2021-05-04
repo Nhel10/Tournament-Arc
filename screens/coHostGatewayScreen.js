@@ -11,7 +11,7 @@ export default function CoHostGatewayScreen({navigation}) {
           <Card>
             <Image
               style={style.image}
-              source={require("../assets/night.jpg")}
+              source={require("../assets/ultimate.jpg")} //../assets/night.jpg
             ></Image>
             <Title style={style.eventTitle}>
               Planned Under Night Event 1 - Bracket 2
