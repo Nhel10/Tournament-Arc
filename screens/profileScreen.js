@@ -15,7 +15,8 @@ import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 import Dialog from "react-native-dialog";
 import * as ImagePicker from "expo-image-picker";
 import firebase from "firebase";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 require("firebase/firestore");
 require("firebase/firebase-storage");
@@ -35,6 +36,7 @@ export default function ProfileScreen({ navigation, props }) {
   const [userLocation, setLocation] = React.useState(userLocationTemp);
   const [twitchLink, setTwitchLink] = React.useState(twitchLinkTemp);
   const [visible, setVisible] = useState(false);
+  const [eventVisible, setEventVisible] = useState(false);
   const [name, onChangeUserName] = React.useState("");
   const [location, onChangeLocation] = React.useState("");
   const [twitch, onChangeTwitch] = React.useState("");
@@ -96,8 +98,6 @@ export default function ProfileScreen({ navigation, props }) {
   //   })();
   // }, []);
 
-
-
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -117,15 +117,23 @@ export default function ProfileScreen({ navigation, props }) {
     setVisible(true);
   };
 
+  const showEventDialog = () => {
+    setEventVisible(true);
+  };
+
   const handleCancel = () => {
     setVisible(false);
+  };
+
+  const handleEventClose = () => {
+    setEventVisible(false);
   };
 
   const handleProfileSave = () => {
     setUserName(name);
     setLocation(location);
     setTwitchLink(twitch);
-    saveProfileData()
+    saveProfileData();
     setVisible(false);
   };
 
@@ -202,25 +210,76 @@ export default function ProfileScreen({ navigation, props }) {
           </View>
         </View>
       </Card>
-      <Image
-        style={{
-          height: 150,
-          width: 415,
-          marginTop: 10,
-          resizeMode: "stretch",
-          borderRadius: 20,
-        }}
-        source={require("../assets/lol2020.png")}
-      ></Image>
-      <Text style={styles.textStyle}>
-        League of Legends World Championship 2020
-      </Text>
+      <View>
+        <Title style={{marginLeft: 10, marginTop: 10, fontSize: 25}}>Attended Events</Title>
+      </View>
+      <View>
+        <TouchableOpacity onPress={showEventDialog}>
+          <Image
+            style={{
+              height: 150,
+              width: 415,
+              marginTop: 10,
+              resizeMode: "stretch",
+              borderRadius: 20,
+            }}
+            source={require("../assets/lol2020.png")}
+          ></Image>
+          <Text style={styles.textStyle}>
+            League of Legends World Championship 2020
+          </Text>
+          <Dialog.Container visible={eventVisible}>
+            <Image
+              style={{
+                height: 150,
+                width: 350,
+                resizeMode: "stretch",
+                borderRadius: 20,
+                alignItems: "center",
+              }}
+              source={require("../assets/lol2020.png")}
+            ></Image>
+            <Text
+              style={{
+                marginTop: 5,
+                fontWeight: "bold",
+                fontSize: 15,
+                borderBottomWidth: 0.5,
+                alignItems: "center",
+              }}
+            >
+              League of Legends World Championship 2020
+            </Text>
+            <View style={{ flexDirection: "column", marginTop: 5 }}>
+              <View style={{ flexDirection: "row" }}>
+                <MaterialCommunityIcons name="calendar" size={26} />
+                <Text>April 1st, 2020 - April 20th, 2020</Text>
+              </View>
+              <Text style>League of Legends</Text>
+              <View style={{ flexDirection: "row", marginTop: 5 }}>
+                <MaterialCommunityIcons name="account-multiple" size={26} />
+                <Text>323 Attendees</Text>
+              </View>
+              <Text
+                style={{
+                  backgroundColor: "#3ddb1f",
+                  width: 65,
+                  borderRadius: 50,
+                  color: "white",
+                  fontWeight: "bold",
+                  textAlign: "center",
+                }}
+              >
+                Finished
+              </Text>
+            </View>
+            <Dialog.Button label="Close" onPress={handleEventClose} />
+          </Dialog.Container>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
-
-
-
 
 const styles = StyleSheet.create({
   centeredView: {
