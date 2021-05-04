@@ -122,7 +122,7 @@ export default class CoHostCheckInScreen extends Component {
             {
               this.state.showMe?
               <Text>
-                5678
+                1234
               </Text> : null
             }
           </View>
