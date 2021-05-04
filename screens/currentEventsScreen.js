@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Text, SafeAreaView, TextInput, TouchableOpacity, Button, Alert } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, SafeAreaView, TextInput, TouchableOpacity, Button, Alert } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Event, EventButton } from '../components/event';
 export default function currentEventsScreen() {
@@ -69,6 +69,7 @@ export default function currentEventsScreen() {
 
 
     return (
+        <ScrollView>
         <View style={{ alignItems: 'center' }}>
             <TouchableOpacity onPress={handleUpdate}>
                 <Icon style={{ padding: 10 }}
@@ -76,8 +77,10 @@ export default function currentEventsScreen() {
                     size={25}
                 />
             </TouchableOpacity>
-            {eventsView}
-        </View >
+                {eventsView}
+            </View >
+
+        </ScrollView>
     )
 }
 

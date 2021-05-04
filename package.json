@@ -54,7 +54,7 @@
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
-    "thunk": "^0.0.1",
+    "thunk": "0.0.1",
     "watchman": "^1.0.0",
     "yarn": "^1.22.10"
   },

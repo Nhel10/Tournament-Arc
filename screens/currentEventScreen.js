@@ -12,6 +12,7 @@ import {
     RadioButton,
 } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { Tournament, TournamentButton } from "../components/tournament";
 
 export default function CurrentEventScreen({ navigation }) {
     var event = window.events[window.eventID];
@@ -30,7 +31,7 @@ export default function CurrentEventScreen({ navigation }) {
     const [expanded, setExpanded] = React.useState(true);
     const handlePress = () => setExpanded(!expanded);
     const [checked, setChecked] = React.useState('first');
-
+    const [game, setGame] = React.useState("");
     const [date, setDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
     const [mode, setMode] = useState('date');
@@ -64,6 +65,30 @@ export default function CurrentEventScreen({ navigation }) {
         setEndShow(true);
         setEndMode(currentMode);
     };
+
+    const changeGame1 = () => {
+        setGame("StreetFighter5");
+    }
+
+    const changeGame2 = () => {
+        setGame("Tekken7");
+    }
+
+    const changeGame3 = () => {
+        setGame("SSBU");
+    }
+
+    const changeGame4 = () => {
+        setGame("UnderNightInBirth");
+    }
+
+    const changeGame5 = () => {
+        setGame("GuiltyGearStrive");
+    }
+
+    const changeGame6 = () => {
+        setGame("Blazeblue");
+    }
 
     const showDatepicker = () => {
         showMode('date');
@@ -190,6 +215,20 @@ export default function CurrentEventScreen({ navigation }) {
         )
     }
 
+    var tournaments = [];
+    for (let i = 0; i < window.events[window.eventID].tournaments.length; i++) {
+        tournaments.push(
+            <View>
+                <View style={styles.separator} />
+                <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+                    <TournamentButton name={event.tournaments[i].name} img={event.tournaments[i].game} date={event.tournaments[i].date} endDate={event.tournaments[i].endDate} EID={event.tournaments[i].EID} TID={event.tournaments[i].TID}>
+                    </TournamentButton>
+                </View>
+                <View style={styles.separator} />
+            </View>
+        )
+    }
+
     var hosts = [];
     hosts.push(
         <View>
@@ -237,6 +276,9 @@ export default function CurrentEventScreen({ navigation }) {
                 <Text style={{padding: 10, fontSize:18, color: 'gray'}}>
                     {eventDescription}
             </Text>
+            <Text style={{ padding: 10, fontSize: 18}}>
+                {event.startDate.toDateString()} - {event.endDate.toDateString()}
+            </Text>
             <View style={style.firstContainer}>
                 <Text style={style.titles}>Tournaments </Text>
                 <TouchableOpacity activeOpacity={0.5} onPress={showTournamentDialog}>
@@ -255,13 +297,13 @@ export default function CurrentEventScreen({ navigation }) {
                             <List.Section title="Pick Game">
                                 <List.Accordion
                                     title="Expand Game List"
-                                    left={props => <List.Icon {...props} />}>
-                                    <List.Item title="Street Fighter 5" />
-                                    <List.Item title="Tekken 7" />
-                                    <List.Item title="Super Smash Bros Ultimate" />
-                                    <List.Item title="Under Night In-Birth Exe:late cl-r" />
-                                    <List.Item title="Guilty Gear Strive" />
-                                    <List.Item title="Blazeblue Centralfiction" />
+                                        left={props => <List.Icon {...props} />}>
+                                        <List.Item title="Street Fighter 5" value="Street Fighter 5" onPress={changeGame1} />
+                                        <List.Item title="Tekken 7" value="Tekken 7" onPress={changeGame2} />
+                                        <List.Item title="Super Smash Bros Ultimate" onPress={changeGame3}/>
+                                        <List.Item title="Under Night In-Birth Exe:late cl-r" onPress={changeGame4}/>
+                                        <List.Item title="Guilty Gear Strive" onPress={changeGame5}/>
+                                        <List.Item title="Blazeblue Centralfiction" onPress={changeGame6} />
                                 </List.Accordion>
                             </List.Section>
 
@@ -301,8 +343,8 @@ export default function CurrentEventScreen({ navigation }) {
                             <SafeAreaView>
                                 <TextInput
                                     style={styles.inputs}
-                                    onChangeText={tDesc}
-                                    value={setTdesc}
+                                    onChangeText={setTdesc}
+                                    value={tDesc}
                                     numberOfLines={4}
                                     multiline
                                     placeholder=" Description"
@@ -379,10 +421,10 @@ export default function CurrentEventScreen({ navigation }) {
 
 
                             <View style={{ paddingTop: 15 }}>
-                                <Button
-                                    title="Confirm"
-                                    color="#f194ff"
-                                    onPress={() => Alert.alert('Tournament Entered')}
+                                    <Button
+                                        title="Confirm"
+                                        color="#f194ff"
+                                        onPress={() => {event.addTournament(tName, tDesc, date, endDate, game); console.log(event.tournaments)}}
                                 />
                             </View>
 
@@ -396,6 +438,8 @@ export default function CurrentEventScreen({ navigation }) {
                     </ScrollView>
                     </Dialog.Container>
             </View>
+            {tournaments}
+            {/* 
             <View style={styles.scrollViewHolder}>
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
@@ -436,6 +480,7 @@ export default function CurrentEventScreen({ navigation }) {
                 title = 'Register'
                  />
             </View>
+            */}
             <View style={style.firstContainer}>
                 <Text style={style.titles}>Players </Text>
                 <TouchableOpacity activeOpacity={0.5} onPress={showPlayerDialog}>
