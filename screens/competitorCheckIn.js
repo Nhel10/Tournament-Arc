@@ -84,7 +84,7 @@ export default class CompetitorCheckIn extends Component {
                   Check-in code: 1234
                 </Text>
                 <TextInput
-                  enterCode = 'Enter valid code'
+                  placeholder = 'Enter valid code'
                   onChangeText = {reenCode=>this.setState({reenCode})}
                 />
                 <Button
