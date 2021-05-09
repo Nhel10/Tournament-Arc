@@ -10,6 +10,7 @@ import {
   Pressable,
   TouchableOpacity,
   TextInput,
+  Modal,
 } from "react-native";
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 import { useRoute } from '@react-navigation/native';
