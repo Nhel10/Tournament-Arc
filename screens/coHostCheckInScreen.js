@@ -9,6 +9,7 @@ import {
   Pressable,
   TouchableOpacity,
   TextInput,
+  Modal,
 } from "react-native";
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 
@@ -21,6 +22,7 @@ export default class CoHostCheckInScreen extends Component {
     super(props)
     this.state = {unqCode:''};
     this.state = {showMe: false};
+    this.state = {modalVisible: false};
   }
 
   _onPress = () => {
@@ -34,16 +36,57 @@ export default class CoHostCheckInScreen extends Component {
     this.setState({ showMe : !this.state.showMe });
   };
 
+  _showModal = () => {
+    this.setState({modalVisible : !this.state.modalVisible});
+    // return (
+    //   <View>
+    //     <Modal>
+    //       <View>
+    //         <Text>
+    //           Tournament Alert
+    //         </Text>
+    //       </View>
+    //       <View>
+    //         <Text>
+    //           Please check-in to tournament!!!
+    //         </Text>
+    //       </View>
+    //     </Modal>
+    //   </View>
+    // )
+  }
+
   render() {
     const { toggle } = this.state;
     const textValue = toggle ? "Check-In" : "Done";
     const buttonBg = toggle ? "#30b9e3" : "#27cc4d";
     const marginText = toggle ? 80 : 90;
-    console.log(this.state.unqCode);
+    //console.log(this.state.unqCode);
     return (
       <View>
         <Card>
           <View style={{ flexDirection: "row" }}>
+            {
+              this.state.modalVisible?
+              <Modal>
+                <View style={styles.centeredView}>
+                  <Text>
+                    Tournament Alert
+                  </Text>
+                </View>
+                <View style={styles.centeredView}>
+                  <Text>
+                    Please check-in to tournament!!!
+                  </Text>
+                  <Pressable
+                    style={styles.button}
+                    onPress={() => this._showModal()}
+                  >
+                    <Text style={styles.textStyle}>Close notification</Text>
+                  </Pressable>
+                </View>
+              </Modal> : null
+            }
             <Image
               style={{
                 marginLeft: 10,
@@ -81,13 +124,18 @@ export default class CoHostCheckInScreen extends Component {
                 />
                 {/*Must navigate from drawer level first then work way down*/}
                 <Button
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
                   onPress={() => {this.props.navigation.navigate('Competitor Gateway', {
                     screen: 'Competitor Interface', 
                     params: {
                       screen: 'CheckIn', 
                       params: { 
                         P1: this.state.unqCode, }}}), 
-                  this._renderVisible()}}
+                  this._renderVisible(),
+                  this._showModal()}}
                   title="Send code to competitors"
                 />
                 {/* <Text>
@@ -158,5 +206,16 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
   },
 });
