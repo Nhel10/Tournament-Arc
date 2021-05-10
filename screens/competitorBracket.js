@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
-class CompetitorBracket extends Component {
+class coHostBracketScreen extends Component {
   state = {
     modalVisible: false,
   };
-
+  //var testBracket = window.brackets[0];
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   };
@@ -57,7 +57,7 @@ class CompetitorBracket extends Component {
                     }}
                   >
                     <Text style={{ textAlign: "center", color: "white" }}>
-                      0
+                      2
                     </Text>
                   </View>
                 </View>
@@ -65,7 +65,7 @@ class CompetitorBracket extends Component {
                   style={{ borderBottomColor: "gray", borderBottomWidth: 1 }}
                 ></View>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.username}>KarateKid</Text>
+                  {window.brackets[0].testRender()}
                   <View
                     style={{
                       backgroundColor: "gray",
@@ -305,7 +305,7 @@ class CompetitorBracket extends Component {
                   style={{ borderBottomColor: "gray", borderBottomWidth: 1 }}
                 ></View>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.username}>SpongeBob</Text>
+                  
                   <View
                     style={{
                       backgroundColor: "gray",
@@ -327,7 +327,7 @@ class CompetitorBracket extends Component {
     );
   }
 }
-export default CompetitorBracket;
+export default coHostBracketScreen;
 
 const styles = StyleSheet.create({
   firstBracket: {

@@ -7,7 +7,7 @@
 ---*/
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
-import Search from '../screens/tourneyArcScreen';
+import Search from '../screens/competitorBracket';
 
 const { Navigator, Screen } = createStackNavigator();
 
