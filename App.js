@@ -47,7 +47,7 @@ import {Bracket} from './components/bracket';
     window.eventID = 0;
     window.userID = 0;
 
-    console.log(brackets);
+    //console.log(brackets);
     brackets.push(new Bracket("Bracket 1", "This is a description", "Steet Fighter 5"));
     brackets[0].addPlayer(users[1]);
     brackets[0].addPlayer(users[2]);

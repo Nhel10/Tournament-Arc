@@ -11,6 +11,16 @@ addCohost(User()) - pushes an existing user to list of cohosts
 addPlayer(User()) - pushes an existing user to list of players
 addBracket(args) - pushes a new Bracket() to list of brackets
  */
+import React, { Component } from "react";
+import { render } from "react-dom";
+import {
+    StyleSheet,
+    View,
+    Text,
+    TouchableOpacity,
+    Modal,
+    ScrollView,
+  } from "react-native";
 import {Round} from "./round";
 export class Bracket {
     constructor(name, desc, game) {
@@ -39,7 +49,7 @@ export class Bracket {
         this.generateRoundList();
         var i;
         for(i = 0; i < this.players.length; i++){
-            this.listOfRounds[0].addParticipants(this.players[0]);
+            this.listOfRounds[0].addParticipants(this.players[i]);
         }
         this.listOfRounds[0].formatMatchList();
     }
@@ -61,7 +71,7 @@ export class Bracket {
      // Generates the amound of rounds for a tournament bracket based on the amound of participants 
      generateRoundList(){
         var length = this.players.length;
-        var r = Math.floor(Math.log(8)/Math.log(2)); // Determines the amound of rounds based on participants 
+        var r = Math.floor(Math.log(length)/Math.log(2)); // Determines the amound of rounds based on participants 
         var i;
         /* For loop will create new Rounds into the listOfRounds  */
         for (i = 0; i < r; i++) {
@@ -69,7 +79,27 @@ export class Bracket {
         }
     }
 
+    testRender(){
+        return (
+            <Text style={styles.username}>Peepeepoopoo</Text>
+        )
+    }
+
 }
+const styles = StyleSheet.create({
+    firstBracket: {
+      marginLeft: 10,
+      marginTop: 15,
+      flexDirection: "column",
+      borderRadius: 1,
+      borderWidth: 1,
+      borderColor: "gray",
+      width: 170,
+    },
+    username: {
+      marginLeft: 5,
+    },
+  });
 
 /* TODO
 export class BracketButton extends Component {

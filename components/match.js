@@ -1,3 +1,13 @@
+import React, { Component } from "react";
+import { render } from "react-dom";
+import {
+    StyleSheet,
+    View,
+    Text,
+    TouchableOpacity,
+    Modal,
+    ScrollView,
+  } from "react-native";
 export class match {
     constructor(player1, player2){
         this.player1 = player1;
@@ -53,6 +63,13 @@ export class match {
 
     setPlayer2Score(score){
         this.player2Score = scroe;
+    }
+
+    renderMatch(){
+        return (
+            <Text style={styles.username}>Peepeepoopoo</Text>
+        )
+        
     }
 
     

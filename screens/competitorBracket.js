@@ -10,10 +10,15 @@ import {
 } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
-
-export default function CompetitorBracket() {
-  var bracket = window.brackets[0];
-  console.log(bracket);
+class coHostBracketScreen extends Component {
+  state = {
+    modalVisible: false,
+  };
+  //var testBracket = window.brackets[0];
+  setModalVisible = (visible) => {
+    this.setState({ modalVisible: visible });
+  };
+  render() {
     return (
       <ScrollView horizontal={true}>
         <View style={{ flexDirection: "column" }}>
@@ -43,7 +48,7 @@ export default function CompetitorBracket() {
             <View>
               <TouchableOpacity style={styles.firstBracket}>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.username}>bracket.Round.matchList[0]</Text>
+                  <Text style={styles.username}>BigFoot</Text>
                   <View
                     style={{
                       backgroundColor: "gray",
@@ -52,7 +57,7 @@ export default function CompetitorBracket() {
                     }}
                   >
                     <Text style={{ textAlign: "center", color: "white" }}>
-                      0
+                      2
                     </Text>
                   </View>
                 </View>
@@ -60,7 +65,7 @@ export default function CompetitorBracket() {
                   style={{ borderBottomColor: "gray", borderBottomWidth: 1 }}
                 ></View>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.username}>KarateKid</Text>
+                  <Text style={styles.username}>{window.brackets[0].testRender()}</Text>
                   <View
                     style={{
                       backgroundColor: "gray",
@@ -299,7 +304,7 @@ export default function CompetitorBracket() {
                   style={{ borderBottomColor: "gray", borderBottomWidth: 1 }}
                 ></View>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.username}>SpongeBob</Text>
+                  
                   <View
                     style={{
                       backgroundColor: "gray",
@@ -319,7 +324,8 @@ export default function CompetitorBracket() {
       </ScrollView>
     );
   }
-
+}
+export default coHostBracketScreen;
 
 const styles = StyleSheet.create({
   firstBracket: {
