@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 /*
  Calling Tournament().addBracket(args) on an existing tournament pushes a newly created bracket object into that tournament
@@ -14,8 +13,6 @@ addCohost(User()) - pushes an existing user to list of cohosts
 addPlayer(User()) - pushes an existing user to list of players
 addBracket(args) - pushes a new Bracket() to list of brackets
  */
-import React, { Component } from "react";
-import { render } from "react-dom";
 import {
     StyleSheet,
     View,
