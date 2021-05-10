@@ -1,3 +1,6 @@
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 /*
  Calling Tournament().addBracket(args) on an existing tournament pushes a newly created bracket object into that tournament
  Args:
@@ -101,13 +104,25 @@ const styles = StyleSheet.create({
     },
   });
 
-/* TODO
 export class BracketButton extends Component {
     static propTypes = {
     }
 
     render() {
-        return ()
+        return (
+            <GoToButton screenName='Current Bracket' />
+        )
     }
 }
-*/
+
+function GoToButton({screenName }) {
+    const navigation = useNavigation();
+
+    return (
+        <View>
+            <TouchableOpacity onPress={() => { navigation.navigate(screenName) }}>
+                <Text style={{ fontWeight: "bold", fontSize: 20 }}>Bracket</Text>
+            </TouchableOpacity>
+        </View>
+    )
+}

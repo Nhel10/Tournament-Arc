@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, SafeAreaView, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, View, ScrollView, Text, SafeAreaView, TextInput, TouchableOpacity, Button, Alert } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { Event, EventButton } from '../components/event';
-
 export default function currentEventsScreen() {
     const styles = StyleSheet.create({
         container: {
@@ -46,27 +46,41 @@ export default function currentEventsScreen() {
         },
     })
 
-    var eventsView = [];
+    const [eventsView, updateEventsView] = React.useState([]);
     console.log(window.events.length);
-    for (let i = 0; i < window.events.length; i++) {
-        eventsView.push(
-            <View>
-                <View style={styles.separator} />
-                <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <EventButton name={window.events[i].name} date={window.events[i].startDate} endDate={window.events[i].endDate} EID={i}>
-                    </EventButton>
+
+    const handleUpdate = () => {
+        var eventList = [];
+        for (let i = 0; i < window.events.length; i++) {
+            eventList.push(
+                <View>
+                    <View style={styles.separator} />
+                    <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+                        <EventButton name={window.events[i].name} date={window.events[i].startDate} endDate={window.events[i].endDate} EID={i}>
+                        </EventButton>
+                    </View>
+                    <View style={styles.separator} />
                 </View>
-                <View style={styles.separator} />
-            </View>
-        )
+            )
+        };
+        updateEventsView(eventList);
+        console.log("hello?");
     }
 
 
-
     return (
-        <View>
-            {eventsView}
-        </View >
+        <ScrollView>
+        <View style={{ alignItems: 'center' }}>
+            <TouchableOpacity onPress={handleUpdate}>
+                <Icon style={{ padding: 10 }}
+                    name="refresh"
+                    size={25}
+                />
+            </TouchableOpacity>
+                {eventsView}
+            </View >
+
+        </ScrollView>
     )
 }
 

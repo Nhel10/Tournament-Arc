@@ -10,11 +10,11 @@ import {
 } from "react-native";
 import { Avatar, Button, Card, Title, Paragraph } from "react-native-paper";
 
-class coHostBracketScreen extends Component {
+class currentBracketScreen extends Component {
   state = {
     modalVisible: false,
   };
-  //var testBracket = window.brackets[0];
+
   setModalVisible = (visible) => {
     this.setState({ modalVisible: visible });
   };
@@ -57,7 +57,7 @@ class coHostBracketScreen extends Component {
                     }}
                   >
                     <Text style={{ textAlign: "center", color: "white" }}>
-                      2
+                      0
                     </Text>
                   </View>
                 </View>
@@ -65,7 +65,7 @@ class coHostBracketScreen extends Component {
                   style={{ borderBottomColor: "gray", borderBottomWidth: 1 }}
                 ></View>
                 <View style={{ flexDirection: "row" }}>
-                  {window.brackets[0].testRender()}
+                  <Text style={styles.username}>KarateKid</Text>
                   <View
                     style={{
                       backgroundColor: "gray",
@@ -183,7 +183,6 @@ class coHostBracketScreen extends Component {
               </TouchableOpacity>
             </View>
             {/* End of the first round */}
-
             {/* Start of the second round */}
             <View style={{ marginLeft: 10 }}>
               <TouchableOpacity
@@ -305,7 +304,7 @@ class coHostBracketScreen extends Component {
                   style={{ borderBottomColor: "gray", borderBottomWidth: 1 }}
                 ></View>
                 <View style={{ flexDirection: "row" }}>
-                  
+                  <Text style={styles.username}>SpongeBob</Text>
                   <View
                     style={{
                       backgroundColor: "gray",
@@ -320,14 +319,13 @@ class coHostBracketScreen extends Component {
                 </View>
               </TouchableOpacity>
             </View>
-            {/* End of the final round */}
           </View>
         </View>
       </ScrollView>
     );
   }
 }
-export default coHostBracketScreen;
+export default currentBracketScreen;
 
 const styles = StyleSheet.create({
   firstBracket: {

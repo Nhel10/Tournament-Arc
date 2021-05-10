@@ -12,6 +12,9 @@ import { useNavigation } from '@react-navigation/native';
  */
 export class User {
     constructor(username, image) {
+        this.events = [];
+        this.tournaments = [];
+        this.brackets = [];
         this.username = username;
         this.image = image;
         this.UID = window.users.length;

@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 import PropTypes from 'prop-types';
 import { User } from "./user";
 import { useNavigation } from '@react-navigation/native';
 import { Tournament } from "./tournament";
+import { Dimensions } from 'react-native';
+import Images from '../index';
 
 /* 
  Calling new Event(args) pushes a newly created event object onto global array window.events in App.js
@@ -40,8 +42,8 @@ export class Event {
         this.players.push(player);
     }
 
-    addTournament(name, desc, game) {
-        this.tournaments.push(new Tournament(name, desc, game, this.EID, this.tournaments.size));
+    addTournament(name, desc, date, endDate, game) {
+        this.tournaments.push(new Tournament(name, desc, game, date, endDate, this.EID, this.tournaments.length));
     }
 }
 
@@ -76,6 +78,8 @@ function GoToButton({ name, date, endDate, EID, screenName }) {
     return (
         <View>
             <TouchableOpacity onPress={() => { window.eventID = EID; console.log(window.eventID); navigation.navigate(screenName); }}>
+                <Image style={{ resizeMode: 'stretch', width: Dimensions.get('window').width, height: 150 }} source={Images["image0"]}
+                />
                 <Text style={{ fontWeight: "bold", fontSize: 20 }}>{name}</Text>
                 <Text> {date.toDateString()} - {endDate.toDateString()}</Text>
             </TouchableOpacity>

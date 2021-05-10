@@ -12,7 +12,13 @@ const images = {
     image6: require('./assets/monke.jpg'),
     image7: require('./assets/pandra.png'),
     image8: require('./assets/Orange-black-skull.jpg'),
-    image9: require('./assets/splash.png')
+    image9: require('./assets/splash.png'),
+    StreetFighter5: require('./assets/StreetFIghter5.jpeg'),
+    Tekken7: require('./assets/Tekken7.png'),
+    SSBU: require('./assets/SuperSmashBrosUltimate.jpeg'),
+    UnderNightInBirth: require('./assets/UnderNightInBirthExelateclr.jpg'),
+    GuiltyGearStrive: require('./assets/GuiltyGearStrive.jpg'),
+    Blazeblue: require('./assets/BlazeblueCentralfiction.jpg')
 };
 
 export default images;

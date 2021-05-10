@@ -8,7 +8,6 @@ import React, { useState, Component } from "react";
 import * as Font from "expo-font";
 import Home from "./screens/home";
 import { AppLoading } from "expo";
-import AppNavigator from "./routes/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import { View, Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -19,13 +18,17 @@ import rootReducer from "./redux/reducers";
 import thunk from "redux-thunk";
 import Register from "./components/auth/register";
 import Landing from "./components/auth/landing";
-import Main from "./routes/drawer";
+import AppNavigator from "./routes/drawer";
 import Login from "./components/auth/login";
-import { Event } from './components/event';
 import {Bracket} from './components/bracket';
+import { Event } from "./components/event";
+import ProfileEdit from "./screens/profileEdit";
+import ProfileScreen from "./screens/profileScreen";
+import Profile from "./screens/profile";
+import Main from "./components/main";
 
 
-    
+
     window.users = []
     window.events = [];
     window.brackets = [];
@@ -47,6 +50,7 @@ import {Bracket} from './components/bracket';
     window.eventID = 0;
     window.userID = 0;
 
+
     //console.log(brackets);
     brackets.push(new Bracket("Bracket 1", "This is a description", "Steet Fighter 5"));
     brackets[0].addPlayer(users[1]);
@@ -60,20 +64,25 @@ import {Bracket} from './components/bracket';
   
 
   
-  const store = createStore(rootReducer, applyMiddleware(thunk));
+ 
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyBzjtcqcgkOB6DvvcocbHiDjzJjijhRwBw",
-    authDomain: "tournament-arc-main.firebaseapp.com",
-    projectId: "tournament-arc-main",
-    storageBucket: "tournament-arc-main.appspot.com",
-    messagingSenderId: "179357543662",
-    appId: "1:179357543662:web:cbce9794bbbab3d2e197ff",
-    measurementId: "G-E84FVP32MN",
-  
-  };
+    window.tournamentiD = 0;
 
-// Initializes the firebase 
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBzjtcqcgkOB6DvvcocbHiDjzJjijhRwBw",
+  authDomain: "tournament-arc-main.firebaseapp.com",
+  projectId: "tournament-arc-main",
+  storageBucket: "tournament-arc-main.appspot.com",
+  messagingSenderId: "179357543662",
+  appId: "1:179357543662:web:cbce9794bbbab3d2e197ff",
+  measurementId: "G-E84FVP32MN",
+};
+
+// Initializes the firebase
+
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -109,7 +118,6 @@ export class App extends Component {
     if (!loaded) {
       return (
         <View style={{ flex: 1, justifyContent: "center" }}>
-          <Text>Loading</Text>
         </View>
       );
     }
@@ -131,11 +139,12 @@ export class App extends Component {
     }
     return (
       <Provider store={store}>
-        <Main />
+        <AppNavigator></AppNavigator>
       </Provider>
     );
-  } 
-} 
+
+  }
+}
 
 export default App;
 

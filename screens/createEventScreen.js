@@ -202,7 +202,7 @@ export default function CreateEventScreen({ navigation }) {
                 />
             )}
 
-            <GoToButton screenName="Chat" />
+            <GoToButton screenName="Current Events" />
         </View>
  
     )
