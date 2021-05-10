@@ -65,7 +65,7 @@ class coHostBracketScreen extends Component {
                   style={{ borderBottomColor: "gray", borderBottomWidth: 1 }}
                 ></View>
                 <View style={{ flexDirection: "row" }}>
-                  <Text style={styles.username}>{window.brackets[0].testRender()}</Text>
+                  {window.brackets[0].testRender()}
                   <View
                     style={{
                       backgroundColor: "gray",
