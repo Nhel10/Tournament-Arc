@@ -95,10 +95,12 @@ export class Bracket {
             this.displayRounds = this.displayRounds.concat(this.listOfRounds[i].displayMatch);
         }
         return (
-            <ScrollView horizontal={true}>
-                <View style={{flexDirection:"column"}}>
+            <ScrollView>
+                <ScrollView horizontal={true}>
+                <View style={{flexDirection:"row", alignItems:"center"}}>
                     {this.displayRounds}
                 </View>
+                </ScrollView>
             </ScrollView>)
 
     }

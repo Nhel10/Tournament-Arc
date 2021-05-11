@@ -56,7 +56,11 @@ import Main from "./components/main";
     brackets[0].addPlayer(users[1]);
     brackets[0].addPlayer(users[2]);
     brackets[0].addPlayer(users[3]);
-    brackets[0].addPlayer(users[4]);
+brackets[0].addPlayer(users[4]);
+brackets[0].addPlayer(users[5]);
+brackets[0].addPlayer(users[6]);
+brackets[0].addPlayer(users[7]);
+brackets[0].addPlayer(users[8]);
     brackets[0].startBracket();
     console.log(brackets);
 

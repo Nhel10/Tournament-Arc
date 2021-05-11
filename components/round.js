@@ -67,7 +67,7 @@ export class Round {
             for(i = 0; i < this.totalMatches; i++){
                 this.displayMatch.push(
                     <View>
-                        <View style = {styles.firstBracket}>
+                        <View style={styles.firstBracket}>
                             <View style={{borderBottomWidth: 1}}>
                                 <View style={{ flexDirection: "row" }}>
                                     <View style={{ alignItems: 'center', justifyContent: 'center' }}>
@@ -104,22 +104,27 @@ export class Round {
                     </View>  
                 )
             }
-        } else if(this.participants.length != 0){
+        } else if (this.participants.length != 0) {
+            var i = 0;
+            // Pushes all the match
+            temp = [];
+            for (i = 0; i < this.matchList.length; i++) {
+                temp.push(
+                    <View style={{ flexDirection: "column" }}>
+                        {this.matchList[i].renderMatch()}
+                    </View>)
+            }
             this.displayMatch.push(
+                <View style={{ flexDirection: "column" }}>
                 <View style={{paddingLeft: 60, marginTop: 10}}>
                     <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                         Round 1
                     </Text>
+                    </View>
+                    {temp}
                 </View>
             )
-            var i = 0;
-            // Pushes all the match
-            for(i = 0; i < this.matchList.length; i++){
-                this.displayMatch.push(
-                    <View style={{flexDirection:"column"}}>
-                        {this.matchList[i].renderMatch()}
-                    </View>)
-            }
+
         }
         //return (this.displayMatch)
     }
