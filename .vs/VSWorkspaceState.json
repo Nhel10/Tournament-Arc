@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\components",
-    "\\graphql",
     "\\routes",
     "\\screens"
   ],
-  "SelectedNode": "\\screens\\guiltyGearEvent.js",
+  "SelectedNode": "\\components\\bracket.js",
   "PreviewInSolutionExplorer": false
 }

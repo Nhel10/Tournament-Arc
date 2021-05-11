@@ -13,6 +13,7 @@ import {
 } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Tournament, TournamentButton } from "../components/tournament";
+import { useNavigation } from '@react-navigation/native';
 
 export default function CurrentEventScreen({ navigation }) {
     
@@ -154,6 +155,22 @@ export default function CurrentEventScreen({ navigation }) {
         setVisible4(false);
     }
 
+    function GoToButton({ screenName }) {
+        const navigation = useNavigation();
+
+        return (
+            <View style={{ alignItems: 'center' }}>
+            <TouchableOpacity activeOpacity={0.5} onPress={() => { window.events[window.eventID].deleteEvent(); navigation.navigate(screenName); }}>
+                <Icon
+                    name="trash-can-outline"
+                    size={50}
+                />
+
+                </TouchableOpacity >
+            </View>
+        );
+    }
+
     const styles = StyleSheet.create({
         container: {
             paddingTop: 23
@@ -222,7 +239,7 @@ export default function CurrentEventScreen({ navigation }) {
             <View>
                 <View style={styles.separator} />
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <TournamentButton name={event.tournaments[i].name} img={event.tournaments[i].game} date={event.tournaments[i].date} endDate={event.tournaments[i].endDate} EID={event.tournaments[i].EID} TID={event.tournaments[i].TID}>
+                    <TournamentButton name={event.tournaments[i].name} img={event.tournaments[i].game} date={event.tournaments[i].date} endDate={event.tournaments[i].endDate} EID={event.tournaments[i].EID} TID={event.tournaments[i].TID} deleted={event.tournaments[i].deleted}>
                     </TournamentButton>
                 </View>
                 <View style={styles.separator} />
@@ -522,6 +539,7 @@ export default function CurrentEventScreen({ navigation }) {
                     {hosts}
                 </ScrollView>
             </View>
+            <GoToButton screenName="Current Events" />
         </ScrollView>
     )
 }

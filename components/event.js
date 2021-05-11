@@ -31,6 +31,7 @@ export class Event {
         this.endDate = endDate;
         this.host = host;
         this.EID = window.events.length;
+        this.deleted = 0;
         window.events.push(this);
     }
 
@@ -45,6 +46,12 @@ export class Event {
     addTournament(name, desc, date, endDate, game) {
         this.tournaments.push(new Tournament(name, desc, game, date, endDate, this.EID, this.tournaments.length));
     }
+
+    deleteEvent() {
+        this.players = [];
+        this.cohosts = [];
+        this.deleted = 1;
+    }
 }
 
 /*
@@ -56,19 +63,21 @@ export class EventButton extends Component {
         name: PropTypes.string.isRequired,
         date: PropTypes.instanceOf(Date).isRequired,
         endDate: PropTypes.instanceOf(Date).isRequired,
-        EID: PropTypes.number.isRequired
+        EID: PropTypes.number.isRequired,
+        deleted: PropTypes.number.isRequired
     }
 
     render() {
-        const { name, date, endDate, EID } = this.props;
+        const { name, date, endDate, EID, deleted } = this.props;
         console.log(name);
         console.log(date);
         console.log(endDate);
         console.log(EID);
 
-        return (
-            <GoToButton name={name} date={date} endDate={endDate} EID={EID} screenName='Current Event' />)
-            
+        if (deleted == 0)
+            return (
+                <GoToButton name={name} date={date} endDate={endDate} EID={EID} screenName='Current Event' />)
+        else return null;
     }
 }
 

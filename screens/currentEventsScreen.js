@@ -56,7 +56,7 @@ export default function currentEventsScreen() {
                 <View>
                     <View style={styles.separator} />
                     <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                        <EventButton name={window.events[i].name} date={window.events[i].startDate} endDate={window.events[i].endDate} EID={i}>
+                        <EventButton name={window.events[i].name} date={window.events[i].startDate} endDate={window.events[i].endDate} EID={i} deleted={window.events[i].deleted}>
                         </EventButton>
                     </View>
                     <View style={styles.separator} />

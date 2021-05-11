@@ -30,6 +30,7 @@ export class Tournament {
         this.brackets = [];
         this.players = [];
         this.cohosts = [];
+        this.deleted = 0;
     }
 
     addCohost(cohost) {
@@ -43,6 +44,13 @@ export class Tournament {
     addBracket(name, desc) {
         this.brackets.push(new Bracket(name, desc, this.game, this.EID, this.TID, this.brackets.length));
     }
+
+    deleteTournament() {
+        this.brackets = [];
+        this.players = [];
+        this.cohosts = [];
+        this.deleted = 1;
+    }
 }
 
 export class TournamentButton extends Component {
@@ -52,18 +60,21 @@ export class TournamentButton extends Component {
         date: PropTypes.instanceOf(Date).isRequired,
         endDate: PropTypes.instanceOf(Date).isRequired,
         EID: PropTypes.number.isRequired,
-        TID: PropTypes.number.isRequired
+        TID: PropTypes.number.isRequired,
+        deleted: PropTypes.number.isRequired
     }
 
     render() {
-        const { name, img, date, endDate, EID, TID } = this.props;
+        const { name, img, date, endDate, EID, TID, deleted } = this.props;
         image = img;
         if (image == "")
             image = "image0";
 
         console.log(img);
+        if (deleted == 0)
         return (
-            <GoToButton name={name} img={image} date={date} endDate={endDate} EID={EID} TID={TID} screenName='Current Tournament' />)
+                <GoToButton name={name} img={image} date={date} endDate={endDate} EID={EID} TID={TID} screenName='Current Tournament' />)
+        else return null;
     }
 }
 

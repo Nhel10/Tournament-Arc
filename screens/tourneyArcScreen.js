@@ -1,17 +1,35 @@
 import React from 'react';
-import { StyleSheet, View, Text, Image } from 'react-native';
+import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../styles/global';
 import Images from '../index';
 import { Dimensions } from 'react-native';
 import { BracketButton } from '../components/bracket';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import {
     Title,
     List,
     RadioButton,
 } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+
 
 export default function TourneyeArcScreen() {
     var tournament = window.events[window.eventID].tournaments[window.tournamentID];
+    function GoToButton({ screenName }) {
+        const navigation = useNavigation();
+
+        return (
+            <View style={{ alignItems: 'center' }}>
+                <TouchableOpacity activeOpacity={0.5} onPress={() => { tournament.deleteTournament(); navigation.navigate(screenName); }}>
+                    <Icon
+                        name="trash-can-outline"
+                        size={50}
+                    />
+
+                </TouchableOpacity >
+            </View>
+        );
+    }
     return (
         <View style={{ flex: 1 }}>
             <Image style={{ resizeMode: 'stretch', width: Dimensions.get('window').width, height: 150 }} source={Images[tournament.game]}
@@ -36,6 +54,7 @@ export default function TourneyeArcScreen() {
                 <Text style = {styles.title}></Text>
             </View>
             <BracketButton />
+            <GoToButton screenName="Current Event" />
         </View>
     )
        
