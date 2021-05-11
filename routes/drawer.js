@@ -28,6 +28,7 @@ import ChatStack from './chatStack';
 
 import { DrawerContent } from './drawerContent';
 import ProfileScreen from '../screens/profileScreen';
+import AddFriend from '../screens/addFriend';
 
 const { Navigator, Screen } = createDrawerNavigator(); // Creates Stack navigation 
 

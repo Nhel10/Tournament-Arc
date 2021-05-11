@@ -26,6 +26,7 @@ import ProfileEdit from "./screens/profileEdit";
 import ProfileScreen from "./screens/profileScreen";
 import Profile from "./screens/profile";
 import Main from "./components/main";
+import { AddFriend } from "./screens/addFriend";
 
 
 
