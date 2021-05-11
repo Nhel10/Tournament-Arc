@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CurrentEvent from '../screens/currentEventScreen';
 import CurrentEvents from '../screens/currentEventsScreen';
 import CurrentTournament from '../screens/tourneyArcScreen';
-import CurrentBracket from '../screens/currentBracketScreen';
+import CurrentBracket from '../screens/displayBracket';
 import register from '../screens/registerTourneyScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 const { Navigator, Screen } = createStackNavigator();

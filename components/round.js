@@ -67,7 +67,9 @@ export class Round {
 
     renderRoundMatch(){
         var i = 0;
-        if(this.participants.length == 0){
+        this.displayMatch = [];
+        if (this.participants.length == 0) {
+            this.matchList = [];
             for (i = 0; i < this.totalMatches; i++){
                 this.addMatch(new match(window.users[9], window.users[9]));
             }

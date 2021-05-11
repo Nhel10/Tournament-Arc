@@ -41,7 +41,7 @@ window.brackets = [];
     new User("monke", "image6");
     new User("pander", "image7");
     new User("what", "image8");
-    new User("Anonymous", "image0");
+    new User("", "image0");
     new Event("Event 0", "This is Event 0's Description", new Date(), new Date(), users[0]);
     new Event("Event 1", "This is Event 1's Description", new Date(), new Date(), users[0]);
     events[0].addPlayer(users[1]);

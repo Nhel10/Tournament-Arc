@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { useNavigation } from '@react-navigation/native';
 /*
  Calling Tournament().addBracket(args) on an existing tournament pushes a newly created bracket object into that tournament
@@ -13,14 +12,21 @@ addCohost(User()) - pushes an existing user to list of cohosts
 addPlayer(User()) - pushes an existing user to list of players
 addBracket(args) - pushes a new Bracket() to list of brackets
  */
+
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { useState } from "react";
+import Dialog from "react-native-dialog";
+import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity, Button, SafeAreaView, TextInput, Alert } from 'react-native';
+import { Avatar } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { User, UserButton } from "../components/user";
+import Icon2 from 'react-native-vector-icons/MaterialIcons'
 import {
-    StyleSheet,
-    View,
-    Text,
-    TouchableOpacity,
-    Modal,
-    ScrollView,
-  } from "react-native";
+    Title,
+    List,
+    RadioButton,
+} from 'react-native-paper';
 import {Round} from "./round";
 export class Bracket {
     constructor(name, desc, game) {
@@ -90,19 +96,20 @@ export class Bracket {
     renderBracket(){
         var i = 0;
         var u = 0;
+        this.displayRounds = [];
+
         for(i = 0; i < this.listOfRounds.length; i++){
             this.listOfRounds[i].renderRoundMatch();
             this.displayRounds = this.displayRounds.concat(this.listOfRounds[i].displayMatch);
         }
         return (
-            <ScrollView>
+
                 <ScrollView horizontal={true}>
                 <View style={{flexDirection:"row", alignItems:"center"}}>
                     {this.displayRounds}
                 </View>
                 </ScrollView>
-            </ScrollView>)
-
+            )
     }
 
 }
@@ -123,22 +130,28 @@ const styles = StyleSheet.create({
 
 export class BracketButton extends Component {
     static propTypes = {
+        name: PropTypes.string.isRequired,
+        BID: PropTypes.number.isRequired
     }
 
     render() {
+        const { name, BID } = this.props;
         return (
-            <GoToButton screenName='Current Bracket' />
-        )
+            <GoToButton name={name} BID={BID} screenName='Current Bracket' />)
     }
 }
 
-function GoToButton({screenName }) {
+function GoToButton({ name, BID, screenName }) {
     const navigation = useNavigation();
-
+    window.bracketID = BID;
     return (
         <View>
             <TouchableOpacity onPress={() => { navigation.navigate(screenName) }}>
                 <Text style={{ fontWeight: "bold", fontSize: 20 }}>Bracket</Text>
+                <Icon
+                    name="tournament"
+                    size={25}
+                />
             </TouchableOpacity>
         </View>
     )

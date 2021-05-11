@@ -43,7 +43,19 @@ export class UserButton extends Component {
 
 function GoToButton({ username, img, UID, screenName }) {
     const navigation = useNavigation();
-
+    if (UID == 9) {
+        return (
+            <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                <TouchableOpacity>
+                    <Avatar.Image
+                        size={50}
+                        source={Images[img]}
+                    />
+                    <Text numberOfLines={1} style={{ width: 50, textAlign: 'center' }}>{username}</Text>
+                </TouchableOpacity >
+            </View >
+        );
+    }
     return (
         <View style={{ alignItems: 'center', justifyContent: 'center' }}>
             <TouchableOpacity onPress={() => {window.userID = UID; navigation.navigate(screenName); }}>

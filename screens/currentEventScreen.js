@@ -425,7 +425,7 @@ export default function CurrentEventScreen({ navigation }) {
                                     <Button
                                         title="Confirm"
                                         color="#f194ff"
-                                        onPress={() => {event.addTournament(tName, tDesc, date, endDate, game); console.log(event.tournaments)}}
+                                        onPress={() => {event.addTournament(tName, tDesc, date, endDate, game); setVisible2(false)}}
                                 />
                             </View>
 
