@@ -31,7 +31,7 @@ import Main from "./components/main";
 
     window.users = []
     window.events = [];
-    window.brackets = [];
+window.brackets = [];
     new User("johniscool123", "image1");
     new User("bienfu", "image1");
     new User("dawg", "image2");
@@ -41,6 +41,7 @@ import Main from "./components/main";
     new User("monke", "image6");
     new User("pander", "image7");
     new User("what", "image8");
+    new User("Anonymous", "image0");
     new Event("Event 0", "This is Event 0's Description", new Date(), new Date(), users[0]);
     new Event("Event 1", "This is Event 1's Description", new Date(), new Date(), users[0]);
     events[0].addPlayer(users[1]);

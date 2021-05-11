@@ -18,6 +18,8 @@ export class Round {
         this.complete = false;
         this.displayMatch = [];
         this.totalMatches = match;
+        console.log("THIS MANY MATCHES");
+        console.log(this.totalMatches);
     }
 
     addParticipants(player){
@@ -28,7 +30,9 @@ export class Round {
         this.winnerList.push(player);
     }
 
-    addMatch(match){
+    addMatch(match) {
+        this.participants.push(match.player1);
+        this.participants.push(match.player2);
         this.matchList.push(match);
     }
 
@@ -64,47 +68,10 @@ export class Round {
     renderRoundMatch(){
         var i = 0;
         if(this.participants.length == 0){
-            for(i = 0; i < this.totalMatches; i++){
-                this.displayMatch.push(
-                    <View>
-                        <View style={styles.firstBracket}>
-                            <View style={{borderBottomWidth: 1}}>
-                                <View style={{ flexDirection: "row" }}>
-                                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                                    <Avatar.Image
-                                        size={50}
-                                        source={require('../assets/anonymous.jpg')}
-                                    />
-                                    <Text numberOfLines={1} style={{ width: 50, textAlign: 'center' }}>Unknown</Text>
-                                    </View>
-                                    <View style={styles.scoreBlock}>
-                                        <Text style={{textAlign: "center", color:"white"}}>
-                                            0
-                                        </Text>
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={{borderRadius: 1}}>
-                                <View style={{ flexDirection: "row" }}>
-                                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                                        <Avatar.Image
-                                            size={50}
-                                            source={require('../assets/anonymous.jpg')}
-                                        />
-                                        <Text numberOfLines={1} style={{ width: 50, textAlign: 'center' }}>Unknown</Text>
-                                    </View>
-                                    <View style={styles.scoreBlock}>
-                                        <Text style={{textAlign: "center", color:"white"}}>
-                                            0
-                                        </Text>
-                                    </View>
-                                </View>
-                            </View>
-                        </View>
-                    </View>  
-                )
+            for (i = 0; i < this.totalMatches; i++){
+                this.addMatch(new match(window.users[9], window.users[9]));
             }
-        } else if (this.participants.length != 0) {
+        } 
             var i = 0;
             // Pushes all the match
             temp = [];
@@ -125,7 +92,7 @@ export class Round {
                 </View>
             )
 
-        }
+        
         //return (this.displayMatch)
     }
 
