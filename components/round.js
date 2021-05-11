@@ -11,13 +11,14 @@ import {
   } from "react-native";
 import {match} from './match';
 export class Round {
-    constructor(match){
+    constructor(match,round){
         this.participants = [];
         this.winnerList = [];
         this.matchList = [];
         this.complete = false;
         this.displayMatch = [];
         this.totalMatches = match;
+        this.round = round
         console.log("THIS MANY MATCHES");
         console.log(this.totalMatches);
     }
@@ -73,6 +74,10 @@ export class Round {
             }
         } 
             var i = 0;
+            var intRound = this.round;
+            var roundToString = intRound.toString();
+            var stringRound = "Round ";
+            var stringRound = stringRound + roundToString
             // Pushes all the match
             temp = [];
             for (i = 0; i < this.matchList.length; i++) {
@@ -85,7 +90,7 @@ export class Round {
                 <View style={{ flexDirection: "column" }}>
                 <View style={{paddingLeft: 60, marginTop: 10}}>
                     <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-                        Round 1
+                        {stringRound}
                     </Text>
                     </View>
                     {temp}
