@@ -9,10 +9,10 @@ export default function ReviewDetails({navigation}) {
     const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
     return (
         <View style={globalStyles.container}>
-           <Text style={globalStyles.pageText}><Text style={{ fontSize: 15 }}><Text style={{ color: 'gray' }}> List of Competitors</Text></Text></Text>
+           <Text style={globalStyles.pageText}><Text style={{ fontSize: 17 }}><Text style={{ color: 'brown' }}> List of Competitors</Text></Text></Text>
            <Image
                 style={{ width: 30, height: 30}}
-                source={{uri: 'https://images.smash.gg/images/user/820380/image-1ceeec8a61bc5c0396cb6e7ca81e1657.gif'}}
+                source={{uri: 'https://images.smash.gg/images/user/46373/image-ec0be12616e8e773d3b73e5c3699b444.jpg'}}
                 
             />
 
@@ -36,7 +36,7 @@ export default function ReviewDetails({navigation}) {
 
             <Image
                 style={{ width: 30, height: 30}}
-                source={{uri: 'https://images.smash.gg/images/user/241645/image-c4264a93bb4b487ee6d267cf8639ce1b.jpg'}}
+                source={{uri: 'https://images.smash.gg/images/user/466058/image-81fa8ce6af74fe14dec381a60f6168a1.png'}}
                 
             />
 
@@ -52,7 +52,7 @@ export default function ReviewDetails({navigation}) {
 
             <Image
                 style={{ width: 30, height: 30}}
-                source={{uri: 'https://images.smash.gg/images/user/1263693/image-a2a335414572b585009ae062610799af.gif'}}
+                source={{uri: 'https://images.smash.gg/images/user/948473/image-aa40b1d817810fd7dcd6ce50552b2bf4.jpg'}}
                 
             />
 
@@ -76,7 +76,7 @@ export default function ReviewDetails({navigation}) {
 
             <Image
                 style={{ width: 30, height: 30}}
-                source={{uri: 'https://images.smash.gg/images/user/1054234/image-41e4920f89a3a72b288ae7892c6f7ba8.gif'}}
+                source={{uri: 'https://images.smash.gg/images/user/619467/image-96303e4bdcbd2a389fca6e25f6210eb8.png'}}
                 
             />
 
@@ -84,7 +84,7 @@ export default function ReviewDetails({navigation}) {
 
             <Image
                 style={{ width: 30, height: 30}}
-                source={{uri: 'https://images.smash.gg/images/user/254345/image-17361634d17a7cda9493e5122d8c5fbd.gif'}}
+                source={{uri: 'https://images.smash.gg/images/user/1139031/image-350c62729266350c6d6848cabd870e34.jpg'}}
                 
             />
 
@@ -92,7 +92,7 @@ export default function ReviewDetails({navigation}) {
 
             <Image
                 style={{ width: 30, height: 30}}
-                source={{uri: 'https://images.smash.gg/images/user/935134/image-1116c33fa454f0218e64ae70f465a810.gif'}}
+                source={{uri: 'https://images.smash.gg/images/user/1143032/image-13d4e220dcdde38cad7b28d65952dcb5.png'}}
                 
             />
 
@@ -105,7 +105,11 @@ export default function ReviewDetails({navigation}) {
             />
 
             <Text style={globalStyles.pageText}> FazeJake <Text style={{ color: 'green' }}>JakefromState#9674</Text>  <Text style={{ color: 'blue' }}>@FaZw.Jake</Text> <Text style={{ color: 'purple' }}>twith.tv/jakefromstate</Text></Text>
-
+            <Image
+                style={{ width: 30, height: 30}}
+                source={{uri: 'https://images.smash.gg/images/user/552451/image-e4b0b34e1307b3c7121e9f0e187a088c.jpg'}}
+                
+            />
         </View>
 
         
