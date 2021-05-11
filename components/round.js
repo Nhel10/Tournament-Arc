@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { render } from "react-dom";
+import { Avatar } from 'react-native-paper';
 import {
     StyleSheet,
     View,
@@ -10,12 +11,13 @@ import {
   } from "react-native";
 import {match} from './match';
 export class Round {
-    constructor(){
+    constructor(match){
         this.participants = [];
         this.winnerList = [];
         this.matchList = [];
         this.complete = false;
         this.displayMatch = [];
+        this.totalMatches = match;
     }
 
     addParticipants(player){
@@ -60,19 +62,66 @@ export class Round {
     }
 
     renderRoundMatch(){
-        this.displayMatch.push(
-            <View style={{paddingLeft: 25, marginTop: 10}}>
-                <Text style={{ fontWeight: "bold", fontSize: 15 }}>
-                    Winners Round 1
-                </Text>
-              <Text style={{fontSize: 10}}> Apr, 18, 2021 7:00PM PDT</Text>
-            </View>
-        )
         var i = 0;
-        for(i = 0; i < this.matchList.length; i++){
-            this.displayMatch.push(this.matchList[i].renderMatch())
+        if(this.participants.length == 0){
+            for(i = 0; i < this.totalMatches; i++){
+                this.displayMatch.push(
+                    <View>
+                        <View style = {styles.firstBracket}>
+                            <View style={{borderBottomWidth: 1}}>
+                                <View style={{ flexDirection: "row" }}>
+                                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                    <Avatar.Image
+                                        size={50}
+                                        source={require('../assets/anonymous.jpg')}
+                                    />
+                                    <Text numberOfLines={1} style={{ width: 50, textAlign: 'center' }}>Unknown</Text>
+                                    </View>
+                                    <View style={styles.scoreBlock}>
+                                        <Text style={{textAlign: "center", color:"white"}}>
+                                            0
+                                        </Text>
+                                    </View>
+                                </View>
+                            </View>
+                            <View style={{borderRadius: 1}}>
+                                <View style={{ flexDirection: "row" }}>
+                                    <View style={{ alignItems: 'center', justifyContent: 'center' }}>
+                                        <Avatar.Image
+                                            size={50}
+                                            source={require('../assets/anonymous.jpg')}
+                                        />
+                                        <Text numberOfLines={1} style={{ width: 50, textAlign: 'center' }}>Unknown</Text>
+                                    </View>
+                                    <View style={styles.scoreBlock}>
+                                        <Text style={{textAlign: "center", color:"white"}}>
+                                            0
+                                        </Text>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                    </View>  
+                )
+            }
+        } else if(this.participants.length != 0){
+            this.displayMatch.push(
+                <View style={{paddingLeft: 60, marginTop: 10}}>
+                    <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+                        Round 1
+                    </Text>
+                </View>
+            )
+            var i = 0;
+            // Pushes all the match
+            for(i = 0; i < this.matchList.length; i++){
+                this.displayMatch.push(
+                    <View style={{flexDirection:"column"}}>
+                        {this.matchList[i].renderMatch()}
+                    </View>)
+            }
         }
-        return (this.displayMatch)
+        //return (this.displayMatch)
     }
 
     testRender(){
@@ -92,11 +141,17 @@ export class Round {
           borderRadius: 1,
           borderWidth: 1,
           borderColor: "gray",
-          width: 170,
+          width: 130,
         },
         username: {
           marginLeft: 5,
         },
+        scoreBlock:{
+            backgroundColor: "gray",
+            width: 20,
+            marginLeft: 70,
+            
+        }
       });
 
     

@@ -33,6 +33,7 @@ export class Bracket {
         this.players = [];
         this.cohosts = [];
         this.listOfRounds = [];
+        this.displayRounds = [];
         window.brackets.push(this);
     }
 
@@ -75,7 +76,8 @@ export class Bracket {
         var i;
         /* For loop will create new Rounds into the listOfRounds  */
         for (i = 0; i < r; i++) {
-            this.listOfRounds.push(new Round());
+            this.listOfRounds.push(new Round(length/2));
+            length = length/2;
         }
     }
 
@@ -83,6 +85,22 @@ export class Bracket {
         return (
             <Text style={styles.username}>Peepeepoopoo</Text>
         )
+    }
+
+    renderBracket(){
+        var i = 0;
+        var u = 0;
+        for(i = 0; i < this.listOfRounds.length; i++){
+            this.listOfRounds[i].renderRoundMatch();
+            this.displayRounds = this.displayRounds.concat(this.listOfRounds[i].displayMatch);
+        }
+        return (
+            <ScrollView horizontal={true}>
+                <View style={{flexDirection:"column"}}>
+                    {this.displayRounds}
+                </View>
+            </ScrollView>)
+
     }
 
 }

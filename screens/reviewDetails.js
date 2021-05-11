@@ -6,7 +6,7 @@ export default function ReviewDetails({navigation}) {
     var testBracket = window.brackets[0]
     return (
         <View style={{flexDirection:"column"}}>
-           {testBracket.listOfRounds[0].renderRoundMatch()}
+           {testBracket.renderBracket()}
         </View>
     )
 }
