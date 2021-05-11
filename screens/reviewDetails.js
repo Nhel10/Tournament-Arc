@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button, View, Text } from 'react-native';
-import { globalStyles } from '../styles/global';
+
 
 export default function ReviewDetails({navigation}) {
+    var testBracket = window.brackets[0]
     return (
-        <View style={globalStyles.container}>
-            <Text style={globalStyles.titleText}> Review Details Screen </Text>
-            <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+        <View style={{flexDirection:"column"}}>
+           {testBracket.listOfRounds[0].renderRoundMatch()}
         </View>
     )
 }

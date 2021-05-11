@@ -1,3 +1,13 @@
+import React, { Component } from "react";
+import { render } from "react-dom";
+import {
+    StyleSheet,
+    View,
+    Text,
+    TouchableOpacity,
+    Modal,
+    ScrollView,
+  } from "react-native";
 import {match} from './match';
 export class Round {
     constructor(){
@@ -5,6 +15,7 @@ export class Round {
         this.winnerList = [];
         this.matchList = [];
         this.complete = false;
+        this.displayMatch = [];
     }
 
     addParticipants(player){
@@ -48,8 +59,45 @@ export class Round {
         }
     }
 
+    renderRoundMatch(){
+        this.displayMatch.push(
+            <View style={{paddingLeft: 25, marginTop: 10}}>
+                <Text style={{ fontWeight: "bold", fontSize: 15 }}>
+                    Winners Round 1
+                </Text>
+              <Text style={{fontSize: 10}}> Apr, 18, 2021 7:00PM PDT</Text>
+            </View>
+        )
+        var i = 0;
+        for(i = 0; i < this.matchList.length; i++){
+            this.displayMatch.push(this.matchList[i].renderMatch())
+        }
+        return (this.displayMatch)
+    }
+
+    testRender(){
+        return (
+            <Text style={styles.username}>Peepeepoopoo</Text>
+        )
+    }
+
 
     }
+
+    const styles = StyleSheet.create({
+        firstBracket: {
+          marginLeft: 10,
+          marginTop: 15,
+          flexDirection: "column",
+          borderRadius: 1,
+          borderWidth: 1,
+          borderColor: "gray",
+          width: 170,
+        },
+        username: {
+          marginLeft: 5,
+        },
+      });
 
     
 

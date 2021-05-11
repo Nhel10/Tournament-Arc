@@ -114,6 +114,8 @@ class coHostBracketScreen extends Component {
                 </View>
               </TouchableOpacity>
 
+            
+
               <TouchableOpacity style={styles.firstBracket}>
                 <View style={{ flexDirection: "row" }}>
                   <Text style={styles.username}>SpongeBob</Text>

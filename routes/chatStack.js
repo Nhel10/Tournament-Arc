@@ -8,7 +8,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
-import Chat from '../screens/addTournamentArcScreen';
+import Chat from '../screens/reviewDetails';
 
 
 const { Navigator, Screen } = createStackNavigator();

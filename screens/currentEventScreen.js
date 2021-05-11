@@ -208,7 +208,7 @@ export default function CurrentEventScreen({ navigation }) {
             <View>
                 <View style={styles.separator} />
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <UserButton username={event.players[i].username} img={event.players[i].image}>
+                    <UserButton username={event.players[i].username} img={event.players[i].image} UID={event.players[i].UID}>
                 </UserButton>
             </View>
             <View style={styles.separator} />
@@ -235,7 +235,7 @@ export default function CurrentEventScreen({ navigation }) {
         <View>
         <View style={styles.separator} />
             <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                <UserButton username={event.host.username} img={event.host.image}>
+                <UserButton username={event.host.username} img={event.host.image} UID={event.host.UID}>
             </UserButton>
         </View>
         <View style={styles.separator} />

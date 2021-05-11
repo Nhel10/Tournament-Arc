@@ -20,6 +20,10 @@ export class User {
         this.UID = window.users.length;
         window.users.push(this);
     }
+
+    getUsername(){
+        return this.username;
+    }
 }
 
 export class UserButton extends Component {
