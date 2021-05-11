@@ -18,7 +18,7 @@ export const ChatStack = ({navigation}) => (
     headerMode='screen'
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#BE7C4D',
+            backgroundColor: "#304857",
       },
       headerTintColor: '#fff',
       height: 60
@@ -28,7 +28,7 @@ export const ChatStack = ({navigation}) => (
       name='Chat'
       component={Chat}
       options={{ 
-        title: 'Chat', 
+        title: 'Friends', 
         headerTitleAlign: 'center',
         }}
     />

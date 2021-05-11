@@ -10,6 +10,7 @@ import {
 import Icon2 from "react-native-vector-icons/MaterialIcons";
 import { User, UserButton } from "../components/user";
 import Dialog from "react-native-dialog";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export default function AddFriend({ navigation }) {
   var event = window.events[window.eventID];
@@ -29,8 +30,9 @@ export default function AddFriend({ navigation }) {
           }}
         >
           <UserButton
-            username={event.players[i].username}
-            img={event.players[i].image}
+                    username={event.players[i].username}
+                    img={event.players[i].image}
+                    UID={window.users[i].UID}
           ></UserButton>
         </View>
         <View style={styles.separator} />
@@ -69,9 +71,9 @@ export default function AddFriend({ navigation }) {
       </View>
       <View>
         <Dialog.Container visible={visible}>
-          <Dialog.Title>Add Player</Dialog.Title>
+          <Dialog.Title>Add Friend</Dialog.Title>
           <Dialog.Input
-            label="Player Username"
+            label="Username"
             value={playerName}
             onChangeText={onChangePlayerName}
           ></Dialog.Input>

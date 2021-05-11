@@ -124,7 +124,13 @@ export default function TourneyeArcScreen() {
             </Dialog.Container>
             <TouchableOpacity onPress={showDialog} >
             </TouchableOpacity>
-            <BracketButton name={name} BID={0}/>
+            <BracketButton name={name} BID={0} />
+            <TouchableOpacity activeOpacity={0.5} onPress={tournament.deleteTournament()}>
+                <Icon
+                    name="trash-can-outline"
+                    size={50}
+                />
+            </TouchableOpacity>
         </View>
     )
        

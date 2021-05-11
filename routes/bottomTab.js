@@ -47,9 +47,9 @@ export const MyTabs = () => (
       component={ChatStack}
       options={{
         tabBarLabel: "Add Friend",
-        tabBarColor: "#BE7C4D",
+          tabBarColor: "#304857",
         tabBarIcon: ({ color }) => (
-          <Icon name="chatbubble-outline" color={color} size={26} />
+            <Icon name="person-add" color={color} size={26} />
         ),
       }}
     />

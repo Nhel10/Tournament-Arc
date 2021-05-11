@@ -222,7 +222,7 @@ export default function CurrentEventScreen({ navigation }) {
             <View>
                 <View style={styles.separator} />
                 <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <TournamentButton name={event.tournaments[i].name} img={event.tournaments[i].game} date={event.tournaments[i].date} endDate={event.tournaments[i].endDate} EID={event.tournaments[i].EID} TID={event.tournaments[i].TID}>
+                    <TournamentButton name={event.tournaments[i].name} img={event.tournaments[i].game} date={event.tournaments[i].date} endDate={event.tournaments[i].endDate} EID={event.tournaments[i].EID} TID={event.tournaments[i].TID} deleted={event.tournaments[i].deleted} >
                     </TournamentButton>
                 </View>
                 <View style={styles.separator} />
@@ -521,6 +521,14 @@ export default function CurrentEventScreen({ navigation }) {
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
                     {hosts}
                 </ScrollView>
+            </View>
+            <View style={{ alignItems: 'center' }}>
+            <TouchableOpacity activeOpacity={0.5} onPress={event.deleteEvent()}>
+                <Icon
+                    name="trash-can-outline"
+                    size={50}
+                />
+                </TouchableOpacity>
             </View>
         </ScrollView>
     )
