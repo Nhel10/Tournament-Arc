@@ -1,13 +1,11 @@
-import React from 'react';
-import { Button, View, Text } from 'react-native';
-import { globalStyles } from '../styles/global';
+import React from "react";
+import { Button, View, Text } from "react-native";
+import { globalStyles } from "../styles/global";
 
-export default function myTournamentScreen({navigation}) {
-    return (
-        <View style={globalStyles.container}>
-            <Text style={globalStyles.pageText}>
-                 My Tournament Screen
-            </Text>
-        </View>
-    )
+export default function myTournamentScreen({ navigation }) {
+  return (
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.pageText}>My Tournament Screen</Text>
+    </View>
+  );
 }

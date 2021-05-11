@@ -8,52 +8,58 @@
 
 ---*/
 
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Home from '../screens/home';
-import ReviewDetails from '../screens/reviewDetails';
+import Home from "../screens/home";
+import ReviewDetails from "../screens/reviewDetails";
 
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from "react-native-vector-icons/Ionicons";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const HomeStack = ({navigation}) => (
+export const HomeStack = ({ navigation }) => (
   <Navigator
-    headerMode='screen'
+    headerMode="screen"
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#304857',
+        backgroundColor: "#304857",
       },
-      headerTintColor: '#fff',
-      height: 60
+      headerTintColor: "#fff",
+      height: 60,
     }}
   >
     <Screen
-      name='Home'
+      name="Home"
       component={Home}
-      options={{ 
-        title: 'Home Screen', 
-        headerTitleAlign: 'center',
+      options={{
+        title: "Home Screen",
+        headerTitleAlign: "center",
         headerLeft: () => (
-          <Icon.Button name = "ios-menu" size={25}
-          backgroundColor="#304857" onPress={() => navigation.openDrawer()}
+          <Icon.Button
+            name="ios-menu"
+            size={25}
+            backgroundColor="#304857"
+            onPress={() => navigation.openDrawer()}
           ></Icon.Button>
-        )
-       }}
+        ),
+      }}
     />
     <Screen
-      name='ReviewDetails'
+      name="ReviewDetails"
       component={ReviewDetails}
-      options={{ 
-        title: 'Review Details', 
-        headerTitleAlign: 'center',
+      options={{
+        title: "Review Details",
+        headerTitleAlign: "center",
         headerLeft: () => (
-          <Icon.Button name = "ios-menu" size={25}
-          backgroundColor="#BAD7E6" onPress={() => navigation.openDrawer()}
+          <Icon.Button
+            name="ios-menu"
+            size={25}
+            backgroundColor="#BAD7E6"
+            onPress={() => navigation.openDrawer()}
           ></Icon.Button>
-        )
-       }}
+        ),
+      }}
     />
   </Navigator>
 );

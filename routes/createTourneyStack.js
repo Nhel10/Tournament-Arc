@@ -5,30 +5,30 @@
   SCREENS:
  
 ---*/
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import Create from '../screens/createTournament';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import Create from "../screens/createTournament";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const CreateTourneyStack = ({navigation}) => (
+export const CreateTourneyStack = ({ navigation }) => (
   <Navigator
-    headerMode='screen'
+    headerMode="screen"
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#3C896D',
+        backgroundColor: "#3C896D",
       },
-      headerTintColor: '#fff',
-      height: 60
+      headerTintColor: "#fff",
+      height: 60,
     }}
   >
     <Screen
-      name='CreateTourney'
+      name="CreateTourney"
       component={Create}
-      options={{ 
-        title: 'Create A Tournament', 
-        headerTitleAlign: 'center',
-        }}
+      options={{
+        title: "Create A Tournament",
+        headerTitleAlign: "center",
+      }}
     />
   </Navigator>
 );

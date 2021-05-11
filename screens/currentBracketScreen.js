@@ -22,24 +22,24 @@ class currentBracketScreen extends Component {
     return (
       <ScrollView horizontal={true}>
         <View style={{ flexDirection: "column" }}>
-          <View style={{marginTop: 10, flexDirection: "row"}}>
-            <View style={{ marginLeft:20, flexDirection: "column" }}>
+          <View style={{ marginTop: 10, flexDirection: "row" }}>
+            <View style={{ marginLeft: 20, flexDirection: "column" }}>
               <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                 Winners Round 1
               </Text>
-              <Text style={{fontSize: 10}}> Apr, 18, 2021 7:00PM PDT</Text>
+              <Text style={{ fontSize: 10 }}> Apr, 18, 2021 7:00PM PDT</Text>
             </View>
-            <View style={{ marginLeft:60, flexDirection: "column" }}>
+            <View style={{ marginLeft: 60, flexDirection: "column" }}>
               <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                 Winners Semi-Final
               </Text>
-              <Text style={{fontSize: 10}}> Apr, 18, 2021 7:30PM PDT</Text>
+              <Text style={{ fontSize: 10 }}> Apr, 18, 2021 7:30PM PDT</Text>
             </View>
-            <View style={{ marginLeft:60, flexDirection: "column" }}>
+            <View style={{ marginLeft: 60, flexDirection: "column" }}>
               <Text style={{ fontWeight: "bold", fontSize: 15 }}>
                 Winners Finals
               </Text>
-              <Text style={{fontSize: 10}}> Apr, 18, 2021 7:45PM PDT</Text>
+              <Text style={{ fontSize: 10 }}> Apr, 18, 2021 7:45PM PDT</Text>
             </View>
           </View>
 

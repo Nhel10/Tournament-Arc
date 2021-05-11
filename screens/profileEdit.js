@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
   Platform,
-  Button
+  Button,
 } from "react-native";
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
 import { globalStyles } from "../styles/global";

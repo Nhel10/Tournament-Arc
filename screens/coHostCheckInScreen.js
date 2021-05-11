@@ -19,10 +19,10 @@ export default class CoHostCheckInScreen extends Component {
   };
 
   constructor(props) {
-    super(props)
-    this.state = {unqCode:''};
-    this.state = {showMe: false};
-    this.state = {modalVisible: false};
+    super(props);
+    this.state = { unqCode: "" };
+    this.state = { showMe: false };
+    this.state = { modalVisible: false };
   }
 
   _onPress = () => {
@@ -33,11 +33,11 @@ export default class CoHostCheckInScreen extends Component {
   };
 
   _renderVisible = () => {
-    this.setState({ showMe : !this.state.showMe });
+    this.setState({ showMe: !this.state.showMe });
   };
 
   _showModal = () => {
-    this.setState({modalVisible : !this.state.modalVisible});
+    this.setState({ modalVisible: !this.state.modalVisible });
     // return (
     //   <View>
     //     <Modal>
@@ -54,7 +54,7 @@ export default class CoHostCheckInScreen extends Component {
     //     </Modal>
     //   </View>
     // )
-  }
+  };
 
   render() {
     const { toggle } = this.state;
@@ -66,18 +66,13 @@ export default class CoHostCheckInScreen extends Component {
       <View>
         <Card>
           <View style={{ flexDirection: "row" }}>
-            {
-              this.state.modalVisible?
+            {this.state.modalVisible ? (
               <Modal>
                 <View style={styles.centeredView}>
-                  <Text>
-                    Tournament Alert
-                  </Text>
+                  <Text>Tournament Alert</Text>
                 </View>
                 <View style={styles.centeredView}>
-                  <Text>
-                    Please check-in to tournament!!!
-                  </Text>
+                  <Text>Please check-in to tournament!!!</Text>
                   <Pressable
                     style={styles.button}
                     onPress={() => this._showModal()}
@@ -85,8 +80,8 @@ export default class CoHostCheckInScreen extends Component {
                     <Text style={styles.textStyle}>Close notification</Text>
                   </Pressable>
                 </View>
-              </Modal> : null
-            }
+              </Modal>
+            ) : null}
             <Image
               style={{
                 marginLeft: 10,
@@ -103,8 +98,8 @@ export default class CoHostCheckInScreen extends Component {
             ></Image>
             <View style={{ flexDirection: "column", marginLeft: 10 }}>
               <Title style={{ fontSize: 14 }}>
-                Super Smash Bros World Tour 2020 
-              </Title> 
+                Super Smash Bros World Tour 2020
+              </Title>
               {/* <Paragraph style={{ color: "gray", fontSize: 10 }}> 
                 Singles 
               </Paragraph> 
@@ -112,30 +107,33 @@ export default class CoHostCheckInScreen extends Component {
                 Super Smash Bros. Ultimate 
               </Paragraph> */}
               <Text style={{ color: "gray", fontSize: 10 }}>
-                April 18th, 2021 @7:00 PDT 
+                April 18th, 2021 @7:00 PDT
               </Text>
               <View style={styles.buttonContainer}>
-                <Text>
-                  Use code 1234 as a test
-                </Text>
+                <Text>Use code 1234 as a test</Text>
                 <TextInput
-                  placeholder = "Enter custom code"
-                  onChangeText = {unqCode=>this.setState({unqCode})}
+                  placeholder="Enter custom code"
+                  onChangeText={(unqCode) => this.setState({ unqCode })}
                 />
                 {/*Must navigate from drawer level first then work way down*/}
                 <Button
                   style={{
-                    justifyContent: 'center',
-                    alignItems: 'center',
+                    justifyContent: "center",
+                    alignItems: "center",
                   }}
-                  onPress={() => {this.props.navigation.navigate('Competitor Gateway', {
-                    screen: 'Competitor Interface', 
-                    params: {
-                      screen: 'CheckIn', 
-                      params: { 
-                        P1: this.state.unqCode, }}}), 
-                  this._renderVisible(),
-                  this._showModal()}}
+                  onPress={() => {
+                    this.props.navigation.navigate("Competitor Gateway", {
+                      screen: "Competitor Interface",
+                      params: {
+                        screen: "CheckIn",
+                        params: {
+                          P1: this.state.unqCode,
+                        },
+                      },
+                    }),
+                      this._renderVisible(),
+                      this._showModal();
+                  }}
                   title="Send code to competitors"
                 />
                 {/* <Text>
@@ -166,16 +164,13 @@ export default class CoHostCheckInScreen extends Component {
             height: 50,
           }}
         >
-          <View style={{
-            flexDirection: "row",
-          }}>
+          <View
+            style={{
+              flexDirection: "row",
+            }}
+          >
             <Text>Approve code: </Text>
-            {
-              this.state.showMe?
-              <Text>
-                1234
-              </Text> : null
-            }
+            {this.state.showMe ? <Text>1234</Text> : null}
           </View>
           <TouchableOpacity
             onPress={() => this._onPress()}
@@ -189,7 +184,9 @@ export default class CoHostCheckInScreen extends Component {
               justifyContent: "center",
             }}
           >
-            <Text style={{color: "white", marginLeft: marginText}}>{textValue}</Text>
+            <Text style={{ color: "white", marginLeft: marginText }}>
+              {textValue}
+            </Text>
           </TouchableOpacity>
         </Card>
       </View>
@@ -211,11 +208,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 22,
   },
   button: {
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
   },
 });

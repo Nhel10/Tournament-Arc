@@ -8,9 +8,7 @@ import {
   Image,
   Dimensions,
 } from "react-native";
-import {
-  Title,
-} from 'react-native-paper';
+import { Title } from "react-native-paper";
 import { globalStyles } from "../styles/global";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -91,7 +89,7 @@ class HomePage extends Component {
         </View>
 
         <View style={style.container}>
-        <Title style={style.moreInput}>Upcoming Events</Title>
+          <Title style={style.moreInput}>Upcoming Events</Title>
           <ScrollView
             pagingEnabled
             horizontal
@@ -124,7 +122,7 @@ class HomePage extends Component {
         </View>
 
         <View style={style.container}>
-        <Title style={style.moreInput}>Live Events</Title>
+          <Title style={style.moreInput}>Live Events</Title>
           <ScrollView
             pagingEnabled
             horizontal
@@ -210,6 +208,6 @@ const style = StyleSheet.create({
   moreInput: {
     fontSize: 25,
     marginTop: 1,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
 });

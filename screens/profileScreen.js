@@ -211,7 +211,9 @@ export default function ProfileScreen({ navigation, props }) {
         </View>
       </Card>
       <View>
-        <Title style={{marginLeft: 10, marginTop: 10, fontSize: 25}}>Attended Events</Title>
+        <Title style={{ marginLeft: 10, marginTop: 10, fontSize: 25 }}>
+          Attended Events
+        </Title>
       </View>
       <View>
         <TouchableOpacity onPress={showEventDialog}>

@@ -5,32 +5,31 @@
   SCREENS:
  
 ---*/
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import Chat from '../screens/competitorsCheckInList';
-
+import Chat from "../screens/competitorsCheckInList";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const ChatStack = ({navigation}) => (
+export const ChatStack = ({ navigation }) => (
   <Navigator
-    headerMode='screen'
+    headerMode="screen"
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#BE7C4D',
+        backgroundColor: "#BE7C4D",
       },
-      headerTintColor: '#fff',
-      height: 60
+      headerTintColor: "#fff",
+      height: 60,
     }}
   >
     <Screen
-      name='Chat'
+      name="Chat"
       component={Chat}
-      options={{ 
-        title: 'Chat', 
-        headerTitleAlign: 'center',
-        }}
+      options={{
+        title: "Chat",
+        headerTitleAlign: "center",
+      }}
     />
   </Navigator>
 );

@@ -13,7 +13,7 @@ import {
   Modal,
 } from "react-native";
 import { Avatar, Card, Title, Paragraph } from "react-native-paper";
-import { useRoute } from '@react-navigation/native';
+import { useRoute } from "@react-navigation/native";
 
 // function showCode({ route, navigation }) {
 //   const { givenCode } = route.params;
@@ -28,8 +28,8 @@ export default class CompetitorCheckIn extends Component {
   // };
 
   constructor(props) {
-    super(props)
-    this.state = {reenCode:''};
+    super(props);
+    this.state = { reenCode: "" };
   }
 
   // _onPress = () => {
@@ -81,20 +81,23 @@ export default class CompetitorCheckIn extends Component {
                 April 18th, 2021 @7:00 PDT
               </Paragraph>
               <View style={styles.buttonContainer}>
-                <Text>
-                  Check-in code: 1234
-                </Text>
+                <Text>Check-in code: 1234</Text>
                 <TextInput
-                  placeholder = 'Enter valid code'
-                  onChangeText = {reenCode=>this.setState({reenCode})}
+                  placeholder="Enter valid code"
+                  onChangeText={(reenCode) => this.setState({ reenCode })}
                 />
                 <Button
-                  onPress={() => this.props.navigation.navigate('CoHost Gateway', {
-                    screen: 'Co-Host Interface', 
-                    params: {
-                      screen: 'CheckIn', 
+                  onPress={() =>
+                    this.props.navigation.navigate("CoHost Gateway", {
+                      screen: "Co-Host Interface",
                       params: {
-                        P2: this.state.reenCode }}})}
+                        screen: "CheckIn",
+                        params: {
+                          P2: this.state.reenCode,
+                        },
+                      },
+                    })
+                  }
                   title="Confirm check-in"
                 />
                 {/* <TouchableOpacity

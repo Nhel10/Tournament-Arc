@@ -82,7 +82,7 @@ export default function AddFriend({ navigation }) {
           <ScrollView>
             <View style={{ flexDirection: "row" }}>
               <View>{players}</View>
-             {/** Add online offline statuses? */}
+              {/** Add online offline statuses? */}
             </View>
           </ScrollView>
         </View>

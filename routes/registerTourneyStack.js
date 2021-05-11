@@ -1,29 +1,29 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
-import Register from '../screens/registerTourneyScreen';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import Register from "../screens/registerTourneyScreen";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const RegisterTourneyStack = ({navigation}) => (
+export const RegisterTourneyStack = ({ navigation }) => (
   <Navigator
-    headerMode='screen'
+    headerMode="screen"
     screenOptions={{
       headerStyle: {
-        backgroundColor: '#3C896D',
+        backgroundColor: "#3C896D",
       },
-      headerTintColor: '#fff',
-      height: 60
+      headerTintColor: "#fff",
+      height: 60,
     }}
   >
     <Screen
-      name='RegisterTourney'
+      name="RegisterTourney"
       component={Register}
-      options={{ 
-        title: 'Create A Tournament', 
-        headerTitleAlign: 'center',
-        }}
+      options={{
+        title: "Create A Tournament",
+        headerTitleAlign: "center",
+      }}
     />
   </Navigator>
 );
 
-export default RegisterTourneyStack ;
+export default RegisterTourneyStack;
