@@ -82,7 +82,7 @@ export class Bracket {
         var i;
         /* For loop will create new Rounds into the listOfRounds  */
         for (i = 0; i < r; i++) {
-            this.listOfRounds.push(new Round(length/2));
+            this.listOfRounds.push(new Round((length/2),(i+1)));
             length = length/2;
         }
     }
