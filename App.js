@@ -26,13 +26,12 @@ import ProfileEdit from "./screens/profileEdit";
 import ProfileScreen from "./screens/profileScreen";
 import Profile from "./screens/profile";
 import Main from "./components/main";
-import { AddFriend } from "./screens/addFriend";
 
 
 
     window.users = []
     window.events = [];
-    window.brackets = [];
+window.brackets = [];
     new User("johniscool123", "image1");
     new User("bienfu", "image1");
     new User("dawg", "image2");
@@ -42,6 +41,7 @@ import { AddFriend } from "./screens/addFriend";
     new User("monke", "image6");
     new User("pander", "image7");
     new User("what", "image8");
+    new User("", "image0");
     new Event("Event 0", "This is Event 0's Description", new Date(), new Date(), users[0]);
     new Event("Event 1", "This is Event 1's Description", new Date(), new Date(), users[0]);
     events[0].addPlayer(users[1]);
@@ -57,7 +57,11 @@ import { AddFriend } from "./screens/addFriend";
     brackets[0].addPlayer(users[1]);
     brackets[0].addPlayer(users[2]);
     brackets[0].addPlayer(users[3]);
-    brackets[0].addPlayer(users[4]);
+brackets[0].addPlayer(users[4]);
+brackets[0].addPlayer(users[5]);
+brackets[0].addPlayer(users[6]);
+brackets[0].addPlayer(users[7]);
+brackets[0].addPlayer(users[8]);
     brackets[0].startBracket();
     console.log(brackets);
 
