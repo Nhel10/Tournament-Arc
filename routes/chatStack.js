@@ -8,7 +8,11 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+<<<<<<< Updated upstream
 import Chat from '../screens/about';
+=======
+import Chat from '../screens/competitorsCheckInList';
+>>>>>>> Stashed changes
 
 
 const { Navigator, Screen } = createStackNavigator();
