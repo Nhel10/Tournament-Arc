@@ -61,6 +61,7 @@ export function DrawerContent(props) {
               )}
               label="Profile"
               onPress={() => {
+                window.userID = 0;
                 props.navigation.navigate("Profile");
               }}
             />

@@ -17,6 +17,8 @@ import * as ImagePicker from "expo-image-picker";
 import firebase from "firebase";
 import { connect } from "react-redux";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { User, UserButton } from "../components/user";
+import Images from '../index';
 
 require("firebase/firestore");
 require("firebase/firebase-storage");
@@ -24,6 +26,7 @@ require("firebase/firebase-storage");
 export default function ProfileScreen({ navigation, props }) {
   // const {currentUser, userProfile} = props;
   // console.log({currentUser, userProfile})
+  var user = window.users[window.userID];
   var defaultProfilePicture =
     "https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg";
 
@@ -32,14 +35,14 @@ export default function ProfileScreen({ navigation, props }) {
   var twitchLinkTemp = "";
 
   const [image, setImage] = React.useState(defaultProfilePicture);
-  const [userName, setUserName] = React.useState(userNameTemp);
+  const [userName, setUserName] = React.useState(user.username);
   const [userLocation, setLocation] = React.useState(userLocationTemp);
   const [twitchLink, setTwitchLink] = React.useState(twitchLinkTemp);
   const [visible, setVisible] = useState(false);
   const [eventVisible, setEventVisible] = useState(false);
-  const [name, onChangeUserName] = React.useState("");
-  const [location, onChangeLocation] = React.useState("");
-  const [twitch, onChangeTwitch] = React.useState("");
+  const [name, onChangeUserName] = React.useState(user.username);
+  const [location, onChangeLocation] = React.useState(userLocationTemp);
+  const [twitch, onChangeTwitch] = React.useState(twitchLinkTemp);
 
   const saveProfileData = () => {
     firebase
@@ -137,6 +140,14 @@ export default function ProfileScreen({ navigation, props }) {
     setVisible(false);
   };
 
+  var temp;
+  if(user.UID == 0){
+    temp = {uri : image}
+  }
+  else{
+    temp = Images[user.image]
+  }
+
   return (
     <View>
       {/* Card with profile picuture, username, location, and twitch. */}
@@ -146,7 +157,7 @@ export default function ProfileScreen({ navigation, props }) {
           <View style={{ marginTop: 10, alignItems: "center" }}>
             {image && (
               <Image
-                source={{ uri: image }}
+                source={temp}
                 style={{ width: 100, height: 100, borderRadius: 50 }}
               />
             )}
@@ -166,7 +177,7 @@ export default function ProfileScreen({ navigation, props }) {
           <View
             style={{ flexDirection: "column", marginLeft: 10, marginTop: 10 }}
           >
-            <Title>{userName}</Title>
+            <Title>{user.username}</Title>
             <Paragraph>{userLocation}</Paragraph>
             <TouchableOpacity
               style={{ width: 25 }}

@@ -238,6 +238,7 @@ export default function CurrentEventScreen({ navigation }) {
           }}
         >
           <UserButton
+            UID={event.players[i].UID}
             username={event.players[i].username}
             img={event.players[i].image}
           ></UserButton>
@@ -282,6 +283,7 @@ export default function CurrentEventScreen({ navigation }) {
         style={{ justifyContent: "center", alignItems: "center", padding: 10 }}
       >
         <UserButton
+          UID={0}
           username={event.host.username}
           img={event.host.image}
         ></UserButton>
@@ -301,6 +303,7 @@ export default function CurrentEventScreen({ navigation }) {
           }}
         >
           <UserButton
+            UID={event.cohosts[i].UID}
             username={event.cohosts[i].username}
             img={event.cohosts[i].image}
           ></UserButton>

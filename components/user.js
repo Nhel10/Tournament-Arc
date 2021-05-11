@@ -19,6 +19,7 @@ export class User {
         this.image = image;
         this.UID = window.users.length;
         window.users.push(this);
+        this.friends = [];
     }
 }
 

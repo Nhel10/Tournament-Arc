@@ -41,7 +41,7 @@ export const RootDrawerNavigator = () => (
     initialRouteName="Home"
   >
     <Screen name="Home" component={TabNavigator} />
-    <Screen name="Profile" component={ProfileScreen} />
+    <Screen name="Profile" component={AddFriend} />
     <Screen name="My Tournament" component={TourneyStack} />
     <Screen name="Log In" component={RegistrationStack} />
     <Screen name="Setting" component={SettingStack} />
