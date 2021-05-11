@@ -9,6 +9,7 @@ import HomeStack from "./homeStack";
 import FollowStack from "./followingStack";
 import SearchStack from "./searchStack";
 import ChatStack from "./chatStack";
+import Icon2 from "react-native-vector-icons/MaterialIcons";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -40,22 +41,12 @@ export const MyTabs = () => (
         ),
       }}
     />
+    
     <Tab.Screen
-      name="Search"
-      component={SearchStack}
-      options={{
-        tabBarLabel: "Search",
-        tabBarColor: "#D33F49",
-        tabBarIcon: ({ color }) => (
-          <Icon name="ios-search" color={color} size={26} />
-        ),
-      }}
-    />
-    <Tab.Screen
-      name="Chat"
+      name="Add Friend"
       component={ChatStack}
       options={{
-        tabBarLabel: "Chat",
+        tabBarLabel: "Add Friend",
         tabBarColor: "#BE7C4D",
         tabBarIcon: ({ color }) => (
           <Icon name="chatbubble-outline" color={color} size={26} />
