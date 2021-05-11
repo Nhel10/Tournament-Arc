@@ -1,5 +1,8 @@
+match.js
+
 import React, { Component } from "react";
 import { render } from "react-dom";
+import {UserButton} from "./user";
 import {
     StyleSheet,
     View,
@@ -67,10 +70,58 @@ export class match {
 
     renderMatch(){
         return (
-            <Text style={styles.username}>Peepeepoopoo</Text>
+            <View style = {styles.firstBracket}>
+                <View style={{borderBottomWidth: 1}}>
+                    <View style={{ flexDirection: "row" }}>
+                        <UserButton username = {this.player1.username} img={this.player1.image} UID={this.player1.UID} ></UserButton>
+                        <View style={styles.scoreBlock}>
+                            <Text style={{textAlign: "center", color:"white"}}>
+                                {this.player1Score} 
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+                <View style={{borderRadius: 1}}>
+                    <View style={{ flexDirection: "row" }}>
+                    <UserButton username = {this.player2.username} img={this.player2.image} UID={this.player2.UID} ></UserButton>
+                        <View style={styles.scoreBlock}>
+                            <Text style={{textAlign: "center", color:"white"}}>
+                                {this.player2Score} 
+                            </Text>
+                        </View>
+                    </View>
+                </View>
+            </View>
+            
         )
         
+    }
+    testRender(){
+        return (
+            <Text style={styles.username}>Peepeepoopoo</Text>
+        )
     }
 
     
 }
+const styles = StyleSheet.create({
+    firstBracket: {
+      marginLeft: 20,
+      marginTop: 30,
+      flexDirection: "column",
+      borderRadius: 1,
+      borderWidth: 1,
+      borderColor: "gray",
+      width: 130,
+    },
+    username: {
+      marginLeft: 5,
+    },
+    scoreBlock:{
+        backgroundColor: "gray",
+        width: 20,
+        marginLeft: 70,
+        
+    }
+  });
+  
